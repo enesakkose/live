@@ -7,16 +7,22 @@
     padding: 0;
     text-decoration: none;
     outline: none;
+    border: none;
 }
 
 html, body {
     height: 100%;
+    font-family: var(--font-inter);
+    font-weight: 400;
 }
 
 body {
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    isolation: isolate;
+    background-color: $SECONDARY-900;
+    color: $SECONDARY-100;
 }
 
 img, picture, video, canvas, svg {
@@ -30,8 +36,4 @@ input, button, textarea, select {
 
 p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
-}
-
-#root, #__next {
-    isolation: isolate;
 }
