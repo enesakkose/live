@@ -1,0 +1,35 @@
+.button{
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    color: $SECONDARY-100;
+
+    &:disabled, &[disabled]{
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    &:is(.secondary){
+        padding: $PS $PM;
+        border-radius: .5rem;
+        background-color: $PURPLE-800;
+        gap: .5rem;
+
+        &:hover{
+            background-color: $PURPLE-700;
+        }
+    }
+
+    &:is(.icon){
+        padding: $PS $PM;
+        border-radius: .5rem;
+        background-color: $PURPLE-800;
+
+        &:hover{
+            background-color: $PURPLE-700;
+        }
+    }
+}
