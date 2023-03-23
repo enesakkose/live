@@ -9,19 +9,6 @@ $PRIMARY-700: #818181;
 $PRIMARY-800: #606060;
 $PRIMARY-900: #3c3c3c;
 
-
-$SECONDARY-50: #f8f8fb;
-$SECONDARY-100: #f0f0f2;
-$SECONDARY-200: #e5e5e8;
-$SECONDARY-300: #d4d4d6;
-$SECONDARY-400: #afafb2;
-$SECONDARY-500: #8f8f91;
-$SECONDARY-600: #676769;
-$SECONDARY-700: #545456;
-$SECONDARY-800: #363638;
-$SECONDARY-900: #161618; /**/
-
-
 $DARK-GRAY-50:  #f6fbfd;
 $DARK-GRAY-100: #f1f7f8;
 $DARK-GRAY-200: #ebf1f2;
@@ -57,37 +44,68 @@ $DARK-GREEN-800: #1b3837;
 $DARK-GREEN-900: #0c2423;
 
 
-$GREEN-50:  #edfcfc;
-$GREEN-100: #e6f5f4;
-$GREEN-200: #ddebeb;
-$GREEN-300: #cddbdb;
-$GREEN-400: #a9b7b7;
-$GREEN-500: #8a9797;
-$GREEN-600: #626f6f;
-$GREEN-700: #4f5b5b;
-$GREEN-800: #313c3c;
-$GREEN-900: #111c1c;
+$GREEN-50:  #e1fcef;
+$GREEN-100: #b6f5d8;
+$GREEN-200: #7eefbf;
+$GREEN-300: #00e9a3; /**/
+$GREEN-400: #00e28c;
+$GREEN-500: #00d979;
+$GREEN-600: #00c86d;
+$GREEN-700: #00b45e;
+$GREEN-800: #00a252;
+$GREEN-900: #00813b;
 
-$WHITE-10: hsl(0 0% 100% / 0.013);
-$WHITE-20: hsl(0 0% 100% / 0.023);
-$WHITE-30: hsl(0 0% 100% / 0.033);
-$WHITE-40: hsl(0 0% 100% / 0.043);
-$WHITE-100: hsl(0 0% 100% / 0.113);
-$WHITE-200: hsl(0 0% 100% / 0.213);
+$WHITE-1: hsla(0, 0%, 100%, 0);
+$WHITE-2: hsla(0, 0%, 100%, 0.013);
+$WHITE-3: hsla(0, 0%, 100%, 0.034);
+$WHITE-4: hsla(0, 0%, 100%, 0.056);
+$WHITE-5: hsla(0, 0%, 100%, 0.086);
+$WHITE-6: hsla(0, 0%, 100%, 0.124);
+$WHITE-7: hsla(0, 0%, 100%, 0.176);
+$WHITE-8: hsla(0, 0%, 100%, 0.249);
+$WHITE-9: hsla(0, 0%, 100%, 0.386);
+$WHITE-10: hsla(0, 0%, 100%, 0.446);
+$WHITE-11: hsla(0, 0%, 100%, 0.592);
+$WHITE-12: hsla(0, 0%, 100%, 0.923);
+
+$BLACK-1: hsla(0, 0%, 0%, 0.012);
+$BLACK-2: hsla(0, 0%, 0%, 0.027);
+$BLACK-3: hsla(0, 0%, 0%, 0.047);
+$BLACK-4: hsla(0, 0%, 0%, 0.071);
+$BLACK-5: hsla(0, 0%, 0%, 0.090);
+$BLACK-6: hsla(0, 0%, 0%, 0.114);
+$BLACK-7: hsla(0, 0%, 0%, 0.141);
+$BLACK-8: hsla(0, 0%, 0%, 0.220);
+$BLACK-9: hsla(0, 0%, 0%, 0.439);
+$BLACK-10: hsla(0, 0%, 0%, 0.478);
+$BLACK-11: hsla(0, 0%, 0%, 0.565);
+$BLACK-12: hsla(0, 0%, 0%, 0.910);
+
+
+$SECONDARY-50:  #f5f5f5;
+$SECONDARY-100: #e9e9e9;
+$SECONDARY-200: #d9d9d9;
+$SECONDARY-300: #c4c4c4;
+$SECONDARY-400: #9d9d9d;
+$SECONDARY-500: #7b7b7b;
+$SECONDARY-600: #555555;
+$SECONDARY-700: #434343;
+$SECONDARY-800: #262626;
+$SECONDARY-900: #000000;
 
 
 //PADDING
-$PXS: .25rem;
-$PS: .5rem;
-$PM: 1rem;
-$PL: 1.125rem;
-$PXL: 1.5rem;
-$PXXL: 2rem;
+$P-1: .25rem;
+$P-2: .5rem;
+$P-3: 1rem;
+$P-4: 1.125rem;
+$P-5: 1.5rem;
+$P-6: 2rem;
 
 //MARGIN
-$MXS: .25rem;
-$MS: .5rem;
-$MM: 1rem;
-$ML: 1.125rem;
-$MXL: 1.5rem;
-$MXXL: 2rem;
+$M-1: .25rem;
+$M-2: .5rem;
+$M-3: 1rem;
+$M-4: 1.125rem;
+$M-5: 1.5rem;
+$M-6: 2rem;

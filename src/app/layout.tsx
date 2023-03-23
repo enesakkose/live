@@ -1,5 +1,5 @@
-import Header from '@/components/Header'
 import { Inter, Josefin_Sans } from 'next/font/google'
+import ReactQueryProvider from '@/app/ReactQueryProvider'
 import '@/styles/globals.scss'
 
 const inter = Inter({
@@ -9,7 +9,7 @@ const inter = Inter({
 
 const josefin = Josefin_Sans({
   variable: '--font-josefin',
-  subsets: ['latin']
+  subsets: ['latin'],
 })
 
 export const metadata = {
@@ -25,8 +25,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.variable}>
-        <Header />
-        {children}
+        <ReactQueryProvider>
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   )

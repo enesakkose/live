@@ -1,0 +1,15 @@
+.categoriesLayout{
+
+        .container{
+            display: flex;
+            gap: 2rem;
+
+            .sportTimezone{
+                flex: 1;
+                background-color: $WHITE-3;
+                height: 100vh;
+                padding: $P-3;
+                border-radius: .5rem;
+            }
+        }
+}

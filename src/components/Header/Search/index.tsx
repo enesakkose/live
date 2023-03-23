@@ -6,7 +6,7 @@ function Search() {
   return (
     <div className={styles.search}>
       <Icon className={styles.searchIcon} icon='search' />
-      <input type='text' name='search' autoComplete='off' />
+      <input type='text' name='search' placeholder='Search' autoComplete='off' />
     </div>
   )
 }

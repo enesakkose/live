@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/app/page.module.scss'
-const inter = Inter({ subsets: ['latin'] })
+import styles from '@/app/(categories)/page.module.scss'
+import MainContainer from '@/components/MainContainer'
 
 export default function Home() {
   return (

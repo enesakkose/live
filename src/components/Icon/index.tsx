@@ -1,7 +1,7 @@
 import IcoMoon, { IconProps } from 'react-icomoon'
 import iconSet from '@/icons/selection.json'
 
-const Icon = ({ size = '25', ...props }: IconProps) => (
+const Icon = ({ size = '25px', ...props }: IconProps) => (
   <IcoMoon iconSet={iconSet} size={size} {...props} />
 )
 
