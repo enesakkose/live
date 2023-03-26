@@ -7,6 +7,10 @@ const nextConfig = {
     appDir: true,
   },
 
+  images: {
+    domains: ['flashscore.com'],
+  },
+
   sassOptions: {
     includePaths: [path.join(__dirname)],
     prependData: `@import "@/styles/_variables.scss";`
