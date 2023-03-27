@@ -22,7 +22,8 @@ body {
     -webkit-font-smoothing: antialiased;
     isolation: isolate;
     background-color: $SECONDARY-900;
-    color: $SECONDARY-100;
+    color: $SECONDARY-200;
+    overflow: hidden;
 }
 
 img, picture, video, canvas, svg {
