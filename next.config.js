@@ -8,7 +8,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: ['flashscore.com'],
+    domains: ['www.flashscore.com'],
   },
 
   sassOptions: {
