@@ -1,0 +1,50 @@
+.eventRow{
+    padding: $P-2 $P-3;
+    border-radius: .5rem;
+    display: flex;
+    gap: 2rem;
+    transition: 100ms background-color ease-in-out;
+    font-size: 13px;
+    border-bottom: 1px solid $WHITE-3;
+    cursor: default;
+
+    &:hover{
+        background-color: $SECONDARY-800;
+    }
+
+    span{
+        font-weight: 500;
+    }
+
+    .teams{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+    }
+    .teamRow{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        .teamName{
+            flex: 1;
+        }
+
+        .teamScore{
+            width: 1.25rem;
+            height: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $GREEN-400;
+        }
+    }
+
+    .stage{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $GREEN-400;
+    }
+}

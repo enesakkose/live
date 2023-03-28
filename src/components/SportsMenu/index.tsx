@@ -9,6 +9,7 @@ import styles from '@/components/SportsMenu/SportsMenu.module.scss'
 
 function SportsMenu() {
   const active = useSelectedLayoutSegment()
+  console.log(active)
 
   return (
     <div className={styles.sportsMenu}>

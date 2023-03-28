@@ -10,7 +10,9 @@ type ButtonTypes = {
   children: ReactNode
   variant?: 'primary' | 'secondary' | 'tertiary' | 'underline' | 'icon',
   active?: boolean
-  href?: Url
+  href?: Url,
+  onClick?: () => void,
+  className?: string
 }
 
 function Button({ children, variant = 'primary', active = false, href, ...props }: ButtonTypes) {

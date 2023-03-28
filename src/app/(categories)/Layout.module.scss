@@ -1,15 +1,32 @@
-.categoriesLayout{
+.container{
+        display: flex;
+        gap: 2rem;
+        
+        .sportTimezone{
+            height: calc(100% - 180px);
+            overflow: auto;
+            flex: 1;
+            background-color: $WHITE-3;
+            padding: $P-3;
+            border-radius: .5rem;
 
-        .container{
-            display: flex;
-            gap: 2rem;
+            &::-webkit-scrollbar {
+                width: .5rem;
+            }
 
-            .sportTimezone{
-                flex: 1;
-                background-color: $WHITE-3;
-                height: 100vh;
-                padding: $P-3;
-                border-radius: .5rem;
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $SECONDARY-800;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $SECONDARY-700;
             }
         }
 }
