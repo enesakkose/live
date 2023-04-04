@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import SportsMenu from '@/components/SportsMenu'
 import MainContainer from '@/components/MainContainer'
 import Sidebar from '@/components/Sidebar'
-import styles from '@/app/(categories)/layout.module.scss'
+import styles from '@/app/(categories)/page.module.scss'
 
 function CategoriesLayout({ children }: { children: ReactNode }) {
   return (
