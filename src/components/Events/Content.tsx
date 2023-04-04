@@ -24,9 +24,9 @@ function Content({ id = 1 }: { id: number }) {
   return (
     <Suspense fallback={<>Loading...</>}>
       <Timezone />
-      {data?.map((tournament) => (
+      {data?.map((tournament, index) => (
         <Accordion
-          key={tournament.TOURNAMENT_ID}
+          key={index}
           className={styles.tournamentEvents}
         >
           <AccordionItem>
@@ -37,9 +37,9 @@ function Content({ id = 1 }: { id: number }) {
               />
             </AccordionHeader>
             <AccordionContent>
-              {tournament.EVENTS.map((match) => (
+              {tournament.EVENTS.map((match, index) => (
                 <EventRow
-                  key={match.EVENT_ID}
+                  key={index}
                   href={`/event/${match.EVENT_ID}`}
                   event={match}
                 />
