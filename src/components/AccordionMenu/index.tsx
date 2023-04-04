@@ -1,10 +1,6 @@
-import React, {
-  ReactNode,
-  useRef,
-  useState,
-} from 'react'
+import React, { ReactNode, useRef, useState } from 'react'
 import clsx from 'clsx'
-import ChevronBtn from '@/components/IconButtons/ChevronBtn'
+import Button from '@/components/Button'
 import styles from '@/components/AccordionMenu/AccordionMenu.module.scss'
 
 type PropsType = {
@@ -29,14 +25,17 @@ Accordion.Header = ({
   handleOpen,
   open,
 }: PropsWithDataStateType) => {
-
   return (
     <div
       data-state={open ? 'open' : 'closed'}
       className={clsx(styles.accordionHeader, className)}
     >
       {children}
-      <ChevronBtn className={styles.chevronBtn} onClick={handleOpen} />
+      <Button
+        className={styles.chevronBtn}
+        icon='chevron'
+        onClick={handleOpen}
+      />
     </div>
   )
 }
@@ -67,7 +66,9 @@ Accordion.Content = ({ children, className, open }: PropsWithDataStateType) => {
     <div
       data-state={open ? 'open' : 'closed'}
       style={
-        {'--h': animationHeight && `${animationHeight}px`} as React.CSSProperties
+        {
+          '--h': animationHeight && `${animationHeight}px`,
+        } as React.CSSProperties
       }
       ref={contentRef}
       className={clsx(styles.accordionContent, className)}

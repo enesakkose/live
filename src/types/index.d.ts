@@ -43,6 +43,7 @@ export interface Event {
   MERGE_STAGE_TYPE:                   StageType;
   STAGE:                              StageType;
   SORT:                               string;
+  SERVICE?:                           number;
   ROUND:                              string;
   VISIBLE_RUN_RATE:                   number;
   HAS_LINEPS:                         number;
@@ -185,4 +186,18 @@ export enum SportName {
   tennis,
   basketball
 }
+
+
+export type IconNameType = 
+  | 'left-chevron'
+  | 'right-chevron'
+  | 'chevron'
+  | 'star'
+  | 'basket'
+  | 'gear'
+  | 'house'
+  | 'left'
+  | 'search'
+  | 'soccer'
+  | 'tennis'
 

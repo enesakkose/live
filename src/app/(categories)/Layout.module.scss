@@ -1,14 +1,17 @@
 .container{
         display: flex;
         gap: 2rem;
+        height: calc(100% - 11.25rem);
         
         .sportTimezone{
-            height: calc(100% - 180px);
+            height: 100%;
             overflow: auto;
             flex: 1;
             background-color: $WHITE-3;
             padding: $P-3;
             border-radius: .5rem;
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: $SECONDARY-800 transparent;
 
             &::-webkit-scrollbar {
                 width: .5rem;

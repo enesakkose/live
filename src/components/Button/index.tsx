@@ -16,7 +16,7 @@ type ButtonTypes = {
   size?: number,
   href?: Url,
   onClick?: () => void,
-  className?: string
+  className?: string,
 }
 
 function Button({ children, variant = 'primary', active = false, href, className, icon, size, ...props }: ButtonTypes) {
@@ -35,6 +35,7 @@ function Button({ children, variant = 'primary', active = false, href, className
       {...props}
     >
       <Icon icon={icon} size={size}/>
+      {children}
     </button>
     )
 

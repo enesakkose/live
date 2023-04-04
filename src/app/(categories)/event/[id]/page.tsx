@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '@/app/(categories)/event/[id]/components/Header'
+import Hero from '@/app/(categories)/event/[id]/components/Hero'
 
 type EventsParamsType = {
   params: {
@@ -12,7 +13,9 @@ function Page({ params }: EventsParamsType) {
   return (
     <div>
       <Header/>
-      Page {params.id}</div>
+      <Hero/>
+      Page {params.id}
+    </div>
   )
 }
 

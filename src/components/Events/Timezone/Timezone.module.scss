@@ -1,0 +1,12 @@
+.timezone{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $M-3;
+
+    .filterActionBtns{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
