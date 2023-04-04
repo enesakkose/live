@@ -1,7 +1,7 @@
 .container{
     display: flex;
     gap: 2rem;
-    height: calc(100% - 11.25rem);
+    height: calc(100% - 11.25rem) !important;
     
     .sportTimezone{
         height: 100%;
