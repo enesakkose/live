@@ -4,15 +4,17 @@ const postcss = require('postcss')
 
 
 const nextConfig = {
-  swcMinify: true,
+  //swcMinify: true,
 
   experimental: {
     appDir: true,
   },
+
   //image base url
   images: {
     domains: ['www.flashscore.com'],
   },
+  
   //include scss variables each scss file
   sassOptions: {
     includePaths: [path.join(__dirname)],
