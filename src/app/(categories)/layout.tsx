@@ -14,7 +14,6 @@ function CategoriesLayout({ children }: { children: ReactNode }) {
         <main className={styles.sportTimezone}>
           {children}
         </main>
-        <Sidebar/>
       </MainContainer>
     </>
   )
