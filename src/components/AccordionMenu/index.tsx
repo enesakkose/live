@@ -19,7 +19,7 @@ export const Accordion = ({ children, className }: PropsType) => {
   )
 }
 
-Accordion.Header = ({
+export const AccordionHeader = ({
   children,
   className,
   handleOpen,
@@ -40,7 +40,7 @@ Accordion.Header = ({
   )
 }
 
-Accordion.Item = ({ children, className }: PropsType) => {
+export const AccordionItem = ({ children, className }: PropsType) => {
   const [open, setOpen] = useState(true)
   const handleOpen = () => {
     setOpen((prev) => !prev)
@@ -58,7 +58,7 @@ Accordion.Item = ({ children, className }: PropsType) => {
   )
 }
 
-Accordion.Content = ({ children, className, open }: PropsWithDataStateType) => {
+export const AccordionContent = ({ children, className, open }: PropsWithDataStateType) => {
   const contentRef = useRef<HTMLDivElement | null>(null)
   const animationHeight = contentRef?.current?.clientHeight
 
