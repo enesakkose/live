@@ -7,6 +7,7 @@ import TournamentHeader from '@/components/Events/Header'
 import styles from '@/components/Events/Content.module.scss'
 import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from '@/components/AccordionMenu'
 import { getEvents, getEvent } from '@/utils/hooks'
+import Z from './Z'
 import { TEMPLATE_SPORTS } from '@/utils/helpers/TournamentsTemplate'
 
 type TimezoneType = 'all' | 'live'
@@ -20,7 +21,7 @@ function Content({ id = 1 }: { id: number }) {
   const popularTournaments = data?.filter(t => TEMPLATE_SPORTS.includes(t.TEMPLATE_ID))
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Z>
       <Timezone />
       {popularTournaments?.map((tournament, index) => (
         <Accordion
@@ -46,7 +47,7 @@ function Content({ id = 1 }: { id: number }) {
           </AccordionItem>
         </Accordion>
       ))}
-    </Suspense>
+    </Z>
   )
 }
 

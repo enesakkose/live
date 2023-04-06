@@ -4,8 +4,7 @@ const postcss = require('postcss')
 
 
 const nextConfig = {
-  //swcMinify: true,
-  reactStrictMode: true,
+  //swcMinify: true
 
   experimental: {
     appDir: true,
