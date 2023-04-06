@@ -14,15 +14,13 @@ type TimezoneType = 'all' | 'live'
 function Content({ id = 1 }: { id: number }) {
   //const [timezone, setTimezone] = useState<TimezoneType>('all')
   //const [ date, setDate ] = useState(0)
-  const { data, isLoading, error } = useQuery(['events', id], () =>
-    getEvent(id, 0)
-  )
+  const { data, isLoading, error } = useQuery(['events', id], () => getEvent(id, 0))
 
-  //if (isLoading) return 'Loading...'
+  if (isLoading) return 'Loading...'
   const popularTournaments = data?.filter(t => TEMPLATE_SPORTS.includes(t.TEMPLATE_ID))
 
   return (
-    <>
+    <div>
       <Timezone />
       {data?.map((tournament, index) => (
         <Accordion
@@ -48,7 +46,7 @@ function Content({ id = 1 }: { id: number }) {
           </AccordionItem>
         </Accordion>
       ))}
-    </>
+    </div>
   )
 }
 
