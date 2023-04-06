@@ -1,9 +1,19 @@
 import React from 'react'
 
-function Z({ children }: { children: React.ReactNode}) {
+
+function ClientOnly({ children, ...delegated }: {children: React.ReactNode}) {
+  const [hasMounted, setHasMounted] = React.useState(false);
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) {
+    return null;
+  }
   return (
-    <div>{children}</div>
-  )
+    <div {...delegated}>
+      {children}
+    </div>
+  );
 }
 
-export default Z
+export default ClientOnly
