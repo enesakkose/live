@@ -8,9 +8,9 @@ import dayjs from 'dayjs'
 import { getStageType } from '@/utils/helpers/getStageType'
 import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
 import { getFormatTime } from '@/utils/helpers/getFormatTime'
-import { TEAM_AWAY_PART_SCORE, TEAM_HOME_PART_SCORE } from '@/utils/helpers/TournamentsTemplate'
+import { TEAM_AWAY_PART_SCORE_KEYS, TEAM_HOME_PART_SCORE_KEYS } from '@/utils/helpers/TournamentsTemplate'
 import { Url } from 'next/dist/shared/lib/router/router'
-import styles from '@/components/Events/Row.module.scss'
+import styles from './Row.module.scss'
 
 type TeamRowPropsType = {
   score: string | number
@@ -90,12 +90,12 @@ function EventStage({
 }
 
 function Row({ event, href }: { event: Event; href: Url }) {
-  const HOME_PART_SCORES: typeof TEAM_HOME_PART_SCORE = Object.entries(event)
-    .filter(([key, value]) => TEAM_HOME_PART_SCORE.includes(key))
+  const HOME_PART_SCORES: typeof TEAM_HOME_PART_SCORE_KEYS = Object.entries(event)
+    .filter(([key, value]) => TEAM_HOME_PART_SCORE_KEYS.includes(key))
     .map(([key,value]) => value)
 
-  const AWAY_PART_SCORES: typeof TEAM_AWAY_PART_SCORE = Object.entries(event)
-    .filter(([key]) => TEAM_AWAY_PART_SCORE.includes(key))
+  const AWAY_PART_SCORES: typeof TEAM_AWAY_PART_SCORE_KEYS = Object.entries(event)
+    .filter(([key]) => TEAM_AWAY_PART_SCORE_KEYS.includes(key))
     .map(([key,value]) => value)
 
   return (

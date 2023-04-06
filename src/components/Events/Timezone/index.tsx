@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import Button from '@/components/Button'
 import DatePicker from '@/components/DatePicker'
-import styles from '@/components/Events/Timezone/Timezone.module.scss'
-
+import styles from './Timezone.module.scss'
 
 function Timezone() {
-
   return (
     <div className={styles.timezone}>
       <div className={styles.filterActionBtns}>

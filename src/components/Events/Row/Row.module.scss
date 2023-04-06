@@ -7,6 +7,7 @@
     font-size: 13px;
     border-bottom: 1px solid $SECONDARY-800;
     cursor: default;
+    transition: 100ms border-bottom-color ease-in-out;
 
     &:hover{
         background-color: $SECONDARY-800;
@@ -20,7 +21,7 @@
     .teams{
         display: flex;
         flex-direction: column;
-        gap: .25rem;
+        gap: .5rem;
         border-right: 1px solid $SECONDARY-800;
     }
 
@@ -40,8 +41,8 @@
 
         .scoreContainer{
             display: grid;
-            grid-template-columns: repeat(7, 2rem);
-            gap: .5rem;
+            grid-template-columns: repeat(7, 1.75rem);
+            //gap: .5rem;
             place-items: center;
             
             .teamScore{
