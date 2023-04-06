@@ -1,12 +1,12 @@
 import type { Data } from '@/types'
 
-const BASE_URL = 'https://flashscore.p.rapidapi.com'
+const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
 
 const OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-    'X-RapidAPI-Host': 'flashscore.p.rapidapi.com',
+    'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
   },
 }
 
