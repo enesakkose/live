@@ -20,9 +20,9 @@ function Content({ id = 1 }: { id: number }) {
   const popularTournaments = data?.filter(t => TEMPLATE_SPORTS.includes(t.TEMPLATE_ID))
 
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       <Timezone />
-      {data?.map((tournament, index) => (
+      {popularTournaments?.map((tournament, index) => (
         <Accordion
           key={index}
           className={styles.tournamentEvents}
@@ -46,7 +46,7 @@ function Content({ id = 1 }: { id: number }) {
           </AccordionItem>
         </Accordion>
       ))}
-    </div>
+    </Suspense>
   )
 }
 
