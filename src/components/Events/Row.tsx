@@ -32,7 +32,7 @@ function TeamRow({ score, teamImage, teamName, stage, stageType, winner, partSco
     return (
       <>
         {teamImage !== null 
-          ? <Image src={teamImage[0]} width={20} height={20} alt='logo' />
+          ? <Image unoptimized src={teamImage[0]} width={20} height={20} alt='logo' />
           : <EmptyPlayerImg />
         }
       </>
@@ -99,7 +99,7 @@ function Row({ event, href }: { event: Event; href: Url }) {
     .map(([key,value]) => value)
 
   return (
-    <Link href={href} className={styles.eventRow}>
+    <Link prefetch={false} href={href} className={styles.eventRow}>
       <div className={styles.teams}>
         <TeamRow
           score={event.HOME_SCORE_CURRENT}
