@@ -1,9 +1,7 @@
-"use client"
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 import type { IconNameType } from '@/types'
-import { useSelectedLayoutSegment } from 'next/navigation'
 import { Url } from 'next/dist/shared/lib/router/router'
 import styles from '@/components/Button/Button.module.scss'
 import Icon from '@/components/Icon'
@@ -17,6 +15,7 @@ type ButtonTypes = {
   href?: Url,
   onClick?: () => void,
   className?: string,
+  prefetch?: boolean
 }
 
 function Button({ children, variant = 'primary', active = false, href, className, icon, size, ...props }: ButtonTypes) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Search from '@/components/Header/Search'
 import ActionBtns from '@/components/Header/ActionBtns'
-import MainContainer from '@/components/MainContainer'
+import MainContainer from '@/containers/MainContainer'
 import styles from '@/components/Header/Header.module.scss'
 
 function Header() {

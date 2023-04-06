@@ -1,8 +1,8 @@
-"use client"
+'use client'
 import React, { ReactNode } from 'react'
 import Header from '@/components/Header'
 import SportsMenu from '@/components/SportsMenu'
-import MainContainer from '@/components/MainContainer'
+import MainContainer from '@/containers/MainContainer'
 import Sidebar from '@/components/Sidebar'
 import styles from '@/app/(categories)/page.module.scss'
 
@@ -12,9 +12,7 @@ function CategoriesLayout({ children }: { children: ReactNode }) {
       <Header />
       <SportsMenu />
       <MainContainer className={styles.container}>
-        <main className={styles.sportTimezone}>
-          {children}
-        </main>
+        <main className={styles.sportTimezone}>{children}</main>
       </MainContainer>
     </>
   )
