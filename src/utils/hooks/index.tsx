@@ -5,7 +5,7 @@ const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
 const OPTIONS = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
+    'X-RapidAPI-Key': `${process.env.NEXT_PUBLIC_API_KEY}`,
     'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
   },
 }

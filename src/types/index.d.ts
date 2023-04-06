@@ -125,7 +125,7 @@ export enum StageType {
   SecondSet = "SECOND_SET",
   ThirdSet = "THIRD_SET",
   Walkover = "WALKOVER",
-  Live = 'Live',
+  Live = 'LIVE',
   Postponed = 'POSTPONED',
   HT = 'HT'
 }
