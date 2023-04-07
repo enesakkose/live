@@ -9,6 +9,7 @@ import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from '@/c
 import ClientOnly from '../ClientOnly'
 import { getEvents, getEvent } from '@/utils/hooks'
 import { TEMPLATE_SPORTS } from '@/utils/helpers/TournamentsTemplate'
+import Loading from './loading'
 
 type TimezoneType = 'all' | 'live'
 
@@ -21,7 +22,7 @@ function Content({ id = 1 }: { id: number }) {
   const popularTournaments = data?.filter(t => TEMPLATE_SPORTS.includes(t.TEMPLATE_ID))
 
   return (
-    <ClientOnly>
+    <ClientOnly A={Loading}>
       <Timezone />
       {popularTournaments?.map((tournament, index) => (
         <Accordion

@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 
-function ClientOnly({ children, ...delegated }: {children: React.ReactNode}) {
+function ClientOnly({ children, A, ...delegated }: {children: React.ReactNode, A: React.FC}) {
   const [hasMounted, setHasMounted] = React.useState(false);
   React.useEffect(() => {
     setHasMounted(true);
   }, []);
   if (!hasMounted) {
-    return null;
+    return <A/>;
   }
   return (
     <div {...delegated}>
