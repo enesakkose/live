@@ -1,34 +1,33 @@
 'use client'
-import React, { useState , Suspense} from 'react'
-import { useQuery } from '@tanstack/react-query'
+import React, { useState } from 'react'
 import EventRow from '../Row'
-import Timezone from '@/components/Events/Timezone'
-import TournamentHeader from '@/components/Events/Header'
-import styles from './Content.module.scss'
-import { Accordion, AccordionContent, AccordionHeader, AccordionItem } from '@/components/AccordionMenu'
-import ClientOnly from '../ClientOnly'
-import { getEvents, getEvent } from '@/utils/hooks'
-import { TEMPLATE_SPORTS } from '@/utils/helpers/TournamentsTemplate'
 import Loading from './loading'
-
-type TimezoneType = 'all' | 'live'
+import Timezone from '@/components/Events/Timezone'
+import ClientOnly from '../ClientOnly'
+import TournamentHeader from '@/components/Events/Header'
+import { useGetEvents } from '@/services/sports'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+} from '@/components/AccordionMenu'
+import { TEMPLATE_SPORTS } from '@/utils/helpers/TournamentsTemplate'
+import styles from './Content.module.scss'
 
 function Content({ id = 1 }: { id: number }) {
-  //const [timezone, setTimezone] = useState<TimezoneType>('all')
-  //const [ date, setDate ] = useState(0)
-  const { data, isLoading, error } = useQuery(['events', id], () => getEvent(id, 0))
+  const [timezone, setTimezone] = useState<'all' | 'live'>('all')
+  const { data } = useGetEvents(id, timezone)
 
-  //if (isLoading) return 'Loading...'
-  const popularTournaments = data?.filter(t => TEMPLATE_SPORTS.includes(t.TEMPLATE_ID))
+  const popularTournaments = data?.filter((t) =>
+    TEMPLATE_SPORTS.includes(t.TEMPLATE_ID)
+  )
 
   return (
-    <ClientOnly A={Loading}>
-      <Timezone />
-      {popularTournaments?.map((tournament, index) => (
-        <Accordion
-          key={index}
-          className={styles.tournamentEvents}
-        >
+    <ClientOnly Loading={Loading}>
+      <Timezone timezone={timezone} setTimezone={setTimezone} />
+      {data?.map((tournament, index) => (
+        <Accordion key={index} className={styles.tournamentEvents}>
           <AccordionItem>
             <AccordionHeader className={styles.accordionHeader}>
               <TournamentHeader

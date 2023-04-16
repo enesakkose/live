@@ -1,14 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '@/components/Button'
 import DatePicker from '@/components/DatePicker'
 import styles from './Timezone.module.scss'
 
-function Timezone() {
+function Timezone({
+  timezone,
+  setTimezone,
+}: {
+  timezone: 'all' | 'live'
+  setTimezone: React.Dispatch<React.SetStateAction<'all' | 'live'>>
+}) {
   return (
     <div className={styles.timezone}>
       <div className={styles.filterActionBtns}>
-        <Button variant='secondary'>all</Button>
-        <Button variant='secondary'>live</Button>
+        <Button
+          active={timezone === 'all'}
+          onClick={() => setTimezone('all')}
+          variant='secondary'
+        >
+          all
+        </Button>
+        <Button
+          active={timezone === 'live'}
+          onClick={() => setTimezone('live')}
+          variant='secondary'
+        >
+          live
+        </Button>
       </div>
       <DatePicker />
     </div>

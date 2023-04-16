@@ -103,12 +103,15 @@ export interface Event {
   INFO_NOTICE?:                       string;
   HOME_SCORE_PART_3?:                 string;
   HOME_SCORE_PART_4?:                 string;
+  HOME_SCORE_PART_5?:                 string;
   AWAY_SCORE_PART_3?:                 string;
   AWAY_SCORE_PART_4?:                 string;
+  AWAY_SCORE_PART_5?:                 string;
   HOME_TIEBREAK_PART_2?:              string;
   AWAY_TIEBREAK_PART_2?:              string;
   HOME_TIEBREAK_PART_3?:              string;
   AWAY_TIEBREAK_PART_3?:              string;
+  
 }
 
 export enum An {

@@ -1,5 +1,51 @@
 .datePicker{
+    position: relative;
     display: flex;
     align-items: center;
     gap: .5rem;
+
+    .dates{
+        z-index: 3;
+        position: absolute;
+        top: calc(100% + .25rem);
+        right: calc(.25rem);
+        width: 310px;
+        background-color: $SECONDARY-800;
+        display: flex;
+        gap: .5rem;
+        overflow-x: scroll;
+        padding-inline: $P-1;
+
+        scrollbar-width: thin; /* For Firefox */
+        scrollbar-color: $SECONDARY-800 transparent;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: $SECONDARY-800;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: $SECONDARY-700;
+        }
+
+        .date{
+            //word-break: break-word;
+            font-size: 13px;
+            padding: $P-1;
+            &:nth-child(4){
+                background-color: $GREEN-400;
+            }
+        }
+
+    }
 }

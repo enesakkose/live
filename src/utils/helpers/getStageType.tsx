@@ -16,7 +16,9 @@ const setTypes = [
   { value: 'THIRD_SET_TIEBREAK', label: 'SET 3 TIEBREAK'},
   { value: 'FOURTH_SET_TIEBREAK', label: 'SET 4 TIEBREAK'},
   { value: 'FIFTH_SET_TIEBREAK', label: 'SET 5 TIEBREAK'},
-  { value: 'AFTER_EXTRA_TIME', label: 'FINISHED'}
+  { value: 'AFTER_EXTRA_TIME', label: 'Finished'},
+  { value: 'LIVE', label: 'LIVE'},
+  { value: 'PENDING', label: 'PENDING'}
 ]
 
 const periodTypes = [

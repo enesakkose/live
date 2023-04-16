@@ -8,15 +8,5 @@
         align-items: center;
         justify-content: center;
         gap: 3rem;
-    
-        button, a{
-            letter-spacing: 1px;
-            gap: .5rem;
-            padding-block: $P-4;
-    
-            &:hover{
-                color: $SECONDARY-100;
-            }
-        }
     }
 }

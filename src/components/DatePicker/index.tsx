@@ -1,13 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '@/components/Button'
+import { useClickOutside } from '@/utils/hooks/useClickOutside'
 import styles from '@/components/DatePicker/DatePicker.module.scss'
 
+//date picker range should be max 7 - min -7 for instances: 0 = today, -1 = yesterday, 1 = tomorrow 
+
 function DatePicker() {
-  //date picker range should be max 7 - min -7 for instances: 0 = today, -1 = yesterday, 1 = tomorrow 
+  const [ open, setOpen ]  = useState(false)
+  const datePickerRef = useClickOutside<HTMLDivElement>(() => setOpen(false))
+  const handleOpen = () => setOpen(prev => !prev)
+  
   return (
-    <div className={styles.datePicker}>
+    <div ref={datePickerRef}  className={styles.datePicker}>
       <Button icon='left-chevron' size={20} />
-      DatePicker
+      <Button onClick={handleOpen}>
+        30/3  Thursday
+      </Button>
+      {open && <div className={styles.dates}>
+      <Button   className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button   className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      <Button  className={styles.date}>
+        30/3 <br/> Thr
+      </Button>
+      </div>}
       <Button icon='right-chevron' size={20} />
     </div>
   )

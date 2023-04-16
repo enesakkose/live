@@ -1,47 +1,47 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
+import React, { ReactNode, ButtonHTMLAttributes } from 'react'
 import clsx from 'clsx'
 import type { IconNameType } from '@/types'
-import { Url } from 'next/dist/shared/lib/router/router'
 import styles from '@/components/Button/Button.module.scss'
 import Icon from '@/components/Icon'
 
 type ButtonTypes = {
   children?: ReactNode
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'underline' | 'icon',
-  active?: boolean,
-  icon?: IconNameType,
-  size?: number,
-  href?: Url,
-  onClick?: () => void,
-  className?: string,
-  prefetch?: boolean
-}
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'underline' | 'icon'
+  active?: boolean
+  icon?: IconNameType
+  size?: number
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
-function Button({ children, variant = 'primary', active = false, href, className, icon, size, ...props }: ButtonTypes) {
-  if (href)
+function Button({
+  children,
+  variant = 'primary',
+  active = false,
+  icon,
+  className,
+  size,
+  ...props
+}: ButtonTypes) {
+  if (icon)
     return (
-      <Link href={href} className={clsx(styles.button, styles[variant], active ? styles.active : '')} {...props}>
-        {children}
-      </Link>
-    )
-  
-  if(icon)
-    return(
       <button
-      type='button'
-      className={clsx(styles.button, className, styles[variant])}
-      {...props}
-    >
-      <Icon icon={icon} size={size}/>
-      {children}
-    </button>
+        type='button'
+        className={clsx(styles.button, styles[variant], className)}
+        {...props}
+      >
+        <Icon icon={icon} size={size} />
+        {children}
+      </button>
     )
 
   return (
     <button
       type='button'
-      className={clsx(styles.button, className, styles[variant])}
+      className={clsx(
+        styles.button,
+        styles[variant],
+        active ? styles.active : '',
+        className
+      )}
       {...props}
     >
       {children}

@@ -1,0 +1,42 @@
+.navLink{
+    cursor: pointer;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    color: $SECONDARY-200;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    &:is(.primary){
+        letter-spacing: 1px;
+        gap: .5rem;
+        padding-block: $P-4;
+    
+        &:hover{
+            color: $SECONDARY-100;
+        }
+
+        &.active{
+            position: relative;
+            color: $SECONDARY-100;
+    
+            &::before{
+                position: absolute;
+                content: '';
+                bottom: 0;
+                height: 3px;
+                width: 100%;
+                border-radius: .5rem;
+                background-color: $GREEN-400;
+            }
+        }
+    }
+
+    &:is(.secondary){
+        .active{
+
+        }
+    }
+}

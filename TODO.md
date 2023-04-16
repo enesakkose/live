@@ -1,0 +1,1 @@
+//set to error and 404 page

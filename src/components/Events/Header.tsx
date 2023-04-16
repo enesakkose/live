@@ -9,6 +9,7 @@ type PropsType = {
 }
 
 function Header({ tournamentName, tournamentImage }: PropsType) {
+
   return (
     <div className={styles.eventsHeader}>
       {tournamentImage && (
@@ -17,11 +18,11 @@ function Header({ tournamentName, tournamentImage }: PropsType) {
             src={tournamentImage}
             width={20}
             height={20}
-            alt={tournamentName}
+            alt={''}
           />
         </RoundedImg>
       )}
-      <h5>{tournamentName}</h5>
+      <h4>{tournamentName}</h4>
     </div>
   )
 }

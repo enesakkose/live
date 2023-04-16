@@ -7,35 +7,25 @@
     user-select: none;
     color: $SECONDARY-200;
     font-weight: 600;
+    letter-spacing: .5px;
 
     &:disabled, &[disabled]{
         opacity: .5;
         pointer-events: none;
     }
 
-    &:is(.active){
-        position: relative;
-        color: $SECONDARY-100;
-
-        &::before{
-            position: absolute;
-            content: '';
-            bottom: 0;
-            height: 3px;
-            width: 100%;
-            border-radius: .5rem;
-            background-color: $GREEN-300;
-        }
-    }
-
     &:is(.secondary){
         padding: $P-2 $P-3;
         border-radius: .5rem;
         background-color: $SECONDARY-800;
-        
 
         &:hover{
             background-color: $SECONDARY-700;
+        }
+
+        &.active{
+            background-color: $GREEN-400;
+            color: $SECONDARY-900;
         }
     }
 
@@ -48,5 +38,12 @@
         &:hover{
             background-color: $SECONDARY-700;
         }
+    }
+
+    &:is(.tertiary){
+        padding: $P-2 $P-3;
+        border-radius: .5rem;
+        background-color: $GREEN-400;
+        color: $SECONDARY-700;
     }
 }

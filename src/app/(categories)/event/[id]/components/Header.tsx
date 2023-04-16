@@ -1,11 +1,10 @@
 "use client"
-
 import RoundedImg from '@/components/RoundedImg'
 import React from 'react'
-import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Button from '@/components/Button'
-import styles from '@/app/(categories)/event/[id]/components/Header.module.scss'
+import { useRouter } from 'next/navigation'
+import styles from './Header.module.scss'
 
 function Header() {
   const router = useRouter()

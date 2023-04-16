@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, Suspense } from 'react'
 import { useGetTodos } from '@/utils/hooks/useGetTodos'
-import { getEvents } from '@/utils/hooks'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import styles from '@/components/Sidebar/Sidebar.module.scss'
