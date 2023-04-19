@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import RoundedImg from '@/components/RoundedImg'
-import styles from '@/components/Events/Header.module.scss'
+import styles from './Header.module.scss'
 
 type PropsType = {
   tournamentName: string

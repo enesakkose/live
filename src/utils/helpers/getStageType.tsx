@@ -10,15 +10,15 @@ const setTypes = [
   { value: 'POSTPONED', label: 'Postponed' },
   { value: 'DELAYED', label: 'Delayed' },
   { value: 'AWARDED', label: 'Awarded' },
-  { value: 'INTERRUPTED', label: 'Interrupted'},
-  { value: 'FIRST_SET_TIEBREAK', label: `SET 1 TIEBREAK`},
-  { value: 'SECOND_SET_TIEBREAK', label: 'SET 2 TIEBREAK'},
-  { value: 'THIRD_SET_TIEBREAK', label: 'SET 3 TIEBREAK'},
-  { value: 'FOURTH_SET_TIEBREAK', label: 'SET 4 TIEBREAK'},
-  { value: 'FIFTH_SET_TIEBREAK', label: 'SET 5 TIEBREAK'},
-  { value: 'AFTER_EXTRA_TIME', label: 'Finished'},
-  { value: 'LIVE', label: 'LIVE'},
-  { value: 'PENDING', label: 'PENDING'}
+  { value: 'INTERRUPTED', label: 'Interrupted' },
+  { value: 'FIRST_SET_TIEBREAK', label: `SET 1 TIEBREAK` },
+  { value: 'SECOND_SET_TIEBREAK', label: 'SET 2 TIEBREAK' },
+  { value: 'THIRD_SET_TIEBREAK', label: 'SET 3 TIEBREAK' },
+  { value: 'FOURTH_SET_TIEBREAK', label: 'SET 4 TIEBREAK' },
+  { value: 'FIFTH_SET_TIEBREAK', label: 'SET 5 TIEBREAK' },
+  { value: 'AFTER_EXTRA_TIME', label: 'Finished' },
+  { value: 'LIVE', label: 'LIVE' },
+  { value: 'PENDING', label: 'PENDING' },
 ]
 
 const periodTypes = [

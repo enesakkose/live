@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import EventRow from '../Row'
 import Loading from './loading'
 import Timezone from '@/components/Events/Timezone'
-import ClientOnly from '../ClientOnly'
+import ClientOnly from '../../ClientOnly'
 import TournamentHeader from '@/components/Events/Header'
 import { useGetEvents } from '@/services/sports'
 import {
