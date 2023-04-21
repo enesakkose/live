@@ -13,22 +13,32 @@ const josefin = Josefin_Sans({
   subsets: ['latin'],
 })
 
+type HeroType = {
+  event: EVENTDATA
+}
+
 function EventTeam({ src, teamName }: { src: string; teamName: string }) {
   return (
     <div className={styles.eventTeam}>
-      <RoundedImg width={144} height={144}>
-        <Image src={src} alt='team' width={120} height={120} priority={true} />
+      <RoundedImg width={120} height={120}>
+        <Image src={src} alt='team' width={100} height={100} priority={true} />
       </RoundedImg>
       <span className={styles.teamName}>{teamName}</span>
     </div>
   )
 }
 
-type PropsType = {
-  event: EVENTDATA
-}
+function Hero({ event }: HeroType) {
+  function EventCurrentScore() {
+    return (
+      <div className={clsx(styles.eventCurrentScore, josefin.variable)}>
+        <span>{event.HOME_SCORE_CURRENT}</span>
+        <span>-</span>
+        <span>{event.AWAY_SCORE_CURRENT}</span>
+      </div>
+    )
+  }
 
-function Hero({ event }: PropsType) {
   return (
     <div className={styles.eventHero}>
       <div className={styles.eventInfo}>
@@ -45,14 +55,15 @@ function Hero({ event }: PropsType) {
           <span>
             {getDate(event.START_UTIME)} {getFormatTime(event.START_UTIME)}
           </span>
-          <div className={clsx(styles.eventCurrentScore, josefin.variable)}>
-            <span>{event.HOME_SCORE_CURRENT}</span>
-            <span>-</span>
-            <span>{event.AWAY_SCORE_CURRENT}</span>
-          </div>
-          <span className={styles.eventStage}>
-            {event.STAGE !== 'SCHEDULED' && getStageType(event.STAGE)}
-          </span>
+          <EventCurrentScore />
+          {event.STAGE !== 'SCHEDULED' && (
+            <span className={styles.eventStage}>
+              {getStageType(event.STAGE)}
+            </span>
+          )}
+          {event.INFO_NOTICE && (
+            <span className={styles.infoNotice}>{event.INFO_NOTICE}</span>
+          )}
         </div>
         <EventTeam
           src={event.AWAY_IMAGES[0]}

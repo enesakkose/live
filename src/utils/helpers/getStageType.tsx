@@ -1,7 +1,7 @@
 const setTypes = [
   { value: 'FIRST_SET', label: 'SET 1' },
   { value: 'CANCELED', label: 'Canceled' },
-  { value: 'WALKOVER', label: 'Withdrawal' },
+  { value: 'WALKOVER', label: 'WO' },
   { value: 'RETIRED', label: 'Retired' },
   { value: 'SECOND_SET', label: `SET 2` },
   { value: 'THIRD_SET', label: 'SET 3' },

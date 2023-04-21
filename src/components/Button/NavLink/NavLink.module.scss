@@ -3,16 +3,16 @@
     background-color: transparent;
     display: flex;
     align-items: center;
+    justify-content: center;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-    color: $SECONDARY-200;
+    color: $SECONDARY-300;
     font-weight: 600;
     letter-spacing: 1px;
 
-    &:is(.primary){
+    &.primary{
         letter-spacing: 1px;
         gap: .5rem;
-        padding-block: $P-4;
     
         &:hover{
             color: $SECONDARY-100;
@@ -27,7 +27,7 @@
                 content: '';
                 bottom: 0;
                 height: 3px;
-                width: 100%;
+                width: calc(100% - 1.75rem);
                 border-radius: .5rem;
                 background-color: $GREEN-400;
             }
@@ -38,5 +38,18 @@
         .active{
 
         }
+    }
+
+    &.small{
+        padding: $P-3;
+        font-size: 13px;
+    }
+
+    &.medium{
+        padding: $P-4;
+    }
+
+    &.large{
+        padding: $P-5;
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import EventContainer from '@/containers/EventContainer'
+import { redirect } from 'next/navigation'
 import { notFound } from 'next/navigation'
 
 type EventsParamsType = {
@@ -14,7 +15,7 @@ type EventsParamsType = {
 
 function Page({ params }: EventsParamsType) {
   //await delay(4000)
-
+  //console.log(params)
   if (params.id === 'YXKg7xSn8') {
     notFound()
   }
@@ -22,7 +23,7 @@ function Page({ params }: EventsParamsType) {
   /*if(params.id === 'YXKg7xSn') {
     throw new Error('error')
   } */
-  return <EventContainer id={params.id} />
+  return redirect(`event/${params.id}/summary`)
 }
 
 export default Page
