@@ -5,5 +5,5 @@ export const getFormatTime = (time: number) => {
 }
 
 export const getDate = (time: number) => {
-  return dayjs.unix(time).format('DD/MM/YYYY')
+  return dayjs.unix(time).format('DD.MM.YYYY')
 } 

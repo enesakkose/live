@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { Inter, Josefin_Sans, Barlow } from 'next/font/google'
-import { manrope } from '@/utils/fonts/manropeFont'
+import { Inter } from 'next/font/google'
 import { barlow } from '@/utils/fonts/barlowFont'
 import ReactQueryProvider from '@/app/ReactQueryProvider'
 import '@/styles/globals.scss'

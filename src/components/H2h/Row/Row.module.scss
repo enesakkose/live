@@ -1,0 +1,38 @@
+.h2hRow{
+    display: grid;
+    grid-template-areas: 
+        "eventDate home homeScore badge"
+        "eventDate away awayScore badge"
+    ;
+
+    .team{
+
+        &.home{
+            grid-area: home;
+        }
+
+        &.away{
+            grid-area: away;
+        }
+
+        .score{
+
+            &.home{
+                grid-area: homeScore;
+            }
+
+            &.away{
+                grid-area: awayScore;
+            }
+        }
+    }
+
+    .eventDate{
+        grid-area: eventDate;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 500;
+    }
+}

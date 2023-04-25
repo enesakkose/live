@@ -6,7 +6,7 @@ import styles from './Header.module.scss'
 
 function StatsTabs({id}: {id: string}) {
   const segment = useSelectedLayoutSegment()
-  console.log(segment)
+  //console.log(segment)
   const tabs = [
     {}
   ]

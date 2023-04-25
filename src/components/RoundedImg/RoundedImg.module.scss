@@ -1,9 +1,10 @@
 .roundedImg{
     border-radius: .5rem;
-    background-color: $PRIMARY-300;
+    background-color: $PRIMARY-50;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     img{
         border-radius: .5rem;

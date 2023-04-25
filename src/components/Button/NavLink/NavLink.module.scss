@@ -35,9 +35,23 @@
     }
 
     &:is(.secondary){
-        .active{
+        padding: $P-2 $P-3;
+        border-radius: .5rem;
+        background-color: $SECONDARY-800;
 
+        &:hover{
+            background-color: $SECONDARY-700;
         }
+
+        &.active{
+            background-color: $GREEN-400;
+            color: $SECONDARY-900;
+        }
+    }
+
+    &.xsmall{
+        padding: $P-2;
+        font-size: 13px;
     }
 
     &.small{

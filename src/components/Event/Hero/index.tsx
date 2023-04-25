@@ -18,10 +18,12 @@ type HeroType = {
 }
 
 function EventTeam({ src, teamName }: { src: string; teamName: string }) {
+  const defaultTeam = 'https://www.flashscore.com/res/image/data/rHkUp5Wg-Qmtm30D7.png'
+
   return (
     <div className={styles.eventTeam}>
       <RoundedImg width={120} height={120}>
-        <Image src={src} alt='team' width={100} height={100} priority={true} />
+        <Image src={src ?? defaultTeam} alt='team' width={90} height={90} priority={true} />
       </RoundedImg>
       <span className={styles.teamName}>{teamName}</span>
     </div>
@@ -29,7 +31,9 @@ function EventTeam({ src, teamName }: { src: string; teamName: string }) {
 }
 
 function Hero({ event }: HeroType) {
-  function EventCurrentScore() {
+  const defaultTeam = 'https://www.flashscore.com/res/image/data/rHkUp5Wg-Qmtm30D7.png'
+
+  const EventCurrentScore = () => {
     return (
       <div className={clsx(styles.eventCurrentScore, josefin.variable)}>
         <span>{event.HOME_SCORE_CURRENT}</span>
@@ -43,7 +47,7 @@ function Hero({ event }: HeroType) {
     <div className={styles.eventHero}>
       <div className={styles.eventInfo}>
         <EventTeam
-          src={event.HOME_IMAGES[0]}
+          src={event?.HOME_IMAGES?.[0]}
           teamName={event.HOME_PARTICIPANT_NAME_ONE}
         />
         <div
@@ -66,7 +70,7 @@ function Hero({ event }: HeroType) {
           )}
         </div>
         <EventTeam
-          src={event.AWAY_IMAGES[0]}
+          src={event?.AWAY_IMAGES?.[0]}
           teamName={event.AWAY_PARTICIPANT_NAME_ONE}
         />
       </div>

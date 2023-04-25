@@ -1,0 +1,25 @@
+.resultBadge{
+    display: flex;
+    align-items: center;
+    grid-area: badge;
+    border-radius: .25rem;
+
+    .badge{
+        width: 1.5rem;
+        //height: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &.WIN, &.WIN_OVERTIME{
+        background-color: $BADGE-WIN;
+    }
+
+    &.LOST, &.LOST_OVERTIME{
+        background-color: $BADGE-LOSE;
+    }
+
+    &.DRAW{
+        background-color: $BADGE-DRAW;
+    }
+}

@@ -14,7 +14,7 @@ function EventContainer({ id }: PropsType) {
   const { data, isError, isLoading } = useGetEvent(id)
 
   if (!data) return <EventLoading />
-  console.log(data)
+
   return (
     <div className='event'>
       <Header tournament={data.TOURNAMENT} />

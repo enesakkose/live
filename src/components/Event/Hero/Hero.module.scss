@@ -25,6 +25,10 @@
                 border-radius: .5rem;
             }
 
+            .eventStage{
+                word-break: break-word;
+            }
+
             .eventCurrentScore{
                 display: flex;
                 align-items: center;
@@ -56,6 +60,7 @@
 
 .eventTeam{
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 1rem;
 

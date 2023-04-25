@@ -6,7 +6,7 @@ import styles from './NavLink.module.scss'
 type NavLinkProps = {
   children: ReactNode
   variant?: 'primary' | 'secondary' | 'tertiary'
-  size?: 'small' | 'medium' | 'large'
+  size?: 'xsmall' | 'small' | 'medium' | 'large'
   active: boolean
 } & LinkProps
 
