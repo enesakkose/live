@@ -34,8 +34,8 @@ function H2HContainer({ h2h, eventId }: { h2h: number; eventId: string }) {
           <div className={styles.group}>
             <GroupLabel label={group.GROUP_LABEL}/>
             <ul className={styles.groupList}>
-              {group.ITEMS.map((match) => (
-                <Row/>
+              {group.ITEMS.map((event) => (
+                <Row key={event.EVENT_ID} event={event}/>
               ))}
             </ul>
           </div>

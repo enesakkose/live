@@ -1,11 +1,39 @@
 .h2hRow{
+    overflow: hidden;
     display: grid;
+    border-bottom: 1px solid $WHITE-3;
+    padding: $P-2;
+    grid-template-columns: 1fr minmax(10rem, 1fr) 1fr 1fr;
     grid-template-areas: 
         "eventDate home homeScore badge"
         "eventDate away awayScore badge"
     ;
 
+    &:hover{
+        background-color: $WHITE-3;
+    }
+
+
     .team{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        padding-inline: $P-2;
+        position: relative;
+        
+        .name{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-inline: $P-2;
+            border-radius: .5rem;
+            font-size: 13px;
+
+            &.mark{
+                font-weight: 700;
+                background-color: $SECONDARY-800;
+            }
+        }
 
         &.home{
             grid-area: home;
@@ -14,16 +42,17 @@
         &.away{
             grid-area: away;
         }
+    }
 
-        .score{
+    .score{
+        font-weight: 700;
 
-            &.home{
-                grid-area: homeScore;
-            }
+        &.home{
+            grid-area: homeScore;
+        }
 
-            &.away{
-                grid-area: awayScore;
-            }
+        &.away{
+            grid-area: awayScore;
         }
     }
 
@@ -36,3 +65,4 @@
         font-weight: 500;
     }
 }
+//score will hizalanacak 

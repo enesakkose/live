@@ -3,16 +3,18 @@ import { Data } from '@/types/event.types'
 import { H2H } from '@/types/H2HTypes'
 import { useQuery } from '@tanstack/react-query'
 
-const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
+const BASE_URL = 'https://flashscore.p.rapidapi.com'
 
 const OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-    'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
+    'X-RapidAPI-Host': 'flashscore.p.rapidapi.com',
   },
 }
-
+//flashlive-sports.p.rapidapi.com
+//https://flashlive-sports.p.rapidapi.com
+//https://flashscore.p.rapidapi.com
 /*const getEvents = async (id: number): Promise<Data[]> => {
   const response = await fetch(
     `${BASE_URL}/v1/events/live-list?locale=en_INT&timezone=-4&sport_id=${id}`,

@@ -9,10 +9,10 @@ export interface Data {
 
 export interface Group {
   GROUP_LABEL: string;
-  ITEMS:       Item[];
+  ITEMS:       H2HEVENT[];
 }
 
-export interface Item {
+export interface H2HEVENT {
   START_TIME:                         number;
   EVENT_ID:                           string;
   SURFACE_CODE?:                      Surface;
@@ -31,8 +31,8 @@ export interface Item {
   CURRENT_RESULT:                     string;
   HOME_SCORE_FULL:                    null | string;
   AWAY_SCORE_FULL:                    null | string;
-  HOME_IMAGES:                        string[] | null;
-  AWAY_IMAGES:                        string[] | null;
+  HOME_IMAGES:                        string[];
+  AWAY_IMAGES:                        string[];
   HOME_PARTICIPANT_COUNTRY_ID_ONE?:   number;
   HOME_PARTICIPANT_COUNTRY_NAME_ONE?: string;
   HOME_PARTICIPANT_COUNTRY_ID_TWO?:   number;
@@ -42,7 +42,7 @@ export interface Item {
   AWAY_PARTICIPANT_COUNTRY_ID_TWO?:   number;
   AWAY_PARTICIPANT_COUNTRY_NAME_TWO?: null;
   H_RESULT:                          HResult;
-  TEAM_MARK?:                         TeamMark;
+  TEAM_MARK:                         TeamMark;
   FT_RESULT?:                         string;
   KX?:                                string;
   KY?:                                string;
