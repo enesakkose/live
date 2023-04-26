@@ -1,6 +1,5 @@
 
 import React from 'react'
-//import { gettH2HEvents } from '@/services/sports'
 import H2HContainer from '@/containers/H2HContainer'
 import NavLink from '@/components/Button/NavLink'
 import Loading from '@/components/Event/Hero/loading'

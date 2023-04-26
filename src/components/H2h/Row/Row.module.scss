@@ -3,7 +3,7 @@
     display: grid;
     border-bottom: 1px solid $WHITE-3;
     padding: $P-2;
-    grid-template-columns: 1fr minmax(10rem, 1fr) 1fr 1fr;
+    grid-template-columns: 1fr minmax(10rem, 1fr) 30px 1fr;
     grid-template-areas: 
         "eventDate home homeScore badge"
         "eventDate away awayScore badge"
@@ -12,7 +12,6 @@
     &:hover{
         background-color: $WHITE-3;
     }
-
 
     .team{
         display: flex;
@@ -25,8 +24,8 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            padding-inline: $P-2;
-            border-radius: .5rem;
+            padding-inline: $P-1;
+            border-radius: .25rem;
             font-size: 13px;
 
             &.mark{
@@ -46,6 +45,7 @@
 
     .score{
         font-weight: 700;
+        text-align: center;
 
         &.home{
             grid-area: homeScore;
@@ -65,4 +65,3 @@
         font-weight: 500;
     }
 }
-//score will hizalanacak 

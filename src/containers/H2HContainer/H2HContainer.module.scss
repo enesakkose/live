@@ -8,71 +8,11 @@
         margin-bottom: $P-3;
     }
 
-    .h2hEventsGroup{
-        //display: grid; 
-        //grid-template-columns: repeat(3, 1fr);
-        //gap: 1rem;
+    .group{
         
-
-        .group{
-
-            .groupList{
-                display: flex;
-                flex-direction: column;
-
-                .h2hEvent{
-                    padding: $P-2;
-                    display: grid;
-                    grid-template-columns: 1fr 2fr 1fr;
-                    column-gap: .75rem;
-                    border-bottom: 1px solid $WHITE-3;
-                    //place-items: center;
-                    grid-template-areas: 
-                        "startTime team1 score1 badge"
-                        "startTime team2 score2 badge"
-                    ;
-
-                    &:hover{
-                        background-color: $WHITE-3;
-                    }
-
-                    .eventStartTime{
-                        grid-area: startTime;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 13px;
-                        font-weight: 500;
-                    }
-
-
-                    .team1{
-                        grid-area: team1;
-                        font-size: 14px;
-                        font-weight: 700;
-                        word-break: break-word;
-
-                    }
-                    .team2{
-                        overflow: hidden;
-                        grid-area: team2;
-                        font-size: 14px;
-                        font-weight: 700;
-                        word-break: break-word;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
-                    .score1{
-                        grid-area: score1;
-                    }
-                    .score2{
-                        grid-area: score2;
-                    }
-
-                }
-            }
-
+        .groupList{
+            display: flex;
+            flex-direction: column;
         }
-
     }
 }

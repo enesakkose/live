@@ -66,6 +66,6 @@ export const useGetEvent = (id: string) => {
   return useQuery(['event', id], () => getEvent(id))
 }
 
-export const gettH2HEvents = (id: string) => {
+export const useGetH2HEvents = (id: string) => {
   return useQuery(['h2hEvents', id], () => getH2HEvents(id))
 }
