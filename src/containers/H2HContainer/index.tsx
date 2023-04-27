@@ -14,7 +14,7 @@ function H2HContainer({ h2h, eventId }: { h2h: number; eventId: string }) {
       <div className={styles.tabBtns}>
         {H2HEvents?.map((event, index) => (
           <NavLink
-            key={index}
+            key={event.TAB_NAME}
             size='xsmall'
             active={Number(index) === Number(h2h)}
             href={`/event/${eventId}/h2h/${index}`}
@@ -25,7 +25,7 @@ function H2HContainer({ h2h, eventId }: { h2h: number; eventId: string }) {
         ))}
       </div>
       {H2HEvents?.[h2h].GROUPS.map((group) => (
-        <div className={styles.group}>
+        <div key={group.GROUP_LABEL} className={styles.group}>
           <GroupLabel label={group.GROUP_LABEL} />
           <ul className={styles.groupList}>
             {group.ITEMS.map((event) => (
