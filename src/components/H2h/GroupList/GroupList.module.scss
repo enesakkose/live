@@ -1,0 +1,11 @@
+.groupList{
+    display: flex;
+    flex-direction: column;
+}
+
+.loadMoreBtn{
+    width: 100%;
+    justify-content: center;
+    padding-block: $P-2;
+    flex-direction: row-reverse;
+}
