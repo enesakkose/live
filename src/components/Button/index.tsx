@@ -10,6 +10,7 @@ type ButtonTypes = {
   active?: boolean
   icon?: IconNameType
   size?: number
+  fontSize?: 'sm' | 'md' | 'lg'
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 function Button({
@@ -18,6 +19,7 @@ function Button({
   active = false,
   icon,
   className,
+  fontSize = 'md',
   size,
   ...props
 }: ButtonTypes) {
@@ -25,7 +27,7 @@ function Button({
     return (
       <button
         type='button'
-        className={clsx(styles.button, styles[variant], className)}
+        className={clsx(styles.button, styles[variant], styles[fontSize], className)}
         {...props}
       >
         <Icon icon={icon} size={size} />
@@ -39,6 +41,7 @@ function Button({
       className={clsx(
         styles.button,
         styles[variant],
+        styles[fontSize],
         active ? styles.active : '',
         className
       )}

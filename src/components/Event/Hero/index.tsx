@@ -31,7 +31,6 @@ function EventTeam({ src, teamName }: { src: string; teamName: string }) {
 }
 
 function Hero({ event }: HeroType) {
-  const defaultTeam = 'https://www.flashscore.com/res/image/data/rHkUp5Wg-Qmtm30D7.png'
 
   const EventCurrentScore = () => {
     return (
