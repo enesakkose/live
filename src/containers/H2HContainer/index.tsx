@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import NavLink from '@/components/Button/NavLink'
-import GroupLabel from '@/components/H2h/GroupLabel'
+import GroupLabel from '@/components/GroupLabel'
 import GroupList from '@/components/H2h/GroupList'
 import { useGetH2HEvents } from '@/services/sports'
 import styles from './H2HContainer.module.scss'
