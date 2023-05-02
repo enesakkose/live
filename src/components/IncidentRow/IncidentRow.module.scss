@@ -1,0 +1,79 @@
+@mixin info{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.incidentRow{
+    display: flex;
+    align-items: center;
+    gap: .875rem;
+    margin: $P-2 $P-3;
+
+    .time{
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+
+    .infoGoal{
+        @include info;
+        font-weight: 600;
+    }
+    
+    .infoSubs{
+        @include info;
+
+        .in{
+            color: $BADGE-WIN;
+        }
+
+        .out{
+            color: $BADGE-LOSE;
+        }
+    }
+
+    .missedPenalty{
+        @include info;
+
+        .participantName{
+            font-weight: 600;
+        }
+
+        .icon{
+            color: $BADGE-LOSE;
+        }
+    }
+
+    .penaltyScored{
+        @include info;
+    }
+
+    .card{
+        @include info;
+        
+        .badge{
+            width: .75rem;
+            height: 1rem;
+            border-radius: .15rem;
+        
+            &.RED_CARD{
+                background-color: $BADGE-LOSE;
+            }
+            
+            &.YELLOW_CARD{
+                background-color: $BADGE-YELLOW;
+            }
+        }
+    }
+
+    .sign{
+        @include info;
+        padding: $P-1 $P-2;
+        border: 1px solid $WHITE-3;
+        border-radius: .5rem;
+    }
+}
+
+.incidentAwayRow{
+    flex-direction: row-reverse;
+}

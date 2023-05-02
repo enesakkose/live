@@ -1,10 +1,31 @@
+'use client'
 import React from 'react'
+import NavLink from '../Button/NavLink'
+import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './TabBtns.module.scss'
 
-function TabBtns({tabBtns}: { tabBtns: string[] }) {
+type TabBtnsType = {
+  tabName: string
+  href: string
+  segment: string
+}[]
+
+function TabBtns({ tabBtns }: { tabBtns: TabBtnsType }) {
+  const segment = useSelectedLayoutSegment()
+
   return (
     <div className={styles.tabBtns}>
-      TabBtns
+      {tabBtns.map((tab) => (
+        <NavLink
+          active={tab.segment == segment}
+          key={tab.tabName}
+          href={tab.href}
+          variant='secondary'
+          size='xsmall'
+        >
+          {tab.tabName}
+        </NavLink>
+      ))}
     </div>
   )
 }

@@ -1,0 +1,24 @@
+.eventSummaryContainer{
+
+    .summaryItems{
+        margin-block: $M-3;
+    }
+
+    .matchInfo{
+        .infoList{
+            margin-block: $M-3;
+
+            .info{
+                margin: $M-3;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 14px;
+
+                .value{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

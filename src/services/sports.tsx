@@ -1,15 +1,16 @@
 import type {  Category, Event } from '@/types'
-import { Data } from '@/types/event.types'
-import { H2H } from '@/types/H2HTypes'
+import type { Data } from '@/types/event.types'
+import type { H2H } from '@/types/H2HTypes'
+import type { FootballEventSummary } from '@/types/Summary.types'
 import { useQuery } from '@tanstack/react-query'
 
-const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
+const BASE_URL = 'https://flashscore.p.rapidapi.com'
 
 const OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-    'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
+    'X-RapidAPI-Host': 'flashscore.p.rapidapi.com',
   },
 }
 //flashlive-sports.p.rapidapi.com
@@ -56,6 +57,13 @@ const getH2HEvents = async(id: string) => {
   return data.DATA
 }
 
+const getEventSummary = async(id: string) => {
+  const resp = await fetch(`${BASE_URL}/v1/events/summary?locale=en_INT&event_id=${id}`, { ...OPTIONS })
+
+  const data: FootballEventSummary = await resp.json()
+  return data
+}
+
 export const useGetEvents = (id: number = 1, timezone: 'live' | 'all') => {
   return useQuery(['events', id, timezone], () =>
     timezone === 'live' ? getLiveEvents(id) : getEvents(id)
@@ -68,4 +76,8 @@ export const useGetEvent = (id: string) => {
 
 export const useGetH2HEvents = (id: string) => {
   return useQuery(['h2hEvents', id], () => getH2HEvents(id))
+}
+
+export const useGetEventSummary = (id: string) => {
+  return useQuery(['eventSummary', id], () => getEventSummary(id))
 }

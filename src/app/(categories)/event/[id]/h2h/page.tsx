@@ -1,5 +1,4 @@
 import React from 'react'
-import H2HContainer from '@/containers/H2HContainer'
 import { redirect } from 'next/navigation'
 
 type H2HEventsParamsType = {

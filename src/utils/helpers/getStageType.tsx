@@ -18,6 +18,8 @@ const setTypes = [
   { value: 'FIFTH_SET_TIEBREAK', label: 'SET 5 TIEBREAK' },
   { value: 'AFTER_EXTRA_TIME', label: 'Finished' },
   { value: 'AFTER_PENALTIES', label: 'After Pen.' },
+  { value: 'PAUSE', label: 'Break Time' },
+  { value: 'PENALTIES', label: 'Penalties' },
   { value: 'LIVE', label: 'LIVE' },
   { value: 'PENDING', label: 'PENDING' },
 ]

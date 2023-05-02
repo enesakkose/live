@@ -13,20 +13,21 @@ type PropsType = {
 
 function Header({ tournament }: PropsType) {
   const router = useRouter()
+  const defaultTournImg = '	https://www.flashscore.com/res/_fs/build/world.b7d16db.png'
 
   return (
     <header className={styles.eventHeader}>
       <Button icon='left' onClick={() => router.back()} />
       <RoundedImg width={30} height={30}>
         <Image
-          src={tournament.TOURNAMENT_IMAGE}
+          src={tournament.TOURNAMENT_IMAGE ?? defaultTournImg}
           alt={tournament.NAME}
           width={25}
           height={25}
         />
       </RoundedImg>
       <h4>{tournament?.NAME}</h4>
-    </header>
+  </header>
   )
 }
 
