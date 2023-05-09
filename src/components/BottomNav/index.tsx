@@ -12,11 +12,7 @@ function BottomNav() {
   console.log(segment)
   return (
     <MouseFollower className={styles.bottomNav}>
-      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null} href=''>
-        <Icon icon='soccer' size={25} />
-        FOOTBALL
-      </NavLink>
-      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null} href='/index'>
+      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null || segment === 'index'} href='/'>
         <Icon icon='soccer' size={25} />
         FOOTBALL
       </NavLink>
