@@ -1,0 +1,19 @@
+.playerStatsTable{
+    .labels{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: $P-2 $P-3;
+        background-color: $WHITE-3;
+    }
+
+    .playerLists{
+        .player{
+            padding: $P-2 $P-3;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid $WHITE-3;
+            font-weight: 500;
+
+        }
+    }
+}

@@ -1,7 +1,7 @@
 .container{
         display: flex;
         gap: 2rem;
-        height: calc(100% - 11.25rem);
+        height: calc(100% - 6.225rem);
         
         .sportTimezone{
             height: 100%;
@@ -9,6 +9,7 @@
             flex: 1;
             background-color: $WHITE-3;
             padding: $P-3;
+            padding-bottom: 5rem;
             border-radius: .5rem;
             scrollbar-width: thin; /* For Firefox */
             scrollbar-color: $SECONDARY-800 transparent;
@@ -25,6 +26,7 @@
             /* Handle */
             &::-webkit-scrollbar-thumb {
                 background: $SECONDARY-800;
+                border-radius: 1rem;
             }
 
             /* Handle on hover */

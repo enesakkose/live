@@ -1,7 +1,6 @@
 'use client'
 import RoundedImg from '@/components/RoundedImg'
 import React from 'react'
-import Image from 'next/image'
 import Button from '@/components/Button'
 import { useRouter } from 'next/navigation'
 import type { Tournament } from '@/types/event.types'
@@ -19,7 +18,7 @@ function Header({ tournament }: PropsType) {
     <header className={styles.eventHeader}>
       <Button icon='left' onClick={() => router.back()} />
       <RoundedImg width={30} height={30}>
-        <Image
+        <img
           src={tournament.TOURNAMENT_IMAGE ?? defaultTournImg}
           alt={tournament.NAME}
           width={25}

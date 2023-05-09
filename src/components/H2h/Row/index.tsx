@@ -2,7 +2,6 @@ import React from 'react'
 import clsx from 'clsx'
 import ResultBadge from '@/components/ResultBadge'
 import Link from 'next/link'
-import Image from 'next/image'
 import { getDate } from '@/utils/helpers/getFormatTime'
 import { type H2HEVENT } from '@/types/H2HTypes'
 import styles from './Row.module.scss'
@@ -29,7 +28,7 @@ function Row({ event }: { event: H2HEVENT }) {
     return (
       <>
         <div className={clsx(styles.team, styles[participant])}>
-          <Image src={img[0]} width={16} height={16} alt='alt' />
+          <img src={img[0]} width={16} height={16} alt='alt' />
           <span className={clsx(styles.name, participant === mark ? styles.mark : '')}>{name}</span>
         </div>
         {score && <span className={clsx(styles.score, styles[participant])}>{score}</span>}

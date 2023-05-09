@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import RoundedImg from '@/components/RoundedImg'
 import styles from './Header.module.scss'
 
@@ -14,7 +13,7 @@ function Header({ tournamentName, tournamentImage }: PropsType) {
     <div className={styles.eventsHeader}>
       {tournamentImage && (
         <RoundedImg width={25} height={25}>
-          <Image
+          <img
             src={tournamentImage}
             width={20}
             height={20}

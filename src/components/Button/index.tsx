@@ -6,7 +6,7 @@ import Icon from '@/components/Icon'
 
 type ButtonTypes = {
   children?: ReactNode
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'underline' | 'icon'
+  variant?: 'unstyled' | 'primary' | 'secondary' | 'tertiary' | 'underline' | 'icon'
   active?: boolean
   icon?: IconNameType
   size?: number

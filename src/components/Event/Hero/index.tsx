@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import Image from 'next/image'
 import RoundedImg from '@/components/RoundedImg'
 import { getDate, getFormatTime } from '@/utils/helpers/getFormatTime'
 import { getStageType } from '@/utils/helpers/getStageType'
@@ -23,7 +22,7 @@ function EventTeam({ src, teamName }: { src: string; teamName: string }) {
   return (
     <div className={styles.eventTeam}>
       <RoundedImg width={120} height={120}>
-        <Image src={src ?? defaultTeam} alt='team' width={90} height={90} priority={true} />
+        <img src={src ?? defaultTeam} alt='team' width={90} height={90} />
       </RoundedImg>
       <span className={styles.teamName}>{teamName}</span>
     </div>

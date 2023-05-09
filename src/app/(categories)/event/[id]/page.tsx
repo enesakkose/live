@@ -23,7 +23,7 @@ function Page({ params }: EventsParamsType) {
   /*if(params.id === 'YXKg7xSn') {
     throw new Error('error')
   } */
-  return redirect(`event/${params.id}/summary`)
+  return redirect(`event/${params.id}/summary/event-summary`)
 }
 
 export default Page

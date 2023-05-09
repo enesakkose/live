@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -50,7 +49,7 @@ function TeamRow({
     return (
       <>
         {teamImage !== null ? (
-          <Image src={teamImage[0]} width={20} height={20} alt='logo' />
+          <img loading='lazy' src={teamImage[0]} width={20} height={20} alt='logo' />
         ) : (
           <EmptyPlayerImg />
         )}
