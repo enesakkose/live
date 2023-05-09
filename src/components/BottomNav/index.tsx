@@ -9,10 +9,14 @@ import Button from '../Button'
 
 function BottomNav() {
   const segment = useSelectedLayoutSegment()
-
+  console.log(segment)
   return (
     <MouseFollower className={styles.bottomNav}>
       <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null} href=''>
+        <Icon icon='soccer' size={25} />
+        FOOTBALL
+      </NavLink>
+      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null} href='/index'>
         <Icon icon='soccer' size={25} />
         FOOTBALL
       </NavLink>

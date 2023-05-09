@@ -9,6 +9,7 @@
     color: $SECONDARY-300;
     font-weight: 600;
     letter-spacing: 1px;
+    flex-shrink: 0;
 
     &.primary{
         letter-spacing: 1px;

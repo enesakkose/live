@@ -32,6 +32,7 @@ html, body {
 img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
+    flex-shrink: 0;
 }
 
 input, button, textarea, select {
