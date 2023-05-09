@@ -1,0 +1,14 @@
+.bottomNav{
+    border-radius: .5rem;
+    padding: $P-3;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}

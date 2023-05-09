@@ -1,9 +1,4 @@
 .search{
-    background: radial-gradient(
-      650px circle at var(--mouseX) var(--mouseY),
-      $WHITE-5,
-      transparent 80%
-    );
     width: 20rem;
     display: flex;
     align-items: center;
@@ -12,5 +7,5 @@
     border-radius: 1.25rem;
     color: $SECONDARY-500;
     font-weight: 500;
-    cursor: default;
+    cursor: default;    
 }
