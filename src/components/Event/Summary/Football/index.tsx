@@ -7,13 +7,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 function Football({ eventSummary }: {eventSummary: Data[]}) {
   return (
-    {eventSummary.map((summary) => (
+    {/*eventSummary.map((summary) => (
       <Section title={summary.STAGE_NAME}  key={uuidv4()}>
         {summary.ITEMS && summary.ITEMS.map((incident) => (
           <IncidentRow key={uuidv4()} incidentInfo={incident} />
         ))}
       </Section>
-    ))}
+        ))*/}
   )
 }
 
