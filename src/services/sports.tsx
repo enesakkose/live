@@ -4,13 +4,13 @@ import type { H2H } from '@/types/H2HTypes'
 import type { FootballEventSummary, PlayerStats } from '@/types/Summary.types'
 import { useQuery } from '@tanstack/react-query'
 
-const BASE_URL = 'https://flashscore.p.rapidapi.com'
+const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
 
 const OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': `${process.env.NEXT_PUBLIC_API_KEY}`,
-    'X-RapidAPI-Host': 'flashscore.p.rapidapi.com',
+    'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
   },
 }
 //flashlive-sports.p.rapidapi.com

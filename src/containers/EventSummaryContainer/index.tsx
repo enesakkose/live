@@ -30,7 +30,7 @@ function EventSummaryContainer({
         </Section>
       ))}
       {Object.keys(matchInfo).length > 0 && <MatchInformation info={matchInfo} />}
-      <PlayerStats eventId={eventId}/>
+     {/*<PlayerStats eventId={eventId}/>*/}
     </div>
   )
 }
