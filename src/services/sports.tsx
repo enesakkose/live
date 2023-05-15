@@ -2,6 +2,7 @@ import type {  Category, Event } from '@/types'
 import type { Data } from '@/types/event.types'
 import type { H2H } from '@/types/H2HTypes'
 import type { FootballEventSummary, PlayerStats } from '@/types/Summary.types'
+import type { EventStats } from '@/types/EventStats'
 import { useQuery } from '@tanstack/react-query'
 
 const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
@@ -71,6 +72,13 @@ const getBasketPlayerStats = async(id: string) => {
   return data.DATA
 }
 
+const getEventStats = async(id: string) => {
+  const resp = await fetch(`${BASE_URL}/v1/events/statistics?event_id=${id}&locale=en_INT`, { ...OPTIONS })
+
+  const data: EventStats = await resp.json()
+  return data.DATA
+}
+
 export const useGetEvents = (id: number = 1, timezone: 'live' | 'all') => {
   return useQuery(['events', id, timezone], () =>
     timezone === 'live' ? getLiveEvents(id) : getEvents(id)
@@ -91,4 +99,8 @@ export const useGetEventSummary = (id: string) => {
 
 export const useGetBasketPlayerStats = (id: string) => {
   return useQuery(['playerStats', id], () => getBasketPlayerStats(id))
+}
+
+export const useGetEventStats = (id: string) => {
+  return useQuery(['eventStats', id], () => getEventStats(id))
 }
