@@ -7,11 +7,13 @@ import styles from './MouseFollower.module.scss'
 type MouseFollowerPropsTypes = {
   children: React.ReactNode
   className?: string
+  onClick?: () => void
 }
 
 function MouseFollower<T extends HTMLDivElement>({
   children,
   className,
+  ...props
 }: MouseFollowerPropsTypes) {
   const { mouse, ref } = useMouseEffect<T>()
 
@@ -25,6 +27,7 @@ function MouseFollower<T extends HTMLDivElement>({
           '--mouseY': `${mouse.mouseY}px`,
         } as CSSProperties
       }
+      {...props}
     >
       {children}
     </div>

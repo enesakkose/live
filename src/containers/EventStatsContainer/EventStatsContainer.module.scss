@@ -1,0 +1,60 @@
+.eventStatsContainer{
+    
+    .incident{
+        margin: $M-4 $M-2;
+    }
+
+    .incidentUnit{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .incidentBars{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: .5rem;
+
+        .bar{
+            width: 100%;
+            height: .75rem;
+            background-color: $WHITE-3;
+            position: relative;
+            
+            .percentage{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: var(--width);
+                background-color: $SECONDARY-300;
+                animation: slideAnimation 1000ms ease-in-out;
+                
+                &.homePercentage{
+                    right: 0;
+                    border-top-left-radius: .5rem;
+                    border-bottom-left-radius: .5rem;
+                }
+
+                &.awayPercentage{
+                    left: 0;
+                    border-top-right-radius: .5rem;
+                    border-bottom-right-radius: .5rem;
+                }
+
+                &.ahead{
+                    background-color: $GREEN-400;
+                }
+            }            
+        }
+    }
+}
+
+@keyframes slideAnimation {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: var(--width);
+    }
+}

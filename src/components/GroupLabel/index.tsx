@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './GroupLabel.module.scss'
 
 type GroupLabelPropsTypes = {
-  label: string
+  label: string | React.ReactNode
   children?: React.ReactNode
 }
 

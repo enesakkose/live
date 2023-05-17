@@ -6,11 +6,11 @@ import type { EventStats } from '@/types/EventStats'
 import { useQuery } from '@tanstack/react-query'
 
 const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
-
+const apiKey = process.env.NEXT_PUBLIC_API_KEY || '';
 const OPTIONS = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': `${process.env.NEXT_PUBLIC_API_KEY}`,
+    'X-RapidAPI-Key': apiKey,
     'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
   },
 }

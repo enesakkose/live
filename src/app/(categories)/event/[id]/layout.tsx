@@ -3,9 +3,7 @@ import EventContainer from '@/containers/EventContainer'
 
 type EventsParamsType = {
   children: React.ReactNode
-  params: {
-    id: string
-  }
+  params: { id: string }
 }
 
 function Layout({ children, params }: EventsParamsType) {
