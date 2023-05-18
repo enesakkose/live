@@ -42,6 +42,7 @@ export type IncidentType =
   | 'PENALTY_KICK'
   | 'PENALTY_SCORED'
   | 'PENALTY_MISSED'
+  | 'OWN_GOAL'
 
 export interface PlayerStats {
   DATA: Data

@@ -34,7 +34,7 @@ function TabBar({ id }: { id: string }) {
     },
     {
       tabName: 'H2H',
-      href: `/event/${id}/h2h`,
+      href: `/event/${id}/summary/h2h/0`,
       segment: 'h2h',
     },
     {
@@ -47,7 +47,12 @@ function TabBar({ id }: { id: string }) {
   return (
     <div className={styles.tabBar}>
       {eventTabs.map((tab) => (
-        <NavLink size='small' href={tab.href} active={segment === tab.segment}>
+        <NavLink
+          key={tab.tabName}
+          size='small'
+          href={tab.href}
+          active={segment === tab.segment}
+        >
           {tab.tabName}
         </NavLink>
       ))}

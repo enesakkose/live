@@ -1,7 +1,10 @@
+"use client"
 import React, { CSSProperties } from 'react'
 import clsx from 'clsx'
 import Section from '@/components/Event/Incidents/Section'
+import NavLink from '@/components/Button/NavLink'
 import { convertPercentage, valueWithoutPercentage } from '@/utils/helpers'
+import { useGetEventStats } from '@/services/sports'
 import type { Data } from '@/types/EventStats'
 import styles from './EventStatsContainer.module.scss'
 
@@ -11,13 +14,24 @@ type IncidenPropsTypes = {
   incidentName: string
 }
 
+type StatsBarPropsTypes = {
+  percentage: number
+  variant: 'homePercentage' | 'awayPercentage'
+  ahead: boolean
+}
+
+type EventStatsContainerPropsTypes = {
+  eventId: string 
+  statsTab: number
+}
+
 export const Incident = ({ homeValue, awayValue, incidentName }: IncidenPropsTypes) => {
   const { homePercentage, awayPercentage } = convertPercentage(
     valueWithoutPercentage(homeValue),
     valueWithoutPercentage(awayValue)
   )
 
-  const StatsBar = ({ percentage, variant, ahead }: { percentage: number, variant: 'homePercentage' | 'awayPercentage', ahead: boolean }) => {
+  const StatsBar = ({ percentage, variant, ahead }: StatsBarPropsTypes) => {
     return(
       <div className={clsx(styles.bar)}>
         <div
@@ -51,10 +65,31 @@ export const Incident = ({ homeValue, awayValue, incidentName }: IncidenPropsTyp
   )
 }
 
-function EventStatsContainer({ eventStats }: { eventStats: Data }) {
+function EventStatsContainer({ eventId, statsTab }: EventStatsContainerPropsTypes) {
+  const { data = [], isError } = useGetEventStats(eventId)
+  console.log(isError)
+  const Tabs = () => {
+    return (
+      <div className={styles.tabs}>
+        {data.map((stageName, index) => (
+          <NavLink
+            size='xsmall'
+            href={`/event/${eventId}/summary/stats/${index}`}
+            active={Number(statsTab) === index}
+            variant='secondary'
+            key={stageName.STAGE_NAME}
+          >
+            {stageName.STAGE_NAME}
+          </NavLink>
+        ))}
+      </div>
+    )
+  }
+
   return (
     <div className={styles.eventStatsContainer}>
-      {eventStats.GROUPS.map((stats) => (
+      <Tabs />
+      {data[statsTab].GROUPS.map((stats) => (
         <Section key={stats.GROUP_LABEL} title={stats.GROUP_LABEL}>
           <ul className={styles.statsList}>
             {stats.ITEMS.map((incident) => (

@@ -1,10 +1,7 @@
-.h2hContainer{
-    padding-block: $P-4;
-    
+.h2hContainer{   
     .tabBtns{
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-bottom: $P-3;
     }
 }

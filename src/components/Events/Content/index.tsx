@@ -39,7 +39,7 @@ function Content({ id = 1 }: { id: number }) {
               {tournament.EVENTS.map((match, index) => (
                 <EventRow
                   key={index}
-                  href={`/event/${match.EVENT_ID}`}
+                  href={`/event/${match.EVENT_ID}/summary/event-summary`}
                   event={match}
                 />
               ))}

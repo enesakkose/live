@@ -2,7 +2,7 @@
 import React from 'react'
 import Header from '@/components/Event/Header'
 import Hero from '@/components/Event/Hero'
-import EventLoading from '@/app/(categories)/event/[id]/h2h/[h2h]/loading'
+import EventLoading from '@/app/(categories)/event/[id]/summary/h2h/[h2h]/loading'
 import { useGetEvent } from '@/services/sports'
 
 type PropsType = {

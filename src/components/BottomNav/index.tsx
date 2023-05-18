@@ -3,13 +3,13 @@ import React from 'react'
 import MouseFollower from '../MouseFollower'
 import NavLink from '../Button/NavLink'
 import Icon from '../Icon'
+import Button from '../Button'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './BottomNav.module.scss'
-import Button from '../Button'
 
 function BottomNav() {
   const segment = useSelectedLayoutSegment()
-  console.log(segment)
+
   return (
     <MouseFollower className={styles.bottomNav}>
       <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null || segment === 'index'} href='/'>

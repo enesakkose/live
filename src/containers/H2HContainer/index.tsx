@@ -17,14 +17,14 @@ function H2HContainer({ h2h, eventId }: { h2h: number; eventId: string }) {
             key={event.TAB_NAME}
             size='xsmall'
             active={Number(index) === Number(h2h)}
-            href={`/event/${eventId}/h2h/${index}`}
+            href={`/event/${eventId}/summary/h2h/${index}`}
             variant='secondary'
           >
             {event.TAB_NAME}
           </NavLink>
         ))}
       </div>
-      {H2HEvents?.[h2h].GROUPS.map((group) => (
+      {H2HEvents?.[Number(h2h)].GROUPS.map((group) => (
         <div key={group.GROUP_LABEL} className={styles.group}>
           <GroupLabel label={group.GROUP_LABEL} />
           <GroupList group={group}/>

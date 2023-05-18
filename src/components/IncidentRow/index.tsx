@@ -33,7 +33,7 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
     )
   }
 
-  const Goal = () => {
+  const Goal = ({ ...props }) => {
     return (
       <div
         className={clsx(
@@ -41,7 +41,7 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
           incidentTeam === 2 ? styles.incidentAwayRow : ''
         )}
       >
-        <Sign icon='soccer'>
+        <Sign icon='soccer' {...props}>
           {info.HOME_SCORE} {info.HOME_SCORE ? '-' : ''} {info.AWAY_SCORE}
         </Sign>
         {info.PARTICIPANT_NAME}
@@ -64,7 +64,7 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
 
   const SubOut = () => {
     return (
-      <div className={clsx(styles.infoSubs)}>
+      <div className={styles.infoSubs}>
         <Sign><span className={styles.out}>OUT</span></Sign>
         {info.PARTICIPANT_NAME}
       </div>
@@ -84,6 +84,15 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
           {info.PARTICIPANT_NAME}
         </span>
         (Penalty Missed)
+      </div>
+    )
+  }
+
+  const OwnGoal = () => {
+    return(
+      <div className={clsx(styles.ownGoal, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
+        <Goal className={styles.redBall}/>
+        (Own Goal)
       </div>
     )
   }
@@ -127,6 +136,8 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
       return <MissedPenalty />
     case 'PENALTY_SCORED':
       return <PenaltyScored />
+    case 'OWN_GOAL':
+      return <OwnGoal />
     default:
       return null
   }

@@ -25,10 +25,11 @@ function Row({ event }: { event: H2HEVENT }) {
     img: string[]
     score: string | null
   }) => {
+    const defaultTeam = 'https://www.flashscore.com/res/image/data/rHkUp5Wg-Qmtm30D7.png'
     return (
       <>
         <div className={clsx(styles.team, styles[participant])}>
-          <img src={img[0]} width={16} height={16} alt='alt' />
+          <img src={img ? img[0] : defaultTeam} width={16} height={16} alt='alt' />
           <span className={clsx(styles.name, participant === mark ? styles.mark : '')}>{name}</span>
         </div>
         {score && <span className={clsx(styles.score, styles[participant])}>{score}</span>}
@@ -37,7 +38,7 @@ function Row({ event }: { event: H2HEVENT }) {
   }
 
   return (
-    <Link href={`/event/${event.EVENT_ID}`} className={styles.h2hRow}>
+    <Link href={`/event/${event.EVENT_ID}/summary/event-summary`} className={styles.h2hRow}>
       <EventDate />
       <Team
         participant='home'

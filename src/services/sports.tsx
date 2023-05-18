@@ -3,16 +3,14 @@ import type { Data } from '@/types/event.types'
 import type { H2H } from '@/types/H2HTypes'
 import type { FootballEventSummary, PlayerStats } from '@/types/Summary.types'
 import type { EventStats } from '@/types/EventStats'
+import { env } from "../../env.mjs"
 import { useQuery } from '@tanstack/react-query'
 
 const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
-const apiKey = process.env.NEXT_PUBLIC_API_KEY || '';
 const OPTIONS = {
   method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': apiKey,
-    'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
-  },
+  headers: {"X-RapidAPI-Key": env.NEXT_PUBLIC_API_KEY,
+  'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com'}
 }
 //flashlive-sports.p.rapidapi.com
 //https://flashlive-sports.p.rapidapi.com

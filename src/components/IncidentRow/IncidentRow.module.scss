@@ -19,6 +19,14 @@
         @include info;
         font-weight: 600;
     }
+
+    .ownGoal{
+        @include info;
+
+        .redBall{
+            color: $BADGE-LOSE;
+        }
+    }
     
     .infoSubs{
         @include info;
