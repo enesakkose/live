@@ -1,9 +1,12 @@
 import React from 'react'
+import EventLineupsContainer from '@/containers/EventLineupsContainer'
 
-function Page() {
-  return (
-    <div>lineups</div>
-  )
+type LineupsParamsTypes = {
+  params: { id: string }
+}
+
+function Page({ params }: LineupsParamsTypes) {
+  return <EventLineupsContainer eventId={params.id} />
 }
 
 export default Page

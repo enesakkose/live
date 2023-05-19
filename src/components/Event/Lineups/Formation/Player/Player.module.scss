@@ -1,0 +1,22 @@
+.player{
+    display: flex;
+    gap: .25rem;
+    margin: 125px;
+    position: relative;
+
+    .info{
+        white-space: nowrap;
+
+        .playerName{
+            overflow: hidden;
+            max-width: 70px;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .rating{
+        position: absolute;
+        right: -.5rem;
+        top: -.5rem;
+    }
+}

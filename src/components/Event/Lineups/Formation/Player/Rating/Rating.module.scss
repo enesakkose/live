@@ -1,0 +1,24 @@
+.rating{
+    font-weight: 500;
+    padding: $P-1;
+    border-radius: .35rem;
+    font-size: 14px;
+    color: $PRIMARY-100;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.low{
+        background-color: $BADGE-LOSE;
+    }
+
+    &.medium{
+        background-color: $BADGE-DRAW;
+    }
+
+    &.high{
+        background-color: $BADGE-WIN;
+    }
+}

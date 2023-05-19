@@ -5,6 +5,58 @@
     {
       "icon": {
         "paths": [
+          "M0 0h1024v1024H0z",
+          "M725.3 85.3h-426.6a128 128 0 0 0-128 128v597.4a128 128 0 0 0 128 128h426.6a128 128 0 0 0 128-128v-597.4a128 128 0 0 0-128-128z"
+        ],
+        "attrs": [
+          {
+            "stroke": "none",
+            "fill": "none",
+            "strokeWidth": 85.33333333333333,
+            "strokeLinecap": "round",
+            "strokeLinejoin": "round"
+          },
+          {
+            "stroke": "currentColor",
+            "fill": "#ff0000",
+            "strokeWidth": 0,
+            "strokeLinecap": "round",
+            "strokeLinejoin": "round"
+          }
+        ],
+        "width": 1024
+      },
+      "properties": { "name": "redcard" }
+    },
+    {
+      "icon": {
+        "paths": [
+          "M0 0h1024v1024H0z",
+          "M725.3 85.3h-426.6a128 128 0 0 0-128 128v597.4a128 128 0 0 0 128 128h426.6a128 128 0 0 0 128-128v-597.4a128 128 0 0 0-128-128z"
+        ],
+        "attrs": [
+          {
+            "stroke": "none",
+            "fill": "none",
+            "strokeWidth": 85.33333333333333,
+            "strokeLinecap": "round",
+            "strokeLinejoin": "round"
+          },
+          {
+            "stroke": "currentColor",
+            "fill": "#ffcd00",
+            "strokeWidth": 0,
+            "strokeLinecap": "round",
+            "strokeLinejoin": "round"
+          }
+        ],
+        "width": 1024
+      },
+      "properties": { "name": "yellowcard" }
+    },
+    {
+      "icon": {
+        "paths": [
           "M864 192V384a32 32 0 0 1-64 0V269.2l-201.4 201.4a32 32 0 0 1-45.2-45.2L754.8 224H640a32 32 0 0 1 0-64h192A32 32 0 0 1 864 192ZM425.4 553.4L224 754.8V640a32 32 0 0 0-64 0v192a32 32 0 0 0 32 32H384a32 32 0 0 0 0-64H269.2l201.4-201.4a32 32 0 0 0-45.2-45.2Z"
         ],
         "attrs": [{}],

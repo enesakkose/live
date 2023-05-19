@@ -1,6 +1,7 @@
 import React from 'react'
 import Skeleton from '@/components/Skeleton'
 import RowLoading from '@/components/Events/Row/loading'
+import GroupLabelLoading from '@/components/GroupLabel/loading'
 import styles from './H2HContainer.module.scss'
 
 function Loading() {
@@ -12,7 +13,7 @@ function Loading() {
         <Skeleton width={60} height={32} />
       </div>
       <div className={styles.group}>
-        <Skeleton height={32} />
+        <GroupLabelLoading />
         <ul className={styles.groupList}>
           {Array(2)
             .fill(null)
@@ -31,3 +32,5 @@ function Loading() {
 }
 
 export default Loading
+
+

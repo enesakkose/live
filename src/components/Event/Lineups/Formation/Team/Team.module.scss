@@ -1,0 +1,22 @@
+.team{
+    position: relative;
+
+    .disposition{
+        position: absolute;
+        right: .5rem;
+        top: .25rem;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    &.away{
+        .disposition{
+            left: .5rem;
+        }
+    }
+
+    .playerList{
+        display: flex;
+        flex-direction: column;
+    }
+}
