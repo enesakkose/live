@@ -1,6 +1,9 @@
 .incidentBadges{
     display: flex;
-    flex-direction: column;
+    position: absolute;
+    top: -.75rem;
+    left: -.5rem;
+    z-index: 7;
 
     .incident{
         display: flex;
@@ -14,7 +17,7 @@
         position: relative;
 
         &:not(:first-child){
-            margin-top: -$M-1;
+            margin-left: -$M-1;
         }
 
         .incidentLength{

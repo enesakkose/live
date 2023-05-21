@@ -28,5 +28,5 @@ export interface Member {
   PLAYER_POSITION_ID: number;
   PLAYER_TYPE:        number;
   INCIDENTS?:         number[];
-  PLAYER_POSITION?:   number;
+  PLAYER_POSITION:   number;
 }

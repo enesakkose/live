@@ -13,10 +13,22 @@
         .disposition{
             left: .5rem;
         }
+
+        .playerList{
+            flex-direction: row-reverse;
+        }
     }
 
     .playerList{
         display: flex;
-        flex-direction: column;
+        gap: 2rem;
+        height: 100%;
+
+        .playerLine{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
     }
 }

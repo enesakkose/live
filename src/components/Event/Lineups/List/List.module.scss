@@ -1,0 +1,16 @@
+.formationList{
+    display: flex;
+    justify-content: space-between;
+
+    .playerList{
+        .playerInfo{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: $P-2;
+        }
+
+        .awayPlayerInfo{
+            flex-direction: row-reverse;
+        }
+    }
+}

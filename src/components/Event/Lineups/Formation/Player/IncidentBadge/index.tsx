@@ -25,6 +25,7 @@ function IncidentBadge({ incidents }: { incidents: number[] }) {
     2: 'redcard',
     3: 'soccer',
     6: 'subs',
+    8: 'a'
   }
 
   return (

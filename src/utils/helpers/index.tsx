@@ -17,3 +17,7 @@ export const convertPercentage = (val1: string, val2: string) => {
 export const valueWithoutPercentage = (val: string) => {
   return val.split('%')[0].trim()
 }
+
+export const chunkPlayerList = () => {
+
+}

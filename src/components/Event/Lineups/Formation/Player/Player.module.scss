@@ -1,22 +1,26 @@
 .player{
     display: flex;
     gap: .25rem;
-    margin: 125px;
     position: relative;
 
     .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         white-space: nowrap;
 
         .playerName{
             overflow: hidden;
             max-width: 70px;
             text-overflow: ellipsis;
+            font-size: 13px;
+            font-weight: 500;
         }
     }
 
     .rating{
         position: absolute;
         right: -.5rem;
-        top: -.5rem;
+        bottom: 1.25rem;
     }
 }
