@@ -5,7 +5,7 @@ import type { Formation } from '@/types/EventLineups'
 import styles from './Team.module.scss'
 
 function Team({ formation }: { formation: Formation }) {
-  const dispositionArray = formation.FORMATION_DISPOSTION.split('-').map(Number) ?? [2,1,2]
+  const dispositionArray = formation?.FORMATION_DISPOSTION?.split('-').map(Number) ?? [2,1,2]
   const sortedByPosition = formation.MEMBERS.sort((a, b) => a.PLAYER_POSITION - b.PLAYER_POSITION)
 
   let startIndex = 0
@@ -18,7 +18,7 @@ function Team({ formation }: { formation: Formation }) {
 
   return (
     <div className={clsx(styles.team, formation.FORMATION_LINE === 1 ? styles.home : styles.away)}>
-      <span className={styles.disposition}>{formation.FORMATION_DISPOSTION.slice(2)}</span>
+      {formation.FORMATION_DISPOSTION && <span className={styles.disposition}>{formation.FORMATION_DISPOSTION.slice(2)}</span>}
       <ul className={styles.playerList}>
         {chunkPlayerList.map((playerLists, index) => (
           <li className={styles.playerLine} key={index}>

@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react'
+import clsx from 'clsx'
 import Icon from '@/components/Icon'
 import styles from './IncidentBadge.module.scss'
 
@@ -7,7 +8,12 @@ type ExistIncidentsType = {
   length: number
 }
 
-function IncidentBadge({ incidents }: { incidents: number[] }) {
+type IncidentBadgePropsType = {
+  incidents: number[]
+  className?: string
+}
+
+function IncidentBadge({ incidents, className }: IncidentBadgePropsType) {
   const IncidentsWithLength = incidents.reduce((acc: ExistIncidentsType[], curr: number) => {
     const existIncident = acc.find((incident) => incident.incidentKey === curr)
 
@@ -21,20 +27,22 @@ function IncidentBadge({ incidents }: { incidents: number[] }) {
   }, [])
 
   const incidentKeys: { [key: number]: string } = {
-    1: 'yellowcard',
-    2: 'redcard',
-    3: 'soccer',
-    6: 'subs',
-    8: 'a'
+    1: 'Yellow Card',
+    2: 'Red Card',
+    3: 'Goal',
+    6: 'Substitution',
+    7: 'Substitution',
+    8: 'Assist'
   }
 
   return (
-    <div className={styles.incidentBadges}>
+    <div className={clsx(styles.incidentBadges, className)}>
       {IncidentsWithLength.map((incident, index) => (
         <div
           key={incident.incidentKey}
           className={styles.incident}
           style={{ zIndex: `-${index}` } as CSSProperties}
+          title={incidentKeys[incident.incidentKey]}
         >
           {incident.length > 1 && <span className={styles.incidentLength}>{incident.length}</span>}
           <Icon icon={incidentKeys[incident.incidentKey]} size={16} />

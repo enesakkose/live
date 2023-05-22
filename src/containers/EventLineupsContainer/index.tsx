@@ -13,7 +13,6 @@ function EventLineupsContainer({ eventId }: { eventId: string }) {
       <Formation lineups={lineups[0]}/>
       <List list={lineups[1]}/>
       <List list={lineups[0]}/>
-      <List list={lineups[2]}/>
     </div>
   )
 }

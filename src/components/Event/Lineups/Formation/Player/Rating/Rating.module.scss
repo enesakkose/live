@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: default;
 
     &.low{
         background-color: $BADGE-LOSE;
