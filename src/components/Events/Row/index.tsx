@@ -1,3 +1,4 @@
+"use client"
 import React, { CSSProperties } from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
@@ -112,7 +113,7 @@ function TeamRow({
 
 function LiveBlink (){
   return(
-    <span className={styles.liveBlink}>'</span>
+    <span className={styles.liveBlink}>&apos;</span>
   )
 }
 
