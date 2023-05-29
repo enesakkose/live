@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-export const useGetWindowSize = () => {
+export const useGetBreakPoint = () => {
   const isWindowClient = typeof window === "object"
   const getBreakPoint = (windowWidth: number) => {
     if (windowWidth) {
@@ -40,4 +40,4 @@ export const useGetWindowSize = () => {
   return screenType
 }
 
-export default useGetWindowSize
+export default useGetBreakPoint

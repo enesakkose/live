@@ -5,13 +5,13 @@ import NavLink from '../Button/NavLink'
 import Icon from '../Icon'
 import Button from '../Button'
 import ClientOnly from '../ClientOnly'
-import { getWindowSize } from '@/utils/helpers/getWindowSize'
+import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './BottomNav.module.scss'
 
 function BottomNav() {
   const segment = useSelectedLayoutSegment()
-  const SM = getWindowSize('SM')
+  const SM = useGetWindowSize('SM')
   const navLinks = [
     { href: '/', active: null, icon: 'soccer', text: 'FOOTBALL' },
     { href: '/basketball', active: 'basketball', icon: 'basket', text: 'BASKETBALL' },

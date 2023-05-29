@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { getFilterEventScores } from '@/utils/helpers'
 import { getStageType } from '@/utils/helpers/getStageType'
 import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
-import { getWindowSize } from '@/utils/helpers/getWindowSize'
+import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { getFormatTime } from '@/utils/helpers/getFormatTime'
 import { Url } from 'next/dist/shared/lib/router/router'
 import { Event } from '@/types/Events'
@@ -49,7 +49,7 @@ function TeamRow({
     'DELAYED',
   ].includes(status)
   const inprogress = statusType === 'inprogress'
-  const SM = getWindowSize('SM')
+  const SM = useGetWindowSize('SM')
 
   const EmptyPlayerImg = () => <Icon icon='user' size={20} />
 
