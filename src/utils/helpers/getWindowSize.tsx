@@ -1,3 +1,4 @@
+"use client"
 import useGetWindowSize from "@/utils/hooks/useGetWindowSize"
 
 export const getWindowSize = (breakPoint: 'SM' | 'MD') => {
