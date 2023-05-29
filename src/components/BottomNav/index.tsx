@@ -1,33 +1,45 @@
-"use client"
+'use client'
 import React from 'react'
 import MouseFollower from '../MouseFollower'
 import NavLink from '../Button/NavLink'
 import Icon from '../Icon'
 import Button from '../Button'
+import ClientOnly from '../ClientOnly'
+import { getWindowSize } from '@/utils/helpers/getWindowSize'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './BottomNav.module.scss'
 
 function BottomNav() {
   const segment = useSelectedLayoutSegment()
+  const SM = getWindowSize('SM')
+  const navLinks = [
+    { href: '/', active: null, icon: 'soccer', text: 'FOOTBALL' },
+    { href: '/basketball', active: 'basketball', icon: 'basket', text: 'BASKETBALL' },
+    { href: '/tennis', active: 'tennis', icon: 'tennis', text: 'TENNIS' },
+  ]
+
 
   return (
+    <ClientOnly>
     <MouseFollower className={styles.bottomNav}>
-      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === null || segment === 'index'} href='/'>
-        <Icon icon='soccer' size={25} />
-        FOOTBALL
-      </NavLink>
-      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === 'basketball'} href='/basketball'>
-        <Icon icon='basket' size={25} />
-        BASKETBALL
-      </NavLink>
-      <NavLink size='xsmall' variant='secondary' prefetch={false} active={segment === 'tennis'} href='/tennis'>
-        <Icon icon='tennis' size={25} />
-        TENNIS
-      </NavLink>
-      <Button variant='icon' icon='star'/>
-      <Button variant='icon' icon='gear'/>
+      {navLinks.map((link) => (
+        <NavLink
+          key={link.text}
+          size='xsmall'
+          variant='secondary'
+          prefetch={false}
+          active={segment === link.active}
+          href={link.href}
+          title={link.text}
+        >
+          <Icon icon={link.icon} size={25} />
+          {!SM && link.text}
+        </NavLink>
+      ))}
     </MouseFollower>
+    </ClientOnly>
   )
 }
 
 export default BottomNav
+//all nav process will be managed in here

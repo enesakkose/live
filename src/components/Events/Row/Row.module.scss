@@ -12,6 +12,12 @@
         background-color: $SECONDARY-800;
     }
 
+    @media only screen and (max-width: $MD){
+        font-size: 13px;
+        grid-template-columns: 2fr .5fr;
+        gap: 1rem;
+    }
+
     span{
         font-weight: 500;
         letter-spacing: .5px;
@@ -38,16 +44,22 @@
         }
 
         .scoreContainer{
+            --columnLength: 7;
             display: grid;
-            grid-template-columns: repeat(7, 1.75rem);
+            grid-template-columns: repeat(var(--columnLength), 2rem);
+            gap: .5rem;
             place-items: center;
+
+            @media only screen and (max-width: $MD){
+                --columnLength: 1;
+            }
             
             .teamScore{
                 color: $GREEN-400;
                 font-weight: 700;
                 letter-spacing: 1px;
     
-                &:is(.finishOrScheduled){
+                &.finishOrScheduled{
                     color: $SECONDARY-200;
                 }
             }
@@ -59,6 +71,14 @@
         }
     }
 
+    .liveBlink{
+        position: absolute;
+        top: 0;
+        right: -.25rem;
+        animation: blink 1s infinite ease-in;
+        color: $GREEN-400;
+    }
+
     .stage{
         display: flex;
         align-items: center;
@@ -67,9 +87,23 @@
         word-break: break-word;
         letter-spacing: .5px;
         text-align: center;
+        
+        .time{
+            position: relative;
+        }
 
-        &:is(.finishOrScheduled){
+        &.finishOrScheduled{
             color: $SECONDARY-200;
         }
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }

@@ -5,41 +5,40 @@ import Loading from './loading'
 import Timezone from '@/components/Events/Timezone'
 import ClientOnly from '../../ClientOnly'
 import TournamentHeader from '@/components/Events/Header'
-import { useGetEvents } from '@/services/sports'
+import dayjs from 'dayjs'
+import _ from 'lodash'
+import { useGetEventsV2 } from '@/services/sportsv2'
 import {
   Accordion,
   AccordionContent,
   AccordionHeader,
   AccordionItem,
 } from '@/components/AccordionMenu'
-import { TEMPLATE_SPORTS } from '@/utils/helpers/TournamentsTemplate'
 import styles from './Content.module.scss'
 
-function Content({ id = 1 }: { id: number }) {
+function Content({ category = 'football' }: { category: string }) {
+  const today = dayjs().unix() // temporary value
   const [timezone, setTimezone] = useState<'all' | 'live'>('all')
-  const { data } = useGetEvents(id, timezone)
-
-  const popularTournaments = data?.filter((t) =>
-    TEMPLATE_SPORTS.includes(t.TEMPLATE_ID)
-  )
+  const { data: Events = [] } = useGetEventsV2(category, timezone, today)
+  const groupedEvents = _.groupBy(Events, 'tournament.id')
 
   return (
     <ClientOnly Loading={Loading}>
       <Timezone timezone={timezone} setTimezone={setTimezone} />
-      {data?.map((tournament, index) => (
-        <Accordion key={index} className={styles.tournamentEvents}>
+      {Object.keys(groupedEvents).map((key) => (
+        <Accordion key={key} className={styles.tournamentEvents}>
           <AccordionItem>
             <AccordionHeader className={styles.accordionHeader}>
               <TournamentHeader
-                tournamentImage={tournament.TOURNAMENT_IMAGE}
-                tournamentName={tournament.NAME}
+                tournamentImage={groupedEvents[key][0].tournament.category.alpha2?.toLowerCase()}
+                tournamentName={groupedEvents[key][0].tournament.name}
               />
             </AccordionHeader>
             <AccordionContent>
-              {tournament.EVENTS.map((match, index) => (
+              {groupedEvents[key].map((match) => (
                 <EventRow
-                  key={index}
-                  href={`/event/${match.EVENT_ID}/summary/event-summary`}
+                  key={match.id}
+                  href={`/event/${match.id}/summary/event-summary`}
                   event={match}
                 />
               ))}

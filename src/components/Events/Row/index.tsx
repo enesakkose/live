@@ -1,47 +1,55 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
 import Link from 'next/link'
-import dayjs from 'dayjs'
 import { getFilterEventScores } from '@/utils/helpers'
 import { getStageType } from '@/utils/helpers/getStageType'
 import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
+import { getWindowSize } from '@/utils/helpers/getWindowSize'
 import { getFormatTime } from '@/utils/helpers/getFormatTime'
-import { TEAM_AWAY_PART_SCORE_KEYS, TEAM_HOME_PART_SCORE_KEYS } from '@/utils/helpers/TournamentsTemplate'
 import { Url } from 'next/dist/shared/lib/router/router'
-import type { Event } from '@/types'
+import { Event } from '@/types/Events'
 import styles from './Row.module.scss'
 
 type TeamRowPropsType = {
   score: string | number
-  teamImage: string[] | null
+  teamImage: string[] | null | string | number
   teamName: string
-  stage: string
-  stageType: string
+  status: string
   winner: boolean
+  statusType: string
   partScores: string[]
   service: boolean
+}
+
+type EventStagePropsType = {
+  status: string
+  statusType: string
+  startTime: number
+  categoryFootball: boolean
+  currentPeriodStartTime: number
 }
 
 function TeamRow({
   score,
   teamImage,
   teamName,
-  stage,
-  stageType,
+  status,
   winner,
   partScores,
+  statusType,
   service,
 }: TeamRowPropsType) {
-  const finishOrScheduled = ['SCHEDULED', 'FINISHED'].includes(stageType)
   const notPlayedDue = [
-    'SCHEDULED',
+    'Not started',
     'POSTPONED',
-    'WALKOVER',
-    'RETIRED',
-    'CANCELED',
+    'Walkover',
+    'Retired',
+    'Canceled',
     'DELAYED',
-  ].includes(stage)
+  ].includes(status)
+  const inprogress = statusType === 'inprogress'
+  const SM = getWindowSize('SM')
 
   const EmptyPlayerImg = () => <Icon icon='user' size={20} />
 
@@ -49,7 +57,13 @@ function TeamRow({
     return (
       <>
         {teamImage !== null ? (
-          <img loading='lazy' src={teamImage[0]} width={20} height={20} alt='logo' />
+          <img
+            loading='lazy'
+            src={`https://api.sofascore.com/api/v1/team/${teamImage}/image/small`}
+            width={20}
+            height={20}
+            alt='logo'
+          />
         ) : (
           <EmptyPlayerImg />
         )}
@@ -71,12 +85,7 @@ function TeamRow({
 
   const TeamScore = () => {
     return (
-      <span
-        className={clsx(
-          styles.teamScore,
-          finishOrScheduled ? styles.finishOrScheduled : ''
-        )}
-      >
+      <span className={clsx(styles.teamScore, !inprogress ? styles.finishOrScheduled : '')}>
         {notPlayedDue ? '-' : score}
       </span>
     )
@@ -84,9 +93,7 @@ function TeamRow({
 
   const TeamName = () => {
     return (
-      <span className={clsx(styles.teamName, winner ? styles.winnerTeam : '')}>
-        {teamName}
-      </span>
+      <span className={clsx(styles.teamName, winner ? styles.winnerTeam : '')}>{teamName}</span>
     )
   }
 
@@ -94,87 +101,77 @@ function TeamRow({
     <div className={styles.teamRow}>
       <PlayerImg />
       <TeamName />
-      {service && <Icon icon='tennis' size={20} />}
+      {service && inprogress && <Icon icon='tennis' size={20} />}
       <div className={styles.scoreContainer}>
         <TeamScore />
-        {partScores.length > 0 && <PartScores />}
+        {partScores.length > 0 && !SM && <PartScores />}
       </div>
     </div>
   )
 }
 
-function EventStage({
-  stage,
-  startTime,
-  stageType,
-  gameTime
-}: {
-  stage: string
-  startTime: number
-  stageType: string
-  gameTime: string | null
-}) {
-  const finishOrScheduled =
-    stageType === 'SCHEDULED' || stageType === 'FINISHED'
-
-  const t = useGetEventTime(1680624001)
-  // compore startTime with now date
-  // time dont reset at 60:00
-  // show service ball for tennis category
-  //think first half and second half and arrange this component
-  return (
-    <span
-      className={clsx(
-        styles.stage,
-        finishOrScheduled ? styles.finishOrScheduled : ''
-      )}
-    >
-      {stage === 'SCHEDULED'
-        ? getFormatTime(startTime)
-        : /*getStageType(stage)*/ (stageType === 'LIVE' &&
-            stage === 'FIRST_HALF') ||
-          stage === 'SECOND_HALF'
-        ? t
-        : getStageType(stage)}
-    </span>
+function LiveBlink (){
+  return(
+    <span className={styles.liveBlink}>'</span>
   )
 }
 
-//${gameTime} for basket period time and calendar component perf load like memoziaton usememo for time
+function EventStage({
+  status,
+  statusType,
+  startTime,
+  categoryFootball,
+  currentPeriodStartTime
+}: EventStagePropsType) {
+  const time = useGetEventTime(currentPeriodStartTime, status)
+  const inprogress = statusType === 'inprogress'
+
+  return (
+    <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '')}>
+      {status === 'Not started'
+        ? getFormatTime(startTime)
+        : categoryFootball && inprogress && status !== 'Halftime'
+          ? <span className={styles.time}>{time} <LiveBlink/></span>
+          : <span className={styles.status}>{getStageType(status)}</span>} 
+    </div>
+  )
+}
 
 function Row({ event, href }: { event: Event, href: Url }) {
-  const HOME_PART_SCORES = getFilterEventScores(event, TEAM_HOME_PART_SCORE_KEYS)
-  const AWAY_PART_SCORES = getFilterEventScores(event, TEAM_AWAY_PART_SCORE_KEYS)
+  const HOME_PART_SCORES = getFilterEventScores(event.homeScore)
+  const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
 
   return (
     <Link href={href} className={styles.eventRow}>
       <div className={styles.teams}>
         <TeamRow
-          score={event.HOME_SCORE_CURRENT}
+          score={event.homeScore.current}
           partScores={HOME_PART_SCORES}
-          teamImage={event?.HOME_IMAGES}
-          teamName={event.HOME_NAME}
-          stage={event.STAGE}
-          stageType={event.STAGE_TYPE}
-          winner={event.WINNER === 1}
-          service={event.SERVICE === 1}
+          teamImage={event?.homeTeam.id}
+          teamName={event.homeTeam.name}
+          status={event.status.description}
+          statusType={event.status.type}
+          winner={event.winnerCode === 1}
+          service={event.firstToServe === 1}
         />
         <TeamRow
-          score={event.AWAY_SCORE_CURRENT}
+          score={event.awayScore.current}
           partScores={AWAY_PART_SCORES}
-          teamImage={event?.AWAY_IMAGES}
-          teamName={event.AWAY_NAME}
-          stage={event.STAGE}
-          stageType={event.STAGE_TYPE}
-          winner={event.WINNER === 2}
-          service={event.SERVICE === 2}
+          teamImage={event?.awayTeam.id}
+          teamName={event.awayTeam.name}
+          status={event.status.description}
+          statusType={event.status.type}
+          winner={event.winnerCode === 2}
+          service={event.firstToServe === 2}
         />
       </div>
       <EventStage
-        stage={event.STAGE}
-        stageType={event.STAGE_TYPE}
-        startTime={event.START_TIME}
-        gameTime={event.GAME_TIME}
+        status={event.status.description}
+        statusType={event.status.type}
+        startTime={event.startTimestamp}
+        currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
+        categoryFootball={event.tournament.category.sport.id === 1}
+        key={event.id}
       />
     </Link>
   )

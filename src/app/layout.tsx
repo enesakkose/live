@@ -1,13 +1,7 @@
 import type { PropsWithChildren } from 'react'
-import { Inter } from 'next/font/google'
 import { barlow } from '@/utils/fonts/barlowFont'
 import ReactQueryProvider from '@/app/ReactQueryProvider'
 import '@/styles/globals.scss'
-
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-})
 
 export const metadata = {
   title: 'Score',
@@ -17,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en' className={barlow.className}>
-      <body >
+      <body>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

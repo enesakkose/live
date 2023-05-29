@@ -1,5 +1,4 @@
 import React from 'react'
-import RoundedImg from '@/components/RoundedImg'
 import styles from './Header.module.scss'
 
 type PropsType = {
@@ -8,18 +7,16 @@ type PropsType = {
 }
 
 function Header({ tournamentName, tournamentImage }: PropsType) {
-
   return (
     <div className={styles.eventsHeader}>
       {tournamentImage && (
-        <RoundedImg width={25} height={25}>
           <img
-            src={tournamentImage}
+            src={`https://www.sofascore.com/static/images/flags/${tournamentImage}.png`}
             width={20}
             height={20}
-            alt={''}
+            alt={tournamentImage}
+            loading='lazy'
           />
-        </RoundedImg>
       )}
       <h4>{tournamentName}</h4>
     </div>

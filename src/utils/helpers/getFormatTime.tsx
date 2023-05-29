@@ -6,4 +6,8 @@ export const getFormatTime = (time: number) => {
 
 export const getDate = (time: number) => {
   return dayjs.unix(time).format('DD.MM.YYYY')
-} 
+}
+
+export const getDateV2 = (time: number) => {
+  return dayjs.unix(time).format('YYYY-MM-DD')
+}

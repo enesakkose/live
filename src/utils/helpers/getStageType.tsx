@@ -1,16 +1,16 @@
 const setTypes = [
-  { value: 'FIRST_SET', label: 'SET 1' },
-  { value: 'CANCELED', label: 'Canceled' },
-  { value: 'WALKOVER', label: 'WO' },
-  { value: 'RETIRED', label: 'Retired' },
-  { value: 'SECOND_SET', label: `SET 2` },
-  { value: 'THIRD_SET', label: 'SET 3' },
-  { value: 'FOURTH_SET', label: 'SET 4' },
-  { value: 'FIFTH_SET', label: 'SET 5' },
+  { value: '1st set', label: 'SET 1' },
+  { value: 'Canceled', label: 'Canceled' },
+  { value: 'Walkover', label: 'WO' },
+  { value: 'Retired', label: 'Retired' },
+  { value: '2nd set', label: `SET 2` },
+  { value: '3rd set', label: 'SET 3' },
+  { value: '4th set', label: 'SET 4' },
+  { value: '5th set', label: 'SET 5' },
   { value: 'POSTPONED', label: 'Postponed' },
   { value: 'DELAYED', label: 'Delayed' },
   { value: 'AWARDED', label: 'Awarded' },
-  { value: 'INTERRUPTED', label: 'Interrupted' },
+  { value: 'Interrupted', label: 'Interrupted' },
   { value: 'FIRST_SET_TIEBREAK', label: `SET 1 TIEBREAK` },
   { value: 'SECOND_SET_TIEBREAK', label: 'SET 2 TIEBREAK' },
   { value: 'THIRD_SET_TIEBREAK', label: 'SET 3 TIEBREAK' },
@@ -22,16 +22,18 @@ const setTypes = [
   { value: 'PENALTIES', label: 'Penalties' },
   { value: 'LIVE', label: 'LIVE' },
   { value: 'PENDING', label: 'PENDING' },
+  { value: 'Suspended', label: 'Suspended' }
 ]
 
 const periodTypes = [
-  { value: 'FINISHED', label: 'Finished' },
-  { value: 'HALF_TIME', label: 'HT' },
-  { value: 'FIRST_QUARTER', label: 'Q1' },
-  { value: 'SECOND_QUARTER', label: 'Q2' },
-  { value: 'THIRD_QUARTER', label: 'Q3' },
-  { value: 'FOURTH_QUARTER', label: 'Q4' },
-  { value: 'OVERTIME', label: 'OT' },
+  { value: 'Finished', label: 'Finished' },
+  { value: 'Ended', label: 'Finished' },
+  { value: 'Halftime', label: 'HT' },
+  { value: '1st quarter', label: 'Q1' },
+  { value: '2nd quarter', label: 'Q2' },
+  { value: '3rd quarter', label: 'Q3' },
+  { value: '4th quarter', label: 'Q4' },
+  { value: 'Overtime', label: 'OT' },
 ]
 
 export const getStageType = (stageType: string) => {

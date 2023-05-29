@@ -7,20 +7,9 @@ type CategoryRouteType = {
   }
 }
 
-type SportNameType = {
-  [key: string]: number
-}
-
-const SportName: SportNameType = {
-  football: 1,
-  tennis: 2,
-  basketball: 3,
-}
-
 function Page({ params }: CategoryRouteType) {
-  const id = SportName[params.category] ?? 1
 
-  return <TournamentContent id={id} />
+  return <TournamentContent category={params.category} />
 }
 
 export default Page

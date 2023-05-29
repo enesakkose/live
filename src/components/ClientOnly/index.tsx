@@ -6,7 +6,7 @@ function ClientOnly({
   ...delegated
 }: {
   children: React.ReactNode
-  Loading: React.FC
+  Loading?: React.FC
 }) {
   const [hasMounted, setHasMounted] = React.useState(false)
   React.useEffect(() => {
@@ -14,7 +14,7 @@ function ClientOnly({
   }, [])
 
   if (!hasMounted) {
-    return <Loading />
+    return Loading ? <Loading /> : null
   }
 
   return <div {...delegated}>{children}</div>

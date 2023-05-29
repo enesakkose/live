@@ -1,26 +1,31 @@
 import dayjs from 'dayjs'
-import { useEffect, useState } from 'react'
-import duration from 'dayjs/plugin/duration'
-dayjs.extend(duration)
+import { useEffect, useState, useMemo } from 'react'
 
-export const useGetEventTime = (startTime: number) => {
-  const [minute, setMinute] = useState<string>()
+export const useGetEventTime = (startTime: number, halftime: string) => {
+  const [minute, setMinute] = useState<number>()
+
+  const getElapsedMinutes = useMemo(() => {
+    return () => {
+      const currentTimestamp = Math.floor(Date.now() / 1000)
+
+      let startTimestamp
+      if (halftime === '1st half') {
+        startTimestamp = 1
+      } else {
+        startTimestamp = 46 * 60
+      }
+
+      const elapsedTime = currentTimestamp - startTime
+      const elapsedMinutes = Math.floor((startTimestamp + elapsedTime) / 60)
+
+      return elapsedMinutes
+    }
+  }, [startTime, halftime])
 
   useEffect(() => {
     const t = setInterval(() => {
-      const a = dayjs.unix(startTime)
-      const b = dayjs().unix()
-      const c = dayjs.unix(b)
-      const duration = dayjs.duration(c.diff(a))
-      let minutes = duration.minutes()
-      //let seconds = duration.seconds()
-      if (minutes === 60) {
-        //seconds = 0
-        minutes += 1
-      }
-      const formattedMinutes = minutes < 10 ? `0${minutes + 1}` : `${minutes + 1}`
-      //const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`*/
-      setMinute(formattedMinutes)
+      const elapsedMinutes = getElapsedMinutes()
+      setMinute(elapsedMinutes)
     }, 1000)
 
     return () => clearInterval(t)
@@ -28,5 +33,3 @@ export const useGetEventTime = (startTime: number) => {
 
   return minute
 }
-
-//usememo ile düzelt

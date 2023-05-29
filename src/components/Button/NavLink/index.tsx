@@ -8,6 +8,7 @@ type NavLinkProps = {
   variant?: 'primary' | 'secondary' | 'tertiary'
   size?: 'xsmall' | 'small' | 'medium' | 'large'
   active: boolean
+  title?: string 
 } & LinkProps
 
 

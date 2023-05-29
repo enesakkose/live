@@ -41,13 +41,13 @@ export const TEMPLATE_SPORTS = [
 ]
 
 
-export const TEAM_HOME_PART_SCORE_KEYS = [
-  "HOME_SCORE_PART_1",
-  "HOME_SCORE_PART_2",
-  "HOME_SCORE_PART_3",
-  "HOME_SCORE_PART_4",
-  "HOME_SCORE_PART_5",
-  "HOME_SCORE_PART_GAME"
+export const SCORE_KEYS = [
+  "period1",
+  "period2",
+  "period3",
+  "period4",
+  "period5",
+  "overtime"
 ]
 
 export const TEAM_AWAY_PART_SCORE_KEYS = [

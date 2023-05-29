@@ -7,12 +7,12 @@ import type { EventLineups } from '@/types/EventLineups.jsx'
 import { env } from '../../env.mjs'
 import { useQuery } from '@tanstack/react-query'
 
-const BASE_URL = 'https://flashlive-sports.p.rapidapi.com'
+const BASE_URL = 'https://flashscore.p.rapidapi.com'
 const OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': env.NEXT_PUBLIC_API_KEY,
-    'X-RapidAPI-Host': 'flashlive-sports.p.rapidapi.com',
+    'X-RapidAPI-Host': 'flashscore.p.rapidapi.com',
   },
 }
 //flashlive-sports.p.rapidapi.com
@@ -26,6 +26,32 @@ const OPTIONS = {
   const data: Category = await response.json()
   return data.DATA
 }*/
+
+
+const a = async() => {
+  const resp = await fetch("https://api.sofascore.com/api/v1/sport/basketball/scheduled-events/2023-05-17", {
+    "headers": {
+      "accept": "*/*",
+      "accept-language": "tr,en;q=0.9,en-GB;q=0.8,en-US;q=0.7",
+      "cache-control": "max-age=0",
+      "if-none-match": "W/\"563dba55bd\"",
+      "sec-ch-ua": "\"Not_A Brand\";v=\"99\", \"Microsoft Edge\";v=\"109\", \"Chromium\";v=\"109\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-site"
+    },
+    "referrer": "https://www.sofascore.com/",
+    "referrerPolicy": "strict-origin-when-cross-origin",
+    "body": null,
+    "method": "GET",
+    "mode": "cors",
+    "credentials": "omit"
+  })
+
+  return await resp.json()
+}
 
 const getEvent = async (id: string) => {
   const resp = await fetch(
@@ -131,3 +157,8 @@ export const useGetEventStats = (id: string) => {
 export const useGetEventLineups = (id: string) => {
   return useQuery(['eventLineups', id], () => getEventLineups(id))
 }
+
+export const useA = () => {
+  return useQuery(['a'], () => a())
+}
+

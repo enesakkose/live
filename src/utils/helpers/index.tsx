@@ -1,9 +1,19 @@
-import { type Event } from "@/types"
+import { type Score } from "@/types/Events"
 
-export const getFilterEventScores = (event: Event, scoreKeys: string[]) => {
+export const getFilterEventScores = (event: Score) => {
+  const SCORE_KEYS = [
+    "period1",
+    "period2",
+    "period3",
+    "period4",
+    "period5",
+    "overtime",
+    "point"
+  ]
+
   return Object.entries(event)
-  .filter(([key]) => scoreKeys.includes(key))
-  .map(([key, value]) => value)
+    .filter(([key]) => SCORE_KEYS.includes(key))
+    .map(([key, value]) => value)
 }
 
 export const convertPercentage = (val1: string, val2: string) => {
@@ -16,8 +26,4 @@ export const convertPercentage = (val1: string, val2: string) => {
 
 export const valueWithoutPercentage = (val: string) => {
   return val.split('%')[0].trim()
-}
-
-export const chunkPlayerList = () => {
-
 }
