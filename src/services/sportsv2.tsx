@@ -76,12 +76,17 @@ const getLiveEvents = async (category: string) => {
 
 export const a = async() => {
   const res = await (fetch('/api/hello'))
-
-  return await res.json()
+  const data: Events = await res.json()
+  return data.events
 }
 
 export const useGetEventsV2 = (category: string, timezone: 'live' | 'all', date: number) => {
   return useQuery(['eventss', category, timezone], () =>
     timezone === 'live' ? getLiveEvents(category) : getEvents(category, date),  { /*refetchInterval: 30000*/ }
   )
+}
+
+
+export const useGetA = () => {
+  return useQuery(['assa'], () => a())
 }
