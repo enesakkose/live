@@ -1,5 +1,5 @@
 "use client"
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -60,7 +60,7 @@ function TeamRow({
         {teamImage !== null ? (
           <img
             loading='lazy'
-            src={`https://api.sofascore.com/api/v1/team/${teamImage}/image/small`}
+            src={`https://api.sofascore.app/api/v1/team/${teamImage}/image/small`}
             width={20}
             height={20}
             alt='logo'
