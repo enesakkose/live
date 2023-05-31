@@ -42,9 +42,7 @@ export const AccordionHeader = ({
 
 export const AccordionItem = ({ children, className }: PropsType) => {
   const [open, setOpen] = useState(true)
-  const handleOpen = () => {
-    setOpen((prev) => !prev)
-  }
+  const handleOpen = () => { setOpen((prev) => !prev) }
 
   return (
     <div className={clsx(styles.accordionItem, className)}>

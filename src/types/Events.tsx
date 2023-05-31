@@ -26,6 +26,7 @@ export interface Event {
   previousLegEventId?:       number;
   firstToServe?:             number;
   groundType?:               string;
+  lastPeriod:               keyof Score;
 }
 
 export interface Score {

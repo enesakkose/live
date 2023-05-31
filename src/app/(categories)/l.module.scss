@@ -5,7 +5,8 @@
         
         .sportTimezone{
             height: 100%;
-            overflow: auto;
+            overflow: auto; // For firefox
+            overflow: overlay;
             flex: 1;
             background-color: $WHITE-3;
             padding-inline: $P-3;
@@ -19,7 +20,7 @@
             }
 
             &::-webkit-scrollbar {
-                width: .5rem;
+                width: .25rem;
             }
 
             /* Track */

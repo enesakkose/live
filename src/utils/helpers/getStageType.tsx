@@ -7,7 +7,7 @@ const setTypes = [
   { value: '3rd set', label: 'SET 3' },
   { value: '4th set', label: 'SET 4' },
   { value: '5th set', label: 'SET 5' },
-  { value: 'POSTPONED', label: 'Postponed' },
+  { value: 'Postponed', label: 'Postponed' },
   { value: 'DELAYED', label: 'Delayed' },
   { value: 'AWARDED', label: 'Awarded' },
   { value: 'Interrupted', label: 'Interrupted' },

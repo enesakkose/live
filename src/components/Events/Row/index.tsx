@@ -14,6 +14,8 @@ import styles from './Row.module.scss'
 
 type TeamRowPropsType = {
   score: string | number
+  tennisPoint?: string
+  currentTennisPeriod?: number | string
   teamImage: string[] | null | string | number
   teamName: string
   status: string
@@ -33,6 +35,8 @@ type EventStagePropsType = {
 
 function TeamRow({
   score,
+  tennisPoint,
+  currentTennisPeriod,
   teamImage,
   teamName,
   status,
@@ -43,7 +47,7 @@ function TeamRow({
 }: TeamRowPropsType) {
   const notPlayedDue = [
     'Not started',
-    'POSTPONED',
+    'Postponed',
     'Walkover',
     'Retired',
     'Canceled',
@@ -61,8 +65,8 @@ function TeamRow({
           <img
             loading='lazy'
             src={`https://api.sofascore.app/api/v1/team/${teamImage}/image/small`}
-            width={20}
-            height={20}
+            width={16}
+            height={16}
             alt='logo'
           />
         ) : (
@@ -102,20 +106,23 @@ function TeamRow({
     <div className={styles.teamRow}>
       <PlayerImg />
       <TeamName />
-      {service && inprogress && <Icon icon='tennis' size={20} />}
+      {service && inprogress && <Icon icon='tennis' size={19} />}
+      {tennisPoint && inprogress && <span className={styles.tennisPoint}>{tennisPoint}</span>}
       <div className={styles.scoreContainer}>
         <TeamScore />
+        {currentTennisPeriod && inprogress && SM && currentTennisPeriod}
         {partScores.length > 0 && !SM && <PartScores />}
       </div>
     </div>
   )
 }
 
-function LiveBlink (){
+function LiveBlink(){
   return(
     <span className={styles.liveBlink}>&apos;</span>
   )
 }
+
 
 function EventStage({
   status,
@@ -141,12 +148,15 @@ function EventStage({
 function Row({ event, href }: { event: Event, href: Url }) {
   const HOME_PART_SCORES = getFilterEventScores(event.homeScore)
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
+  const SM = useGetWindowSize('SM')
 
   return (
     <Link href={href} className={styles.eventRow}>
       <div className={styles.teams}>
         <TeamRow
           score={event.homeScore.current}
+          tennisPoint={event.homeScore.point}
+          currentTennisPeriod={event.homeScore[event.lastPeriod]}
           partScores={HOME_PART_SCORES}
           teamImage={event?.homeTeam.id}
           teamName={event.homeTeam.name}
@@ -157,6 +167,8 @@ function Row({ event, href }: { event: Event, href: Url }) {
         />
         <TeamRow
           score={event.awayScore.current}
+          tennisPoint={event.awayScore.point}
+          currentTennisPeriod={event.awayScore[event.lastPeriod]}
           partScores={AWAY_PART_SCORES}
           teamImage={event?.awayTeam.id}
           teamName={event.awayTeam.name}
@@ -166,14 +178,14 @@ function Row({ event, href }: { event: Event, href: Url }) {
           service={event.firstToServe === 2}
         />
       </div>
-      <EventStage
+      { <EventStage
         status={event.status.description}
         statusType={event.status.type}
         startTime={event.startTimestamp}
         currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
         categoryFootball={event.tournament.category.sport.id === 1}
         key={event.id}
-      />
+      />}
     </Link>
   )
 }

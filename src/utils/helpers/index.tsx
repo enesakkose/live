@@ -7,8 +7,7 @@ export const getFilterEventScores = (event: Score) => {
     "period3",
     "period4",
     "period5",
-    "overtime",
-    "point"
+    "overtime"
   ]
 
   return Object.entries(event)

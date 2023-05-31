@@ -3,7 +3,9 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const category = searchParams.get('category')
-    const response = await fetch(`https://api.sofascore.com/api/v1/sport/${category}/events/live`)
+    const response = await fetch(`https://api.sofascore.com/api/v1/sport/${category}/events/live`, {
+      cache: 'no-store',
+    })
     const data = await response.json()
 
     return new Response(JSON.stringify(data), {

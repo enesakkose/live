@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import styles from './Header.module.scss'
 
 type PropsType = {
@@ -10,15 +11,17 @@ function Header({ tournamentName, tournamentImage }: PropsType) {
   return (
     <div className={styles.eventsHeader}>
       {tournamentImage && (
-          <img
-            src={`https://www.sofascore.com/static/images/flags/${tournamentImage}.png`}
-            width={20}
-            height={20}
-            alt={tournamentImage}
-            loading='lazy'
-          />
+        <img
+          src={`https://www.sofascore.com/static/images/flags/${tournamentImage}.png`}
+          width={16}
+          height={16}
+          alt={tournamentImage}
+          loading='lazy'
+        />
       )}
-      <h4>{tournamentName}</h4>
+      <Link href='/' className={styles.tournamentLink}>
+        {tournamentName}
+      </Link>
     </div>
   )
 }
