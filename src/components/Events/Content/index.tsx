@@ -7,7 +7,7 @@ import ClientOnly from '../../ClientOnly'
 import TournamentHeader from '@/components/Events/Header'
 import dayjs from 'dayjs'
 import _ from 'lodash'
-import { useGetEventsV2, useGetA, useGetEvents } from '@/services/sportsv2'
+import { useGetEvents } from '@/services/sportsv2'
 import {
   Accordion,
   AccordionContent,
@@ -19,7 +19,6 @@ import styles from './Content.module.scss'
 function Content({ category = 'football' }: { category: string }) {
   const today = dayjs().unix() // temporary value
   const [timezone, setTimezone] = useState<'all' | 'live'>('all')
-  //const { data: Events = [] } = useGetEventsV2(category, timezone, today)
   const { data: Events = []} = useGetEvents(category, timezone, today)
   const groupedEvents = _.groupBy(Events, 'tournament.id')
 
