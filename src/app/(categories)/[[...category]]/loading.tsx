@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import ContentLoading from '@/components/Events/Content/loading'
 

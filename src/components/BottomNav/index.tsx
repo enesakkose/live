@@ -3,7 +3,6 @@ import React from 'react'
 import MouseFollower from '../MouseFollower'
 import NavLink from '../Button/NavLink'
 import Icon from '../Icon'
-import Button from '../Button'
 import ClientOnly from '../ClientOnly'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { useSelectedLayoutSegment } from 'next/navigation'
@@ -16,8 +15,8 @@ function BottomNav() {
     { href: '/', active: null, icon: 'soccer', text: 'FOOTBALL' },
     { href: '/basketball', active: 'basketball', icon: 'basket', text: 'BASKETBALL' },
     { href: '/tennis', active: 'tennis', icon: 'tennis', text: 'TENNIS' },
+    { href: '/tennis', active: 'favourites', icon: 'star', text: 'FAVORITES' },
   ]
-
 
   return (
     <ClientOnly>
@@ -26,7 +25,7 @@ function BottomNav() {
         <NavLink
           key={link.text}
           size='xsmall'
-          variant='secondary'
+          variant={SM ? 'tertiary' : 'secondary'}
           prefetch={false}
           active={segment === link.active}
           href={link.href}
@@ -42,4 +41,3 @@ function BottomNav() {
 }
 
 export default BottomNav
-//all nav process will be managed in here

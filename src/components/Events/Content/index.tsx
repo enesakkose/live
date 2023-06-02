@@ -1,9 +1,8 @@
 'use client'
 import React, { useState } from 'react'
 import EventRow from '../Row'
-import Loading from './loading'
 import Timezone from '@/components/Events/Timezone'
-import ClientOnly from '../../ClientOnly'
+import Loading from './loading'
 import TournamentHeader from '@/components/Events/Header'
 import dayjs from 'dayjs'
 import _ from 'lodash'
@@ -19,11 +18,12 @@ import styles from './Content.module.scss'
 function Content({ category = 'football' }: { category: string }) {
   const today = dayjs().unix() // temporary value
   const [timezone, setTimezone] = useState<'all' | 'live'>('all')
-  const { data: Events = []} = useGetEvents(category, timezone, today)
+  const { data: Events = [], isLoading, isFetching } = useGetEvents(category, timezone, today)
   const groupedEvents = _.groupBy(Events, 'tournament.id')
+  if(isLoading || isFetching) return <Loading/>
 
   return (
-    <ClientOnly Loading={Loading}>
+    <>
       <Timezone timezone={timezone} setTimezone={setTimezone} />
       {Object.keys(groupedEvents).map((key) => (
         <Accordion key={key} className={styles.tournamentEvents}>
@@ -46,7 +46,7 @@ function Content({ category = 'football' }: { category: string }) {
           </AccordionItem>
         </Accordion>
       ))}
-    </ClientOnly>
+    </>
   )
 }
 

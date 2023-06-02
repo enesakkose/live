@@ -169,10 +169,7 @@ export interface UniqueTournament {
   displayInverseHomeAwayTeams: boolean;
   primaryColorHex?:            string;
   secondaryColorHex?:          string;
-  country?:                    UniqueTournamentCountry;
+  country?:                    string;
   hasBoxScore?:                boolean;
   groundType?:                 string;
-}
-
-export interface UniqueTournamentCountry {
 }

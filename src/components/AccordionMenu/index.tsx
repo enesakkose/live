@@ -34,6 +34,7 @@ export const AccordionHeader = ({
       <Button
         className={styles.chevronBtn}
         icon='chevron'
+        size={20}
         onClick={handleOpen}
       />
     </div>

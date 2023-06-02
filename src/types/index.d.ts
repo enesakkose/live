@@ -203,4 +203,6 @@ export type IconNameType =
   | 'search'
   | 'soccer'
   | 'tennis'
+  | 'calendar4-week'
+  | 'favourites'
 

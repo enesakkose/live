@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { useEffect, useState, useMemo } from 'react'
 
-export const useGetEventTime = (startTime: number, halftime: string) => {
+export const useGetEventTime = (startTime: number, status: string) => {
   const [minute, setMinute] = useState<number>()
 
   const getElapsedMinutes = useMemo(() => {
@@ -9,18 +9,23 @@ export const useGetEventTime = (startTime: number, halftime: string) => {
       const currentTimestamp = Math.floor(Date.now() / 1000)
 
       let startTimestamp
-      if (halftime === '1st half') {
+      if (status === '1st half') {
         startTimestamp = 1
-      } else {
+      } else if(status === '1st extra') {
+        startTimestamp = 91 * 60
+      } else if(status === '2nd extra') {
+        startTimestamp = 106 * 60
+      } else{
         startTimestamp = 46 * 60
       }
+      
 
       const elapsedTime = currentTimestamp - startTime
       const elapsedMinutes = Math.floor((startTimestamp + elapsedTime) / 60)
 
       return elapsedMinutes
     }
-  }, [startTime, halftime])
+  }, [status])
 
   useEffect(() => {
     const t = setInterval(() => {

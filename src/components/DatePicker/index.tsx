@@ -12,10 +12,8 @@ function DatePicker() {
   
   return (
     <div ref={datePickerRef}  className={styles.datePicker}>
-      <Button icon='left-chevron' size={20} />
-      <Button onClick={handleOpen}>
-        30/3  Thursday
-      </Button>
+      
+      <Button icon='calendar4-week' size={20} />
       {open && <div className={styles.dates}>
       <Button   className={styles.date}>
         30/3 <br/> Thr
@@ -51,7 +49,6 @@ function DatePicker() {
         30/3 <br/> Thr
       </Button>
       </div>}
-      <Button icon='right-chevron' size={20} />
     </div>
   )
 }

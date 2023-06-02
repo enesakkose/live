@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import Header from '@/components/Header'
 import MainContainer from '@/containers/MainContainer'
 import BottomNav from '@/components/BottomNav'
-import styles from './l.module.scss'
+import styles from './layout.module.scss'
 
 function CategoriesLayout({ children }: { children: ReactNode }) {
   return (

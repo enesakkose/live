@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React from 'react'
 import Icon from '@/components/Icon'
 import clsx from 'clsx'
@@ -18,16 +18,14 @@ type TeamRowPropsType = {
   currentTennisPeriod?: number | string
   teamImage: string[] | null | string | number
   teamName: string
-  status: string
+  status: {code: number, description: string, type: string}
   winner: boolean
-  statusType: string
   partScores: string[]
   service: boolean
 }
 
 type EventStagePropsType = {
-  status: string
-  statusType: string
+  status: {code: number, description: string, type: string}
   startTime: number
   categoryFootball: boolean
   currentPeriodStartTime: number
@@ -42,7 +40,6 @@ function TeamRow({
   status,
   winner,
   partScores,
-  statusType,
   service,
 }: TeamRowPropsType) {
   const notPlayedDue = [
@@ -52,8 +49,8 @@ function TeamRow({
     'Retired',
     'Canceled',
     'DELAYED',
-  ].includes(status)
-  const inprogress = statusType === 'inprogress'
+  ].includes(status.description)
+  const inprogress = status.type === 'inprogress'
   const SM = useGetWindowSize('SM')
 
   const EmptyPlayerImg = () => <Icon icon='user' size={20} />
@@ -110,48 +107,55 @@ function TeamRow({
       {tennisPoint && inprogress && <span className={styles.tennisPoint}>{tennisPoint}</span>}
       <div className={styles.scoreContainer}>
         <TeamScore />
-        {currentTennisPeriod && inprogress && SM && currentTennisPeriod}
+        {tennisPoint && currentTennisPeriod && inprogress && SM && currentTennisPeriod}
         {partScores.length > 0 && !SM && <PartScores />}
       </div>
     </div>
   )
 }
 
-function LiveBlink(){
-  return(
-    <span className={styles.liveBlink}>&apos;</span>
+function LiveBlink() {
+  return <span className={styles.liveBlink}>&apos;</span>
+}
+
+function CurrentEventTime({
+  currentPeriodStartTime,
+  status,
+}: Pick<EventStagePropsType, 'currentPeriodStartTime' | 'status'>) {
+  return (
+    <span className={styles.time}>
+      {useGetEventTime(currentPeriodStartTime, status.description)} 
+      <LiveBlink />
+    </span>
   )
 }
 
-
 function EventStage({
   status,
-  statusType,
   startTime,
   categoryFootball,
-  currentPeriodStartTime
+  currentPeriodStartTime,
 }: EventStagePropsType) {
-  const time = useGetEventTime(currentPeriodStartTime, status)
-  const inprogress = statusType === 'inprogress'
+  const inprogress = status.type === 'inprogress'
+  const playing = status.code === 7
 
   return (
     <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '')}>
-      {status === 'Not started'
+      {status.description === 'Not started' 
         ? getFormatTime(startTime)
-        : categoryFootball && inprogress && status !== 'Halftime'
-          ? <span className={styles.time}>{time} <LiveBlink/></span>
-          : <span className={styles.status}>{getStageType(status)}</span>} 
+        : categoryFootball && inprogress && !playing 
+          ? <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
+          : <span className={styles.status}>{getStageType(status.description)}</span>}
     </div>
   )
 }
 
-function Row({ event, href }: { event: Event, href: Url }) {
+function Row({ event, href }: { event: Event; href: Url }) {
   const HOME_PART_SCORES = getFilterEventScores(event.homeScore)
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
-  const SM = useGetWindowSize('SM')
 
   return (
-    <Link href={href} className={styles.eventRow}>
+    <Link href={href} prefetch={false} className={styles.eventRow}>
       <div className={styles.teams}>
         <TeamRow
           score={event.homeScore.current}
@@ -160,8 +164,7 @@ function Row({ event, href }: { event: Event, href: Url }) {
           partScores={HOME_PART_SCORES}
           teamImage={event?.homeTeam.id}
           teamName={event.homeTeam.name}
-          status={event.status.description}
-          statusType={event.status.type}
+          status={event.status}
           winner={event.winnerCode === 1}
           service={event.firstToServe === 1}
         />
@@ -172,20 +175,18 @@ function Row({ event, href }: { event: Event, href: Url }) {
           partScores={AWAY_PART_SCORES}
           teamImage={event?.awayTeam.id}
           teamName={event.awayTeam.name}
-          status={event.status.description}
-          statusType={event.status.type}
+          status={event.status}
           winner={event.winnerCode === 2}
           service={event.firstToServe === 2}
         />
       </div>
-      { <EventStage
-        status={event.status.description}
-        statusType={event.status.type}
+      <EventStage
+        status={event.status}
         startTime={event.startTimestamp}
         currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
         categoryFootball={event.tournament.category.sport.id === 1}
         key={event.id}
-      />}
+      />
     </Link>
   )
 }

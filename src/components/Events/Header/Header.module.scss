@@ -2,9 +2,12 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+    overflow: hidden;
 
     .tournamentLink{
         font-size: 13px;
         font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }

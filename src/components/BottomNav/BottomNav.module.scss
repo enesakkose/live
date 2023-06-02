@@ -1,5 +1,5 @@
 .bottomNav{
-    border-radius: 1rem;
+    border-radius: .5rem;
     padding: $P-3;
     position: fixed;
     bottom: 1rem;
@@ -11,4 +11,15 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+
+    @media only screen and (max-width: $SM){
+        bottom: .25rem;
+        left: .5rem;
+        right: .5rem;
+        padding: 0;
+        transform: unset;
+        gap: 0;
+        justify-content: space-around;
+        height: 3.5rem;
+    }
 }
