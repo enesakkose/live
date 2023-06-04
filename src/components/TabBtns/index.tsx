@@ -21,7 +21,6 @@ function TabBtns({ tabBtns }: { tabBtns: TabBtnsType }) {
           key={tab.tabName}
           href={tab.href}
           variant='secondary'
-          size='xsmall'
         >
           {tab.tabName}
         </NavLink>

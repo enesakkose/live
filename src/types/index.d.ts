@@ -205,4 +205,5 @@ export type IconNameType =
   | 'tennis'
   | 'calendar4-week'
   | 'favourites'
-
+  | 'bell'
+  | 'fillBell'

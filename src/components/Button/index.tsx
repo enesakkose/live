@@ -27,7 +27,7 @@ function Button({
     return (
       <button
         type='button'
-        className={clsx(styles.button, styles[variant], styles[fontSize], className)}
+        className={clsx(styles.button, styles.icon, styles[fontSize], className)}
         {...props}
       >
         <Icon icon={icon} size={size} />

@@ -4,8 +4,12 @@
     align-items: center;
     justify-content: space-between;
     padding: $P-2 $P-3;
-    border-radius: 1.25rem;
+    border-radius: .5rem;
     color: $SECONDARY-500;
     font-weight: 500;
-    cursor: default;    
+    cursor: default;
+
+    @media only screen and (max-width: $SM){
+        width: 13rem;
+    }
 }

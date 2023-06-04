@@ -2,7 +2,7 @@ import React from 'react'
 import Icon from '@/components/Icon'
 import MouseFollower from '@/components/MouseFollower'
 import Link from 'next/link'
-import styles from '@/components/Header/Search/Search.module.scss'
+import styles from './Search.module.scss'
 
 function Search() {
   return (

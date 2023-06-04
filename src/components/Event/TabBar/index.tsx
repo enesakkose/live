@@ -49,7 +49,6 @@ function TabBar({ id }: { id: string }) {
       {eventTabs.map((tab) => (
         <NavLink
           key={tab.tabName}
-          size='small'
           href={tab.href}
           active={segment === tab.segment}
         >

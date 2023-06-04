@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '@/components/Button'
-import NavLink from '@/components/Button/NavLink'
 import DatePicker from '@/components/DatePicker'
 import styles from './Timezone.module.scss'
 
@@ -14,18 +13,10 @@ function Timezone({
   return (
     <div className={styles.timezone}>
       <div className={styles.filterActionBtns}>
-        <Button
-          active={timezone === 'all'}
-          onClick={() => setTimezone('all')}
-          variant='secondary'
-        >
+        <Button active={timezone === 'all'} onClick={() => setTimezone('all')} variant='primary'>
           all
         </Button>
-        <Button
-          active={timezone === 'live'}
-          onClick={() => setTimezone('live')}
-          variant='secondary'
-        >
+        <Button active={timezone === 'live'} onClick={() => setTimezone('live')} variant='primary'>
           live
         </Button>
       </div>

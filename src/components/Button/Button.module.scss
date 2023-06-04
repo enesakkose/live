@@ -3,6 +3,7 @@
     background-color: transparent;
     display: flex;
     align-items: center;
+    justify-content: center;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     color: $SECONDARY-200;
@@ -13,9 +14,10 @@
         pointer-events: none;
     }
 
-    &:is(.secondary){
+    &.primary{
         font-weight: 600;
-        padding: $P-2 $P-3;
+        padding-inline: $P-3;
+        height: 2.25rem;
         border-radius: .5rem;
         background-color: $SECONDARY-800;
         border: 2px solid transparent;
@@ -31,14 +33,24 @@
         }
     }
 
-    &:is(.icon){
-        padding: $P-2;
-        border-radius: 50%;
-        font-size: 13px;
+    &.secondary{
         font-weight: 600;
+        padding-inline: $P-3;
+        height: 2.25rem;
+        border-radius: .5rem;
+        background-color: $SECONDARY-800;
 
         &:hover{
-            background-color: $SECONDARY-800;
+            background-color: $SECONDARY-700;
+        }
+
+    }
+
+    &.icon{
+        
+
+        &:hover{
+            color: $SECONDARY-100;
         }
     }
 
@@ -51,17 +63,5 @@
         &:hover{
             text-decoration: underline;
         }
-    }
-
-    &.sm{
-        font-size: 12px;
-    }
-
-    &.md{
-        font-size: 14px;
-    }
-
-    &.lg{
-        font-size: 16px;
     }
 }

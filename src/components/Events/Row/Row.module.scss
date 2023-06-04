@@ -1,8 +1,8 @@
 .eventRow{
     display: grid;
-    grid-template-columns: 2fr .25fr;
-    padding: $P-2 $P-3;
-    //gap: 5rem;
+    grid-template-columns: 3.75rem auto 5.5rem;
+    padding-block: $P-2;
+    font-weight: 500;
     transition: 100ms background-color ease-in-out;
     font-size: 14px;
     border-bottom: 1px solid $SECONDARY-800;
@@ -14,8 +14,6 @@
 
     @media only screen and (max-width: $MD){
         font-size: 13px;
-        grid-template-columns: 2fr .25fr;
-        //gap: 1rem;
     }
 
     .teams{
@@ -38,7 +36,7 @@
         }
 
         .winnerTeam{
-            font-weight: 700;
+            font-weight: 900;
         }
 
         .tennisPoint{
@@ -74,27 +72,25 @@
         }
     }
 
-    .liveBlink{
-        position: absolute;
-        top: 0;
-        right: -.25rem;
-        animation: blink 1s infinite ease-in;
-        color: $GREEN-400;
-    }
-
+    
     .stage{
         display: flex;
         align-items: center;
         justify-content: center;
         color: $GREEN-400;
-        //word-break: break-word;
         text-align: center;
-        padding-left: 1rem;
         border-left: 1px solid $SECONDARY-800;
-
         
         .time{
             position: relative;
+
+            .liveBlink{
+                position: absolute;
+                top: 0;
+                right: -.25rem;
+                animation: blink 1s infinite ease-in;
+                color: $GREEN-400;
+            }
         }
 
         &.finishOrScheduled{

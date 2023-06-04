@@ -1,15 +1,14 @@
 .navLink{
-    cursor: pointer;
-    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+    cursor: pointer;
+    background-color: transparent;
     user-select: none;
     color: $SECONDARY-200;
     font-weight: 600;
-    letter-spacing: .5px;
-    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
 
     &.primary{
         letter-spacing: 1px;
@@ -36,7 +35,10 @@
     }
 
     &:is(.secondary){
+        height: 3rem;
+        padding-inline: $P-2;
         border-radius: .5rem;
+        font-size: 14px;
         background-color: $SECONDARY-800;
         border: 2px solid transparent;
         gap: .5rem;
@@ -50,33 +52,20 @@
             background-color: $GREEN-400;
             color: $SECONDARY-900;
         }
+
+        @media only screen and (max-width: $SM){
+            height: 2.5rem;
+            font-size: 13px;
+        }
     }
 
     &:is(.tertiary){
         flex-direction: column;
         gap: .25rem;
-        font-weight: 600;
+        color: $SECONDARY-500;
 
         &.active{
-            color: $GREEN-400;
+            color: $SECONDARY-100;
         }
-    }
-
-    &.xsmall{
-        padding: $P-2;
-        font-size: 12px;
-    }
-
-    &.small{
-        padding: $P-3;
-        font-size: 13px;
-    }
-
-    &.medium{
-        padding: $P-4;
-    }
-
-    &.large{
-        padding: $P-5;
     }
 }

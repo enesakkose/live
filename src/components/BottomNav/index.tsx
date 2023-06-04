@@ -24,7 +24,6 @@ function BottomNav() {
       {navLinks.map((link) => (
         <NavLink
           key={link.text}
-          size='xsmall'
           variant={SM ? 'tertiary' : 'secondary'}
           prefetch={false}
           active={segment === link.active}

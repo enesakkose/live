@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Icon from '@/components/Icon'
+import Button from '@/components/Button'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { getFilterEventScores } from '@/utils/helpers'
@@ -18,14 +19,14 @@ type TeamRowPropsType = {
   currentTennisPeriod?: number | string
   teamImage: string[] | null | string | number
   teamName: string
-  status: {code: number, description: string, type: string}
+  status: { code: number; description: string; type: string }
   winner: boolean
   partScores: string[]
   service: boolean
 }
 
 type EventStagePropsType = {
-  status: {code: number, description: string, type: string}
+  status: { code: number; description: string; type: string }
   startTime: number
   categoryFootball: boolean
   currentPeriodStartTime: number
@@ -55,7 +56,7 @@ function TeamRow({
 
   const EmptyPlayerImg = () => <Icon icon='user' size={20} />
 
-  const PlayerImg = () => {
+  const TeamImg = () => {
     return (
       <>
         {teamImage !== null ? (
@@ -101,21 +102,17 @@ function TeamRow({
 
   return (
     <div className={styles.teamRow}>
-      <PlayerImg />
+      <TeamImg />
       <TeamName />
       {service && inprogress && <Icon icon='tennis' size={19} />}
       {tennisPoint && inprogress && <span className={styles.tennisPoint}>{tennisPoint}</span>}
       <div className={styles.scoreContainer}>
         <TeamScore />
-        {tennisPoint && currentTennisPeriod && inprogress && SM && currentTennisPeriod}
+        {tennisPoint && currentTennisPeriod && inprogress && SM ? currentTennisPeriod : null}
         {partScores.length > 0 && !SM && <PartScores />}
       </div>
     </div>
   )
-}
-
-function LiveBlink() {
-  return <span className={styles.liveBlink}>&apos;</span>
 }
 
 function CurrentEventTime({
@@ -123,10 +120,10 @@ function CurrentEventTime({
   status,
 }: Pick<EventStagePropsType, 'currentPeriodStartTime' | 'status'>) {
   return (
-    <span className={styles.time}>
-      {useGetEventTime(currentPeriodStartTime, status.description)} 
-      <LiveBlink />
-    </span>
+    <div className={styles.time}>
+      {useGetEventTime(currentPeriodStartTime, status.description)}
+      <span className={styles.liveBlink}>&apos;</span>
+    </div>
   )
 }
 
@@ -137,16 +134,22 @@ function EventStage({
   currentPeriodStartTime,
 }: EventStagePropsType) {
   const inprogress = status.type === 'inprogress'
-  const playing = status.code === 7
+  const playing = status.code === 7 || status.code === 6
 
   return (
     <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '')}>
       {status.description === 'Not started' 
         ? getFormatTime(startTime)
-        : categoryFootball && inprogress && !playing 
+        : categoryFootball && inprogress && playing 
           ? <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
           : <span className={styles.status}>{getStageType(status.description)}</span>}
     </div>
+  )
+}
+
+function FavEventBtn() {
+  return(
+    <Button variant='icon' icon='bell' />
   )
 }
 
@@ -156,6 +159,7 @@ function Row({ event, href }: { event: Event; href: Url }) {
 
   return (
     <Link href={href} prefetch={false} className={styles.eventRow}>
+      <FavEventBtn  />
       <div className={styles.teams}>
         <TeamRow
           score={event.homeScore.current}
@@ -185,7 +189,6 @@ function Row({ event, href }: { event: Event; href: Url }) {
         startTime={event.startTimestamp}
         currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
         categoryFootball={event.tournament.category.sport.id === 1}
-        key={event.id}
       />
     </Link>
   )

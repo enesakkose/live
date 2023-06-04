@@ -73,7 +73,6 @@ function EventStatsContainer({ eventId, statsTab }: EventStatsContainerPropsType
       <div className={styles.tabs}>
         {data.map((stageName, index) => (
           <NavLink
-            size='xsmall'
             href={`/event/${eventId}/summary/stats/${index}`}
             active={Number(statsTab) === index}
             variant='secondary'

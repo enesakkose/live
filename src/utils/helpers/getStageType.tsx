@@ -16,14 +16,15 @@ const setTypes = [
   { value: 'THIRD_SET_TIEBREAK', label: 'SET 3 TIEBREAK' },
   { value: 'FOURTH_SET_TIEBREAK', label: 'SET 4 TIEBREAK' },
   { value: 'FIFTH_SET_TIEBREAK', label: 'SET 5 TIEBREAK' },
-  { value: 'AFTER_EXTRA_TIME', label: 'Finished' },
+  { value: 'AET', label: 'Finished' },
   { value: 'AP', label: 'After Pen.' },
   { value: 'PAUSE', label: 'Break Time' },
   { value: 'Awaiting penalties', label: 'Penalties' },
   { value: 'Penalties', label: 'Penalties' },
   { value: 'LIVE', label: 'LIVE' },
   { value: 'PENDING', label: 'PENDING' },
-  { value: 'Suspended', label: 'Suspended' }
+  { value: 'Suspended', label: 'Suspended' },
+  { value: 'Canceled', label: 'Canceled' }
 ]
 
 const periodTypes = [

@@ -6,19 +6,17 @@ import styles from './NavLink.module.scss'
 type NavLinkProps = {
   children: ReactNode
   variant?: 'primary' | 'secondary' | 'tertiary'
-  size?: 'xsmall' | 'small' | 'medium' | 'large'
   active: boolean
   title?: string 
 } & LinkProps
 
 
-function NavLink({ active = false, children, variant = 'primary', size = 'medium', ...props }: NavLinkProps) {
+function NavLink({ active = false, children, variant = 'primary', ...props }: NavLinkProps) {
   return (
     <Link
     className={clsx(
       styles.navLink,
       styles[variant],
-      styles[size],
       active ? styles.active : ''
     )}
     {...props}

@@ -15,7 +15,6 @@ function H2HContainer({ h2h, eventId }: { h2h: number; eventId: string }) {
         {H2HEvents?.map((event, index) => (
           <NavLink
             key={event.TAB_NAME}
-            size='xsmall'
             active={Number(index) === Number(h2h)}
             href={`/event/${eventId}/summary/h2h/${index}`}
             variant='secondary'

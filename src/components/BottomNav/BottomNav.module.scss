@@ -13,13 +13,8 @@
     gap: 1rem;
 
     @media only screen and (max-width: $SM){
-        bottom: .25rem;
-        left: .5rem;
-        right: .5rem;
-        padding: 0;
-        transform: unset;
-        gap: 0;
-        justify-content: space-around;
+        bottom: .5rem;
         height: 3.5rem;
+        border-radius: 1.75rem;
     }
 }
