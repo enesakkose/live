@@ -1,14 +1,10 @@
 .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-block: $P-5;
     background-color: $SECONDARY-900;
     height: 5.625rem;
-    
-    .container{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
     
     @media only screen and (max-width: $LG){
         padding-inline: $P-3;

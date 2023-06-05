@@ -110,7 +110,7 @@ function TeamRow({
       {tennisPoint && inprogress && <span className={styles.tennisPoint}>{tennisPoint}</span>}
       <div className={clsx(styles.scoreContainer, categoryTennis ? styles.tennisTeamRow : '')}>
         <TeamScore />
-        {tennisPoint && currentTennisPeriod && inprogress && SM && currentTennisPeriod}
+        {inprogress && SM && categoryTennis && currentTennisPeriod}
         {partScores.length > 0 && !SM && <PartScores />}
       </div>
     </div>

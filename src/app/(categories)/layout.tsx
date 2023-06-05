@@ -6,15 +6,13 @@ import styles from './layout.module.scss'
 
 function CategoriesLayout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <MainContainer className={styles.container}>
       <Header />
-      <MainContainer className={styles.container}>
-        <main className={styles.sportTimezone}>
-          {children}
-          <BottomNav />
-        </main>
-      </MainContainer>
-    </>
+      <main className={styles.sportTimezone}>
+        {children}
+        <BottomNav />
+      </main>
+    </MainContainer>
   )
 }
 

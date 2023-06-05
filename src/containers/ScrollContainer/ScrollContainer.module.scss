@@ -1,0 +1,32 @@
+.scrollContainer{
+        height: 100%;
+        overflow: auto; // For firefox
+        overflow: overlay;
+        scrollbar-width: thin; /* For Firefox */
+        scrollbar-color: $SECONDARY-800 transparent;
+
+        @media only screen and (max-width: $SM){
+            padding-inline: 0;
+            //height: 100%;
+        }
+
+        &::-webkit-scrollbar {
+            width: .25rem;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: $SECONDARY-800;
+            border-radius: 1rem;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: $SECONDARY-700;
+        }
+}

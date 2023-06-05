@@ -25,7 +25,6 @@ function BottomNav() {
         <NavLink
           key={link.text}
           variant={SM ? 'tertiary' : 'secondary'}
-          prefetch={false}
           active={segment === link.active}
           href={link.href}
           title={link.text}

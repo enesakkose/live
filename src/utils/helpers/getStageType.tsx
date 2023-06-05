@@ -18,7 +18,7 @@ const setTypes = [
   { value: 'FIFTH_SET_TIEBREAK', label: 'SET 5 TIEBREAK' , mobileLabel: 'S5' },
   { value: 'AET', label: 'Finished' , mobileLabel: 'FT' },
   { value: 'AP', label: 'After Pen.' , mobileLabel: 'AP.' },
-  { value: 'PAUSE', label: 'Break Time' , mobileLabel: 'Break' },
+  { value: 'Pause', label: 'Break Time' , mobileLabel: 'Break' },
   { value: 'Awaiting penalties', label: 'Penalties', mobileLabel: 'Pens.' },
   { value: 'Penalties', label: 'Penalties' , mobileLabel: 'PEN' },
   { value: 'LIVE', label: 'LIVE' , mobileLabel: 'Live' },
