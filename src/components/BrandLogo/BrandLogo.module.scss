@@ -1,20 +1,14 @@
 .brandLogo{
-    width: 3rem;
-    height: 3rem;
-    background-color: $SECONDARY-900;
     border-radius: .25rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     position: relative;
+    z-index: 3;
 
     .text{
-        position: absolute;
-        top: -3rem;
-        right: -.5rem;
-        color: $GREEN-400;
-        font-size: 4rem;
+        color: $SECONDARY-200;
+        font-size: 1rem;
         font-weight: 900;
     }
 }

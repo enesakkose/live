@@ -15,7 +15,7 @@ function BottomNav() {
     { href: '/', active: null, icon: 'soccer', text: 'FOOTBALL' },
     { href: '/basketball', active: 'basketball', icon: 'basket', text: 'BASKETBALL' },
     { href: '/tennis', active: 'tennis', icon: 'tennis', text: 'TENNIS' },
-    { href: '/tennis', active: 'favourites', icon: 'star', text: 'FAVORITES' },
+    { href: '/tennis', active: 'favourites', icon: 'bell', text: 'FAVORITES' },
   ]
 
   return (
@@ -29,6 +29,7 @@ function BottomNav() {
           active={segment === link.active}
           href={link.href}
           title={link.text}
+          className={styles.bottomNavLink}
         >
           <Icon icon={link.icon} size={25} />
           {!SM && link.text}

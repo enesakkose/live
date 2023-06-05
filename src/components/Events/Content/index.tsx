@@ -18,9 +18,9 @@ import styles from './Content.module.scss'
 function Content({ category = 'football' }: { category: string }) {
   const today = dayjs().unix() // temporary value
   const [timezone, setTimezone] = useState<'all' | 'live'>('all')
-  const { data: Events = [], isLoading, isFetching } = useGetEvents(category, timezone, today)
+  const { data: Events = [], isLoading } = useGetEvents(category, timezone, today)
   const groupedEvents = _.groupBy(Events, 'tournament.id')
-  if(isLoading || isFetching) return <Loading/>
+  if(isLoading) return <Loading/>
 
   return (
     <>

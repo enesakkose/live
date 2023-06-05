@@ -8,16 +8,18 @@ type NavLinkProps = {
   variant?: 'primary' | 'secondary' | 'tertiary'
   active: boolean
   title?: string 
+  className?: string
 } & LinkProps
 
 
-function NavLink({ active = false, children, variant = 'primary', ...props }: NavLinkProps) {
+function NavLink({ active = false, children, variant = 'primary', className, ...props }: NavLinkProps) {
   return (
     <Link
     className={clsx(
       styles.navLink,
       styles[variant],
-      active ? styles.active : ''
+      active ? styles.active : '',
+      className
     )}
     {...props}
   >

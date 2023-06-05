@@ -20,7 +20,10 @@ function Timezone({
           live
         </Button>
       </div>
-      <DatePicker />
+      <div className={styles.queryBtns}>
+        <Button icon='search' size={20} />
+        <DatePicker />
+      </div>
     </div>
   )
 }

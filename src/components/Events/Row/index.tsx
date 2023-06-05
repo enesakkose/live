@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import Icon from '@/components/Icon'
 import Button from '@/components/Button'
 import clsx from 'clsx'
@@ -23,6 +23,7 @@ type TeamRowPropsType = {
   winner: boolean
   partScores: string[]
   service: boolean
+  categoryTennis: boolean
 }
 
 type EventStagePropsType = {
@@ -42,6 +43,7 @@ function TeamRow({
   winner,
   partScores,
   service,
+  categoryTennis
 }: TeamRowPropsType) {
   const notPlayedDue = [
     'Not started',
@@ -106,9 +108,9 @@ function TeamRow({
       <TeamName />
       {service && inprogress && <Icon icon='tennis' size={19} />}
       {tennisPoint && inprogress && <span className={styles.tennisPoint}>{tennisPoint}</span>}
-      <div className={styles.scoreContainer}>
+      <div className={clsx(styles.scoreContainer, categoryTennis ? styles.tennisTeamRow : '')}>
         <TeamScore />
-        {tennisPoint && currentTennisPeriod && inprogress && SM ? currentTennisPeriod : null}
+        {tennisPoint && currentTennisPeriod && inprogress && SM && currentTennisPeriod}
         {partScores.length > 0 && !SM && <PartScores />}
       </div>
     </div>
@@ -135,6 +137,7 @@ function EventStage({
 }: EventStagePropsType) {
   const inprogress = status.type === 'inprogress'
   const playing = status.code === 7 || status.code === 6
+  const SM = useGetWindowSize('SM')
 
   return (
     <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '')}>
@@ -142,14 +145,14 @@ function EventStage({
         ? getFormatTime(startTime)
         : categoryFootball && inprogress && playing 
           ? <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
-          : <span className={styles.status}>{getStageType(status.description)}</span>}
+          : <span className={styles.status}>{getStageType(status.description, SM)}</span>}
     </div>
   )
 }
 
 function FavEventBtn() {
   return(
-    <Button variant='icon' icon='bell' />
+    <Button variant='icon' icon='bell' size={20}/>
   )
 }
 
@@ -171,6 +174,7 @@ function Row({ event, href }: { event: Event; href: Url }) {
           status={event.status}
           winner={event.winnerCode === 1}
           service={event.firstToServe === 1}
+          categoryTennis={event.tournament.category.sport.id === 5}
         />
         <TeamRow
           score={event.awayScore.current}
@@ -182,6 +186,7 @@ function Row({ event, href }: { event: Event; href: Url }) {
           status={event.status}
           winner={event.winnerCode === 2}
           service={event.firstToServe === 2}
+          categoryTennis={event.tournament.category.sport.id === 5}
         />
       </div>
       <EventStage

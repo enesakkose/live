@@ -6,12 +6,11 @@ import styles from './Search.module.scss'
 
 function Search() {
   return (
-    <Link href='/upload'>
     <MouseFollower className={styles.search}>
       Search
       <Icon icon='search' />
     </MouseFollower>
-    </Link>
+
   )
 }
 

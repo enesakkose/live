@@ -1,6 +1,7 @@
 .eventRow{
+    --columns: 3.75rem auto 5.5rem;
     display: grid;
-    grid-template-columns: 3.75rem auto 5.5rem;
+    grid-template-columns: var(--columns);
     padding-block: $P-2;
     font-weight: 500;
     transition: 100ms background-color ease-in-out;
@@ -14,6 +15,7 @@
 
     @media only screen and (max-width: $MD){
         font-size: 13px;
+        --columns: 3.75rem auto 3rem;
     }
 
     .teams{
@@ -54,7 +56,11 @@
             place-items: center;
 
             @media only screen and (max-width: $MD){
-                --columnLength: 2;
+                --columnLength: 1;
+
+                &.tennisTeamRow{
+                    --columnLength: 2;
+                }
             }
             
             .teamScore{
