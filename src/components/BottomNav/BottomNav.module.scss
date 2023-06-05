@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    width: max-content;
 
     @media only screen and (max-width: $SM){
         bottom: .5rem;
