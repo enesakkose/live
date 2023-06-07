@@ -167,7 +167,7 @@ function Row({ event, href }: { event: Event; href: Url }) {
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
 
   return (
-    <Link href={href} prefetch={false} className={styles.eventRow}>
+    <div className={styles.eventRow}>
       <div className={styles.teams}>
         <TeamRow
           score={event.homeScore.current}
@@ -200,7 +200,7 @@ function Row({ event, href }: { event: Event; href: Url }) {
         currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
         categoryFootball={event.tournament.category.sport.id === 1}
       />
-    </Link>
+    </div>
   )
 }
 
