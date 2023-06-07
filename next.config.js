@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
-const postcss = require('postcss')
-
 
 const nextConfig = {
   //swcMinify: true
@@ -11,9 +9,9 @@ const nextConfig = {
   },
 
   //image base url
-  images: {
-    domains: ['www.flashscore.com'],
-  },
+  /*images: {
+    
+  },*/
   
   //include scss variables each scss file
   sassOptions: {
@@ -21,13 +19,6 @@ const nextConfig = {
     prependData: `@import "@/styles/_variables.scss";`
   },
 
-  //includes autoprixer
-  postcssLoaderOptions: {
-    implementation: postcss,
-    postcssOptions: {
-      plugins: ['autoprefixer']
-    }
-  }
 }
 
 module.exports = nextConfig

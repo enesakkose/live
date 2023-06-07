@@ -1,5 +1,5 @@
 .eventRow{
-    --columns: 3.75rem auto 5.5rem;
+    --columns: /*3.75rem*/ auto 5.5rem;
     display: grid;
     grid-template-columns: var(--columns);
     padding-block: $P-2;
@@ -15,7 +15,7 @@
 
     @media only screen and (max-width: $MD){
         font-size: 13px;
-        --columns: 3.75rem auto 3.5rem;
+        --columns: /*3.75rem*/ auto 3.5rem;
     }
 
     .teams{
@@ -23,6 +23,7 @@
         flex-direction: column;
         gap: .25rem;
         overflow: hidden;
+        padding-left: $P-3;
     }
 
     .teamRow{

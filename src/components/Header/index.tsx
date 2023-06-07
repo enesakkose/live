@@ -9,7 +9,7 @@ function Header() {
     <header className={styles.header}>
       <BrandLogo />
       <Search />
-      <ActionBtns />
+      {/*<ActionBtns />*/}
     </header>
   )
 }

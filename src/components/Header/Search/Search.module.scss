@@ -10,12 +10,24 @@
     font-weight: 500;
     cursor: default;
     transition: 200ms border-color ease-in-out;
+    position: relative;
+    z-index: 15;
 
     &:hover{
         border-color: $GREEN-400;
     }
 
+    &:has(input:focus) {
+        border-color: $GREEN-400;
+    }
+    
+    input{
+        background-color: transparent;
+        color: $SECONDARY-500;
+    }
+
     @media only screen and (max-width: $SM){
         display: none;
     }
+
 }

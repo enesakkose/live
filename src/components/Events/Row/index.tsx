@@ -1,5 +1,5 @@
 'use client'
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import Icon from '@/components/Icon'
 import Button from '@/components/Button'
 import clsx from 'clsx'
@@ -151,8 +151,14 @@ function EventStage({
 }
 
 function FavEventBtn() {
+  const favEvent = () => {
+    const favListJson = localStorage.getItem('idList');
+    const favList = favListJson ? JSON.parse(favListJson) : [];
+    favList.push('1')
+    localStorage.setItem('idList', JSON.stringify(favList))
+  }
   return(
-    <Button variant='icon' icon='bell' size={20}/>
+    <Button onClick={favEvent} variant='icon' icon={'bell'} size={20}/>
   )
 }
 
@@ -162,7 +168,6 @@ function Row({ event, href }: { event: Event; href: Url }) {
 
   return (
     <Link href={href} prefetch={false} className={styles.eventRow}>
-      <FavEventBtn  />
       <div className={styles.teams}>
         <TeamRow
           score={event.homeScore.current}
