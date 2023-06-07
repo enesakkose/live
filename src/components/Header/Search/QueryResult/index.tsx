@@ -14,7 +14,7 @@ function QueryResult() {
       <ScrollContainer>
         <ul className={styles.list}>
           {mockSearch.map((result) => (
-            <li className={styles.result}>
+            <li key={result.entity.id} className={styles.result}>
               <img src={`https://api.sofascore.app/api/v1/team/${result.entity.id}/image`} alt={result.entity.name} loading='lazy' width={40} height={40} onError={handleImageError}/>
               <div className={styles.info}>
                 <span className={styles.name}>{result.entity.name}</span>
