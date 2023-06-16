@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import Icon from '@/components/Icon'
-import Button from '@/components/Button'
+import Icon from '@/components/UI/Icon'
+import Button from '@/components/UI/Button'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { getFilterEventScores } from '@/utils/helpers'
@@ -43,7 +43,7 @@ function TeamRow({
   winner,
   partScores,
   service,
-  categoryTennis
+  categoryTennis,
 }: TeamRowPropsType) {
   const notPlayedDue = [
     'Not started',
@@ -141,25 +141,25 @@ function EventStage({
 
   return (
     <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '')}>
-      {status.description === 'Not started' 
-        ? getFormatTime(startTime)
-        : categoryFootball && inprogress && playing 
-          ? <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
-          : <span className={styles.status}>{getStageType(status.description, SM)}</span>}
+      {status.description === 'Not started' ? (
+        getFormatTime(startTime)
+      ) : categoryFootball && inprogress && playing ? (
+        <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
+      ) : (
+        <span className={styles.status}>{getStageType(status.description, SM)}</span>
+      )}
     </div>
   )
 }
 
 function FavEventBtn() {
   const favEvent = () => {
-    const favListJson = localStorage.getItem('idList');
-    const favList = favListJson ? JSON.parse(favListJson) : [];
+    const favListJson = localStorage.getItem('idList')
+    const favList = favListJson ? JSON.parse(favListJson) : []
     favList.push('1')
     localStorage.setItem('idList', JSON.stringify(favList))
   }
-  return(
-    <Button onClick={favEvent} variant='icon' icon={'bell'} size={20}/>
-  )
+  return <Button onClick={favEvent} variant='icon' icon={'bell'} size={20} />
 }
 
 function Row({ event, href }: { event: Event; href: Url }) {

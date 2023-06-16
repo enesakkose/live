@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import NavLink from '../Button/NavLink'
+import NavLink from '../UI/NavLink'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './TabBtns.module.scss'
 

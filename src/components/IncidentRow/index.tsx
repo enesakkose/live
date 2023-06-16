@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../Icon'
+import Icon from '../UI/Icon'
 import clsx from 'clsx'
 import { v4 as uuidv4 } from 'uuid'
 import type { Item, IncidentParticipant, IncidentType } from '@/types/Summary.types'
@@ -21,9 +21,7 @@ type SignPropsType = {
   className?: string
 }
 
-
 const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
-  
   const Sign = ({ children, icon, ...props }: SignPropsType) => {
     return (
       <div className={clsx(styles.sign, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
@@ -35,12 +33,7 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
 
   const Goal = ({ ...props }) => {
     return (
-      <div
-        className={clsx(
-          styles.infoGoal,
-          incidentTeam === 2 ? styles.incidentAwayRow : ''
-        )}
-      >
+      <div className={clsx(styles.infoGoal, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
         <Sign icon='soccer' {...props}>
           {info.HOME_SCORE} {info.HOME_SCORE ? '-' : ''} {info.AWAY_SCORE}
         </Sign>
@@ -56,7 +49,9 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
   const SubIn = () => {
     return (
       <div className={clsx(styles.infoSubs)}>
-        <Sign><span className={styles.in}>IN</span></Sign>
+        <Sign>
+          <span className={styles.in}>IN</span>
+        </Sign>
         {info.PARTICIPANT_NAME}
       </div>
     )
@@ -65,7 +60,9 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
   const SubOut = () => {
     return (
       <div className={styles.infoSubs}>
-        <Sign><span className={styles.out}>OUT</span></Sign>
+        <Sign>
+          <span className={styles.out}>OUT</span>
+        </Sign>
         {info.PARTICIPANT_NAME}
       </div>
     )
@@ -73,34 +70,27 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
 
   const MissedPenalty = () => {
     return (
-      <div
-        className={clsx(
-          styles.missedPenalty,
-          incidentTeam === 2 ? styles.incidentAwayRow : ''
-        )}
-      >
+      <div className={clsx(styles.missedPenalty, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
         <Sign className={styles.icon} icon='warning' />
-        <span className={styles.participantName}>
-          {info.PARTICIPANT_NAME}
-        </span>
+        <span className={styles.participantName}>{info.PARTICIPANT_NAME}</span>
         (Penalty Missed)
       </div>
     )
   }
 
   const OwnGoal = () => {
-    return(
+    return (
       <div className={clsx(styles.ownGoal, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
-        <Goal className={styles.redBall}/>
+        <Goal className={styles.redBall} />
         (Own Goal)
       </div>
     )
   }
 
   const PenaltyScored = () => {
-    return(
+    return (
       <div className={clsx(styles.penaltyScored, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
-        <Goal/>
+        <Goal />
         (Penalty)
       </div>
     )
@@ -108,9 +98,7 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
 
   const Card = ({ variant }: { variant: 'RED_CARD' | 'YELLOW_CARD' }) => {
     return (
-      <div
-        className={clsx(styles.card, incidentTeam === 2 ? styles.incidentAwayRow : '')}
-      >
+      <div className={clsx(styles.card, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
         <Sign>
           <div className={clsx(styles.badge, styles[variant])} />
         </Sign>

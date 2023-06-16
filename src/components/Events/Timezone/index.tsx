@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
 import DatePicker from '@/components/DatePicker'
 import styles from './Timezone.module.scss'
 

@@ -6,7 +6,7 @@
     padding: $P-2 $P-3;
     border-radius: .5rem;
     color: $SECONDARY-500;
-    border: 1px solid transparent;
+    border: 1px solid $SECONDARY-800;
     font-weight: 500;
     cursor: default;
     transition: 200ms border-color ease-in-out;
@@ -24,6 +24,7 @@
     input{
         background-color: transparent;
         color: $SECONDARY-500;
+        width: 100%;
     }
 
     @media only screen and (max-width: $SM){

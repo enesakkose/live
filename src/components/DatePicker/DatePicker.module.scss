@@ -1,51 +1,32 @@
-.datePicker{
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
+.rdp {
+    --rdp-cell-size: 40px;
+    --rdp-accent-color: $GREEN-400;
+    --rdp-background-color: $SECONDARY-800;
+    /* Switch to dark colors for dark themes */
+    --rdp-accent-color-dark: #3003e1;
+    --rdp-background-color-dark: #180270;
+    /* Outline border for focused elements */
+    --rdp-outline: 2px solid var(--rdp-accent-color);
+    /* Outline border for focused and selected elements */
+    --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
+  }
+.datePickerContainer{
 
-    .dates{
-        z-index: 3;
-        position: absolute;
-        top: calc(100% + .25rem);
-        right: calc(.25rem);
-        width: 310px;
-        background-color: $SECONDARY-800;
-        display: flex;
-        gap: .5rem;
-        overflow-x: scroll;
-        padding-inline: $P-1;
+    .datePicker{
+        
+        .rdp{
 
-        scrollbar-width: thin; /* For Firefox */
-        scrollbar-color: $SECONDARY-800 transparent;
-
-        &::-webkit-scrollbar {
-            width: 0;
+        border: 1px solid $SECONDARY-800;
+        background-color: red;
+        padding: $P-3;
         }
+    }
+    .today{
+        color: $GREEN-400;
+    }
 
-        /* Track */
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: $SECONDARY-800;
-        }
-
-        /* Handle on hover */
-        &::-webkit-scrollbar-thumb:hover {
-            background: $SECONDARY-700;
-        }
-
-        .date{
-            //word-break: break-word;
-            font-size: 13px;
-            padding: $P-1;
-            &:nth-child(4){
-                background-color: $GREEN-400;
-            }
-        }
-
+    .month{
+        background-color: $BLACK-1;
+        border: 1px solid $SECONDARY-800;
     }
 }

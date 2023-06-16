@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from 'react'
 
 export const useGetEventTime = (startTime: number, status: string) => {
   
-  const getElapsedMinutes = useMemo(() => {
+  const getElapsedMinutes = () => {
     return () => {
       const currentTimestamp = Math.floor(Date.now() / 1000)
       
@@ -22,7 +22,7 @@ export const useGetEventTime = (startTime: number, status: string) => {
       
       return elapsedMinutes
     }
-  }, [status])
+  }
 
   const elapsedMinutes = getElapsedMinutes()
   const [minute, setMinute] = useState<number>(elapsedMinutes)

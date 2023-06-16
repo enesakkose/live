@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef, useState } from 'react'
 import clsx from 'clsx'
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
 import styles from '@/components/AccordionMenu/AccordionMenu.module.scss'
 
 type PropsType = {
@@ -14,9 +14,7 @@ interface PropsWithDataStateType extends PropsType {
 }
 
 export const Accordion = ({ children, className }: PropsType) => {
-  return (
-    <div className={clsx(styles.accordionContainer, className)}>{children}</div>
-  )
+  return <div className={clsx(styles.accordionContainer, className)}>{children}</div>
 }
 
 export const AccordionHeader = ({
@@ -26,24 +24,18 @@ export const AccordionHeader = ({
   open,
 }: PropsWithDataStateType) => {
   return (
-    <div
-      data-state={open ? 'open' : 'closed'}
-      className={clsx(styles.accordionHeader, className)}
-    >
+    <div data-state={open ? 'open' : 'closed'} className={clsx(styles.accordionHeader, className)}>
       {children}
-      <Button
-        className={styles.chevronBtn}
-        icon='chevron'
-        size={20}
-        onClick={handleOpen}
-      />
+      <Button className={styles.chevronBtn} icon='chevron' size={20} onClick={handleOpen} />
     </div>
   )
 }
 
 export const AccordionItem = ({ children, className }: PropsType) => {
   const [open, setOpen] = useState(true)
-  const handleOpen = () => { setOpen((prev) => !prev) }
+  const handleOpen = () => {
+    setOpen((prev) => !prev)
+  }
 
   return (
     <div className={clsx(styles.accordionItem, className)}>

@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
 import Row from '@/components/H2h/Row'
 import type { Group } from '@/types/H2HTypes'
 import styles from './GroupList.module.scss'
@@ -9,8 +9,7 @@ import styles from './GroupList.module.scss'
 
 function GroupList({ group }: { group: Group }) {
   const [itemCount, setItemCount] = useState(5)
-  const showLoadMoreBtn =
-    itemCount !== group.ITEMS.length && group.ITEMS.length > 5
+  const showLoadMoreBtn = itemCount !== group.ITEMS.length && group.ITEMS.length > 5
 
   return (
     <>

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import NavLink from '@/components/Button/NavLink'
+import NavLink from '@/components/UI/NavLink'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './TabBar.module.scss'
 
@@ -47,11 +47,7 @@ function TabBar({ id }: { id: string }) {
   return (
     <div className={styles.tabBar}>
       {eventTabs.map((tab) => (
-        <NavLink
-          key={tab.tabName}
-          href={tab.href}
-          active={segment === tab.segment}
-        >
+        <NavLink key={tab.tabName} href={tab.href} active={segment === tab.segment}>
           {tab.tabName}
         </NavLink>
       ))}

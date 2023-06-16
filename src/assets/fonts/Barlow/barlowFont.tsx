@@ -5,22 +5,22 @@ export const barlow = localFont({
   fallback: ['system-ui'],
   src: [
     {
-      path: '../../assets/fonts/Barlow/Barlow-Regular.ttf',
+      path: '../Barlow/Barlow-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../assets/fonts/Barlow/Barlow-Medium.ttf',
+      path: '../Barlow/Barlow-Medium.ttf',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../../assets/fonts/Barlow/Barlow-Bold.ttf',
+      path: '../Barlow/Barlow-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../../assets/fonts/Barlow/Barlow-Black.ttf',
+      path: '../Barlow/Barlow-Black.ttf',
       weight: '900',
       style: 'normal',
     },

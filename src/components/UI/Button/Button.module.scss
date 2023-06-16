@@ -1,26 +1,28 @@
 .button{
     cursor: pointer;
     background-color: transparent;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    flex-shrink: 0;
     justify-content: center;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     color: $SECONDARY-200;
-    flex-shrink: 0;
+    font-weight: 600;
 
     &:disabled, &[disabled]{
         opacity: .5;
         pointer-events: none;
     }
 
-    &.primary{
-        font-weight: 600;
+    &:is(.primary, .secondary){
         padding-inline: $P-3;
         height: 2.25rem;
         border-radius: .5rem;
-        background-color: $SECONDARY-800;
-        border: 2px solid transparent;
+    }
+
+    &.primary{
+        border: 2px solid $SECONDARY-800;
         transition: 200ms border-color ease-in-out;
 
         &:hover{
@@ -34,16 +36,11 @@
     }
 
     &.secondary{
-        font-weight: 600;
-        padding-inline: $P-3;
-        height: 2.25rem;
-        border-radius: .5rem;
         background-color: $SECONDARY-800;
 
         &:hover{
             background-color: $SECONDARY-700;
         }
-
     }
 
     &.icon{
@@ -54,11 +51,12 @@
         }
     }
 
-    &:is(.tertiary){
+    &.tertiary{
 
     }
 
-    &:is(.underline){
+    &.underline{
+        font-weight: 400;
 
         &:hover{
             text-decoration: underline;

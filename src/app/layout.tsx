@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 import Head from 'next/head'
 import { Metadata } from 'next'
-import { barlow } from '@/utils/fonts/barlowFont'
+import { barlow } from '@/assets/fonts/Barlow/barlowFont'
 import ReactQueryProvider from '@/app/ReactQueryProvider'
 import '@/styles/globals.scss'
 

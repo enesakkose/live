@@ -1,7 +1,7 @@
 'use client'
 import RoundedImg from '@/components/RoundedImg'
 import React from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
 import { useRouter } from 'next/navigation'
 import type { Tournament } from '@/types/event.types'
 import styles from './Header.module.scss'
@@ -26,7 +26,7 @@ function Header({ tournament }: PropsType) {
         />
       </RoundedImg>
       <h4>{tournament?.NAME}</h4>
-  </header>
+    </header>
   )
 }
 

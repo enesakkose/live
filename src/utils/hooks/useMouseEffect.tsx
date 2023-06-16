@@ -13,10 +13,12 @@ export const useMouseEffect = <T extends HTMLDivElement = HTMLDivElement>(
       setMouse({ mouseX, mouseY })
     }
 
-    ref?.current?.addEventListener('mousemove', handleMouseMove)
+    const currentRef = ref?.current
+
+    currentRef?.addEventListener('mousemove', handleMouseMove)
 
     return () => {
-      ref?.current?.removeEventListener('mousemove', handleMouseMove)
+      currentRef?.removeEventListener('mousemove', handleMouseMove)
     }
 
   }, [ref])

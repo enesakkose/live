@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import clsx from 'clsx'
-import Icon from '@/components/Icon'
+import Icon from '@/components/UI/Icon'
 import styles from './IncidentBadge.module.scss'
 
 type ExistIncidentsType = {
@@ -17,7 +17,7 @@ function IncidentBadge({ incidents, className }: IncidentBadgePropsType) {
   const IncidentsWithLength = incidents.reduce((acc: ExistIncidentsType[], curr: number) => {
     const existIncident = acc.find((incident) => incident.incidentKey === curr)
 
-    if(existIncident) {
+    if (existIncident) {
       existIncident.length++
     } else {
       acc.push({ incidentKey: curr, length: 1 })
@@ -32,7 +32,7 @@ function IncidentBadge({ incidents, className }: IncidentBadgePropsType) {
     3: 'Goal',
     6: 'Substitution',
     7: 'Substitution',
-    8: 'Assist'
+    8: 'Assist',
   }
 
   return (

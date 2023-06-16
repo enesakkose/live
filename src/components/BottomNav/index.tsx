@@ -1,15 +1,16 @@
 'use client'
 import React from 'react'
 import MouseFollower from '../MouseFollower'
-import NavLink from '../Button/NavLink'
-import Icon from '../Icon'
+import NavLink from '../UI/NavLink'
+import Icon from '../UI/Icon'
 import ClientOnly from '../ClientOnly'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
-import { useSelectedLayoutSegment } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import { type IconNameType } from '../UI/Icon'
 import styles from './BottomNav.module.scss'
 
 function BottomNav() {
-  const segment = useSelectedLayoutSegment()
+  const pathname = usePathname()
   const SM = useGetWindowSize('SM')
   const navLinks = [
     { href: '/', active: null, icon: 'soccer', text: 'FOOTBALL' },
@@ -20,21 +21,19 @@ function BottomNav() {
 
   return (
     <ClientOnly>
-    <MouseFollower className={styles.bottomNav}>
-      {navLinks.map((link) => (
-        <NavLink
-          key={link.text}
-          variant={SM ? 'tertiary' : 'secondary'}
-          active={segment === link.active}
-          href={link.href}
-          title={link.text}
-          className={styles.bottomNavLink}
-        >
-          <Icon icon={link.icon} size={25} />
-          {!SM && link.text}
-        </NavLink>
-      ))}
-    </MouseFollower>
+      <MouseFollower className={styles.bottomNav}>
+        {navLinks.map((link) => (
+          <NavLink
+            key={link.text}
+            variant={SM ? 'tertiary' : 'secondary'}
+            active={pathname === link.href}
+            href={link.href}
+          >
+            <Icon icon={link.icon as IconNameType} size={25} />
+            {!SM && link.text}
+          </NavLink>
+        ))}
+      </MouseFollower>
     </ClientOnly>
   )
 }

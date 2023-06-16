@@ -1,55 +1,34 @@
 import React, { useState } from 'react'
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
+import { Dropdown, DropdownTrigger, DropdownList } from '../Dropdown'
 import { useClickOutside } from '@/utils/hooks/useClickOutside'
+import { DayPicker } from 'react-day-picker'
+import 'react-day-picker/dist/style.css'
 import styles from '@/components/DatePicker/DatePicker.module.scss'
 
-//date picker range should be max 7 - min -7 for instances: 0 = today, -1 = yesterday, 1 = tomorrow 
-
 function DatePicker() {
-  const [ open, setOpen ]  = useState(false)
+  const [selected, setSelected] = React.useState<Date>()
+  const [open, setOpen] = useState(false)
   const datePickerRef = useClickOutside<HTMLDivElement>(() => setOpen(false))
-  const handleOpen = () => setOpen(prev => !prev)
-  
+  const handleOpen = () => setOpen((prev) => !prev)
+
   return (
-    <div ref={datePickerRef}  className={styles.datePicker}>
-      
-      <Button icon='calendar4-week' size={20} />
-      {open && <div className={styles.dates}>
-      <Button   className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button   className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      <Button  className={styles.date}>
-        30/3 <br/> Thr
-      </Button>
-      </div>}
-    </div>
+    <Dropdown>
+      <DropdownTrigger icon='calendar4-week' size={20} />
+      <DropdownList className={styles.datePickerContainer}>
+        <DayPicker
+          mode='single'
+          selected={selected}
+          onSelect={setSelected}
+          className={styles.datePicker}
+          modifiersClassNames={{
+            selected: styles.selected,
+            today: styles.today,
+            months: styles.month,
+          }}
+        />
+      </DropdownList>
+    </Dropdown>
   )
 }
 

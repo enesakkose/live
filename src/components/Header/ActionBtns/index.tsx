@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '@/components/Button'
-import Icon from '@/components/Icon'
+import Button from '@/components/UI/Button'
+import Icon from '@/components/UI/Icon'
 import styles from './ActionBtns.module.scss'
 
 function ActionBtns() {

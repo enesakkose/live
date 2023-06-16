@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import NavLink from '@/components/Button/NavLink'
+import NavLink from '@/components/UI/NavLink'
 import GroupLabel from '@/components/GroupLabel'
 import GroupList from '@/components/H2h/GroupList'
 import { useGetH2HEvents } from '@/services/sports'
@@ -26,7 +26,7 @@ function H2HContainer({ h2h, eventId }: { h2h: number; eventId: string }) {
       {H2HEvents?.[Number(h2h)].GROUPS.map((group) => (
         <div key={group.GROUP_LABEL} className={styles.group}>
           <GroupLabel label={group.GROUP_LABEL} />
-          <GroupList group={group}/>
+          <GroupList group={group} />
         </div>
       ))}
     </div>

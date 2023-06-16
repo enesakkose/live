@@ -6,6 +6,7 @@
             padding-block: $P-3 $P-SPORTTIMEZONE-BOTTOM;
             border-radius: .5rem;
             min-height: 100vh;
+            border: 1px solid $SECONDARY-800;
 
             @media only screen and (max-width: $SM){
                 padding-inline: 0;

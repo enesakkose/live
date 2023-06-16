@@ -1,8 +1,8 @@
-"use client"
+'use client'
 import React, { CSSProperties } from 'react'
 import clsx from 'clsx'
 import Section from '@/components/Event/Incidents/Section'
-import NavLink from '@/components/Button/NavLink'
+import NavLink from '@/components/UI/NavLink'
 import { convertPercentage, valueWithoutPercentage } from '@/utils/helpers'
 import { useGetEventStats } from '@/services/sports'
 import type { Data } from '@/types/EventStats'
@@ -21,7 +21,7 @@ type StatsBarPropsTypes = {
 }
 
 type EventStatsContainerPropsTypes = {
-  eventId: string 
+  eventId: string
   statsTab: number
 }
 
@@ -32,7 +32,7 @@ export const Incident = ({ homeValue, awayValue, incidentName }: IncidenPropsTyp
   )
 
   const StatsBar = ({ percentage, variant, ahead }: StatsBarPropsTypes) => {
-    return(
+    return (
       <div className={clsx(styles.bar)}>
         <div
           className={clsx(styles.percentage, styles[variant], ahead ? styles.ahead : '')}
@@ -50,15 +50,15 @@ export const Incident = ({ homeValue, awayValue, incidentName }: IncidenPropsTyp
         <span>{awayValue}</span>
       </div>
       <div className={styles.incidentBars}>
-        <StatsBar 
-          percentage={homePercentage} 
-          variant='homePercentage' 
-          ahead={homePercentage > awayPercentage} 
+        <StatsBar
+          percentage={homePercentage}
+          variant='homePercentage'
+          ahead={homePercentage > awayPercentage}
         />
-        <StatsBar 
-          percentage={awayPercentage} 
-          variant='awayPercentage' 
-          ahead={awayPercentage > homePercentage} 
+        <StatsBar
+          percentage={awayPercentage}
+          variant='awayPercentage'
+          ahead={awayPercentage > homePercentage}
         />
       </div>
     </li>
