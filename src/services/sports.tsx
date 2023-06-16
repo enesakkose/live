@@ -11,7 +11,7 @@ const BASE_URL = 'https://flashscore.p.rapidapi.com'
 const OPTIONS = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': env.NEXT_PUBLIC_API_KEY,
+    'X-RapidAPI-Key': 'a1080941e0msh61eed144007ab0cp10d97ajsn4ed9d98415c8',
     'X-RapidAPI-Host': 'flashscore.p.rapidapi.com',
   },
 }
