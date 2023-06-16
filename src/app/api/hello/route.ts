@@ -1,15 +1,19 @@
-import { NextResponse } from 'next/server';
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url)
-    console.log(searchParams)
-    const response = await fetch('https://api.sofascore.com/api/v1/sport/tennis/scheduled-events/2023-05-29');
-    const data = await response.json();
+import { NextApiRequest, NextApiResponse } from 'next'
+import { Server } from "socket.io";
 
-    return new Response(JSON.stringify(data), {
-      headers: { 'Content-Type': 'application/json' },
-    });
-  } catch (error) {
-    return new Response('Error occurred', { status: 500 });
+export default function SocketHandler(req: any, res: any) {
+  if (res.socket.server.io) {
+    console.log('Socket is already running')
+  } else {
+    console.log('Socket is initializing')
+    const io = new Server(res.socket.server)
+    res.socket.server.io = io
+
+    io.on('connection', socket => {
+      socket.on('input-change', msg => {
+        socket.broadcast.emit('update-input', msg)
+      })
+    })
   }
+  res.end()
 }
