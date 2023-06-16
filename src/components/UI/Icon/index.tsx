@@ -24,6 +24,7 @@ export type IconNameType =
   | 'subs'
   | 'warning'
   | 'user'
+  | string
 
 type IconPropsType = { icon: IconNameType } & IconProps
 
