@@ -1,13 +1,8 @@
 .queryResult{
     height: 25rem;
-    position: absolute;
-    top: calc(100% + .5rem);
     color: $SECONDARY-300;
-    left: 0;
-    right: 0;
     background-color: $SECONDARY-900;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 12;
+    border: 1px solid $SECONDARY-800;
     border-radius: .5rem;
     animation: contentAnimation 200ms ease-in-out;
 
