@@ -1,32 +1,54 @@
-.rdp {
-    --rdp-cell-size: 40px;
-    --rdp-accent-color: $GREEN-400;
-    --rdp-background-color: $SECONDARY-800;
-    /* Switch to dark colors for dark themes */
-    --rdp-accent-color-dark: #3003e1;
-    --rdp-background-color-dark: #180270;
-    /* Outline border for focused elements */
-    --rdp-outline: 2px solid var(--rdp-accent-color);
-    /* Outline border for focused and selected elements */
-    --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
-  }
 .datePickerContainer{
-
+    right: 0;
+    z-index: 14;
+    
     .datePicker{
-        
-        .rdp{
-
-        border: 1px solid $SECONDARY-800;
-        background-color: red;
+        display: flex;
         padding: $P-3;
+        border: 1px solid $SECONDARY-800;
+        background-color: $SECONDARY-900;
+        border-radius: .5rem;
+        margin: 0;
+
+        .day{
+            width: 2.25rem;
+            height: 2.25rem;
+            color: $SECONDARY-200;
+            border-radius: .5rem;
+
+            &:hover{
+                background-color: $SECONDARY-800;
+            }
+        }
+
+        .previous, .next{
+            width: 2.25rem;
+            height: 2.25rem;
+            background-color: transparent;
+            border: 1px solid $SECONDARY-800;
+            border-radius: .5rem;
+
+            &:hover{
+                background-color: $SECONDARY-800;
+            }
         }
     }
+        
     .today{
-        color: $GREEN-400;
+        color: $SECONDARY-200;
+        font-weight: 600;
+        background-color: $SECONDARY-800;
+        border-radius: .5rem;
     }
 
-    .month{
-        background-color: $BLACK-1;
-        border: 1px solid $SECONDARY-800;
+    .selected{
+        background-color: $GREEN-400;
+        color: $SECONDARY-900 !important;
+        border-radius: .5rem;
+        font-weight: 600;
+
+        &:hover{
+            background-color: $GREEN-400 !important;
+        }
     }
 }

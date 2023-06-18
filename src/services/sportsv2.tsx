@@ -22,7 +22,7 @@ export const getSearchResult = async(query: string) => {
 }
 
 export const useGetEvents = (category: string, timezone: 'live' | 'all', date: number) => {
-  return useQuery(['eventsV2', category, timezone], () => timezone === 'live' ? getLiveEventsV2(category) : getEventsV2(category, date))
+  return useQuery(['eventsV2', category, timezone, date], () => timezone === 'live' ? getLiveEventsV2(category) : getEventsV2(category, date))
 }
 
 export const useGetSearchResult = (query: string) => {

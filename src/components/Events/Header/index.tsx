@@ -2,23 +2,28 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './Header.module.scss'
 
-type PropsType = {
+type HeaderPropsType = {
   tournamentName: string
   tournamentImage?: string | null
+  uniqueTournamentId: number
 }
 
-function Header({ tournamentName, tournamentImage }: PropsType) {
+function Header({ tournamentName, tournamentImage, uniqueTournamentId }: HeaderPropsType) {
+  const tournamentImgSrc = tournamentImage 
+    ? `https://www.sofascore.com/static/images/flags/${tournamentImage}.png` 
+    : `https://api.sofascore.app/api/v1/unique-tournament/${uniqueTournamentId}/image/dark`
+
   return (
     <div className={styles.eventsHeader}>
-      {tournamentImage && (
+      {tournamentImgSrc &&
         <img
-          src={`https://www.sofascore.com/static/images/flags/${tournamentImage}.png`}
-          width={16}
-          height={16}
-          alt={tournamentImage}
+          src={tournamentImgSrc}
+          width={18}
+          height={18}
+          alt={tournamentName}
           loading='lazy'
         />
-      )}
+      }
       <Link href='/' className={styles.tournamentLink}>
         {tournamentName}
       </Link>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Icon from '@/components/UI/Icon'
 import QueryResult from './QueryResult'
-import { Dropdown, DropdownTrigger, DropdownList } from '@/components/Dropdown'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/UI/Popover'
 import styles from './Search.module.scss'
 
 function Search() {
@@ -12,17 +12,17 @@ function Search() {
   }
 
   return (
-    <Dropdown>
-      <DropdownTrigger asChild>
+    <Popover>
+      <PopoverTrigger asChild>
         <div className={styles.search}>
           <input type='text' value={query} onChange={handleQuery} placeholder='Search' />
           <Icon icon='search' />
         </div>
-      </DropdownTrigger>
-      <DropdownList>
+      </PopoverTrigger>
+      <PopoverContent>
         <QueryResult />
-      </DropdownList>
-    </Dropdown>
+      </PopoverContent>
+    </Popover>
   )
 }
 

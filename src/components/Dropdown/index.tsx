@@ -99,22 +99,20 @@ import {
 const DropdownDemo = () => {
   return(
     <DropdownRoot>
-      <DropdownContainer>
-        <DropdownTrigger>
-          TriggerButton
-        </DropdownTrigger>
-        <DropdownList className={styles.selectRows}>
-          <DropdownItem onClick={//your event handlers}>
-            Select1
-          </DropdownItem>
-          <DropdownItem onClick={//your event handlers}>
-            Select2
-          </DropdownItem>
-          <DropdownItem onClick={//your event handlers}>
-            Select3
-          </DropdownItem>
-        </DropdownList>
-      </DropdownContainer>
+      <DropdownTrigger>
+        TriggerButton
+      </DropdownTrigger>
+      <DropdownList className={styles.selectRows}>
+        <DropdownItem onClick={//your event handlers}>
+          Select1
+        </DropdownItem>
+        <DropdownItem onClick={//your event handlers}>
+          Select2
+        </DropdownItem>
+        <DropdownItem onClick={//your event handlers}>
+          Select3
+        </DropdownItem>
+      </DropdownList>
     </DropdownRoot>
   )
 }

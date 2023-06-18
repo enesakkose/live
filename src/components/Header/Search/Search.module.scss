@@ -13,11 +13,7 @@
     position: relative;
     z-index: 15;
 
-    &:hover{
-        border-color: $GREEN-400;
-    }
-
-    &:has(input:focus) {
+    &:has(input:focus), &:hover {
         border-color: $GREEN-400;
     }
     
@@ -28,7 +24,7 @@
     }
 
     @media only screen and (max-width: $SM){
-        display: none;
+        //display: none;
     }
 
 }

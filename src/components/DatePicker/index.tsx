@@ -1,34 +1,42 @@
-import React, { useState } from 'react'
-import Button from '@/components/UI/Button'
+"use client"
+import React from 'react'
 import { Dropdown, DropdownTrigger, DropdownList } from '../Dropdown'
-import { useClickOutside } from '@/utils/hooks/useClickOutside'
+import { Popover, PopoverContent, PopoverTrigger } from '../UI/Popover'
 import { DayPicker } from 'react-day-picker'
+import { useDateContext } from '@/context/DateContext'
+import dayjs from 'dayjs'
 import 'react-day-picker/dist/style.css'
 import styles from '@/components/DatePicker/DatePicker.module.scss'
 
 function DatePicker() {
-  const [selected, setSelected] = React.useState<Date>()
-  const [open, setOpen] = useState(false)
-  const datePickerRef = useClickOutside<HTMLDivElement>(() => setOpen(false))
-  const handleOpen = () => setOpen((prev) => !prev)
+  const { date, setDate } = useDateContext()
+  const handleSelect = (selectedDate: any) => {
+    const formatSelectedDate = dayjs(selectedDate).unix() 
+    setDate(formatSelectedDate)
+  }
 
   return (
-    <Dropdown>
-      <DropdownTrigger icon='calendar4-week' size={20} />
-      <DropdownList className={styles.datePickerContainer}>
+    <Popover>
+      <PopoverTrigger icon='calendar4-week' size={20} />
+      <PopoverContent  className={styles.datePickerContainer}>
         <DayPicker
+          showOutsideDays={true}
           mode='single'
-          selected={selected}
-          onSelect={setSelected}
+          selected={dayjs.unix(date).toDate()}
+          onSelect={handleSelect}
           className={styles.datePicker}
+          classNames={{
+            day: `${styles.day}`,
+            nav_button_previous: `${styles.previous}`,
+            nav_button_next: `${styles.next}`,
+          }}
           modifiersClassNames={{
             selected: styles.selected,
             today: styles.today,
-            months: styles.month,
           }}
         />
-      </DropdownList>
-    </Dropdown>
+      </PopoverContent>
+    </Popover>
   )
 }
 

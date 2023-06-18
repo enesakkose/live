@@ -41,7 +41,7 @@
         &.active{
             background-color: $GREEN-400;
             color: $SECONDARY-900;
-            //border-color: transparent;
+            border-color: transparent;
         }
 
         @media only screen and (max-width: $SM){

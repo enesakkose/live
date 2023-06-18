@@ -1,11 +1,11 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import EventRow from '../Row'
-import Timezone from '@/components/Events/Timezone'
 import Loading from './loading'
 import TournamentHeader from '@/components/Events/Header'
-import dayjs from 'dayjs'
 import _ from 'lodash'
+import { useTimezoneContext } from '@/context/TimezoneContext'
+import { useDateContext } from '@/context/DateContext'
 import { useGetEvents } from '@/services/sportsv2'
 import {
   Accordion,
@@ -15,22 +15,27 @@ import {
 } from '@/components/AccordionMenu'
 import styles from './Content.module.scss'
 
-function Content({ category = 'football' }: { category: string }) {
-  const today = dayjs().unix() // temporary value
-  const [timezone, setTimezone] = useState<'all' | 'live'>('all')
-  const { data: Events = [], isLoading } = useGetEvents(category, timezone, today)
+type ContentPropsType = {
+  category: string
+}
+
+function Content({ category = 'football' }: ContentPropsType) {
+  const { date } = useDateContext()
+  const { timezone } = useTimezoneContext()
+  const { data: Events = [], isLoading } = useGetEvents(category, timezone, date)
   const groupedEvents = _.groupBy(Events, 'tournament.id')
-  if(isLoading) return <Loading/>
+
+  if (isLoading) return <Loading />
 
   return (
     <>
-      <Timezone timezone={timezone} setTimezone={setTimezone} />
       {Object.keys(groupedEvents).map((key) => (
         <Accordion key={key} className={styles.tournamentEvents}>
           <AccordionItem>
             <AccordionHeader className={styles.accordionHeader}>
               <TournamentHeader
                 tournamentImage={groupedEvents[key][0].tournament.category.alpha2?.toLowerCase()}
+                uniqueTournamentId = {groupedEvents[key][0].tournament.uniqueTournament?.id}
                 tournamentName={groupedEvents[key][0].tournament.name}
               />
             </AccordionHeader>
