@@ -42,7 +42,6 @@
 
         @media only screen and (max-width: $SM){
             height: 2.5rem;
-            font-size: 13px;
         }
     }
 
@@ -53,6 +52,17 @@
 
         &.active{
             color: $SECONDARY-100;
+            position: relative;
+
+            &::before{
+                position: absolute;
+                content: '';
+                bottom: -.5rem;
+                height: .25rem;
+                width: .25rem;
+                border-radius: 50%;
+                background-color: $GREEN-400;
+            }
         }
     }
 }
