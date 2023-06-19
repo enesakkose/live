@@ -3,6 +3,7 @@ import React from 'react'
 import EventRow from '../Row'
 import Loading from './loading'
 import TournamentHeader from '@/components/Events/Header'
+import NotEvents from './NotEvents'
 import _ from 'lodash'
 import { useTimezoneContext } from '@/context/TimezoneContext'
 import { useDateContext } from '@/context/DateContext'
@@ -26,6 +27,7 @@ function Content({ category = 'football' }: ContentPropsType) {
   const groupedEvents = _.groupBy(Events, 'tournament.id')
 
   if (isLoading) return <Loading />
+  if (Events.length === 0) return <NotEvents category={category} />
 
   return (
     <>
@@ -37,6 +39,7 @@ function Content({ category = 'football' }: ContentPropsType) {
                 countryFlag={groupedEvents[key][0].tournament.category.alpha2?.toLowerCase()}
                 uniqueFlag={groupedEvents[key][0].tournament.category?.flag}
                 uniqueTournamentId = {groupedEvents[key][0].tournament.uniqueTournament?.id}
+                categoryTennis={groupedEvents[key][0].tournament.category.sport.id === 5}
                 name={groupedEvents[key][0].tournament.name}
               />
             </AccordionHeader>

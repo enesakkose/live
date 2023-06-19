@@ -1,0 +1,17 @@
+.notEvents{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    
+    .categoryIcon{
+        color: $SECONDARY-600;
+    }
+
+    .infoText{
+        font-weight: 500;
+        font-size: 18px;
+    }
+}
