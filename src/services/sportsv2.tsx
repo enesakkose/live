@@ -4,10 +4,10 @@ import { type Events } from '@/types/Events'
 import { type Search } from '@/types/SearchQuery'
 import { TIMEZONE, type TimezoneStatusType } from '@/context/TimezoneContext'
 
-export const getEventsV2 = async(category: string, date: number) => {
-  const res = await (fetch(`/api/getEvents?category=${category}&date=${getDateV2(date)}`))
+export const getEventsV2 = async(category: string, date: string) => {
+  const res = await (fetch(`/api/getEvents?category=${category}&date=${date}`))
   const data: Events = await res.json()
-  const currentDateEvents = data.events.filter(event => getDateV2(event.startTimestamp) === getDateV2(date))
+  const currentDateEvents = data.events.filter(event => getDateV2(event.startTimestamp) === date)
   return currentDateEvents
 }
 
@@ -23,7 +23,7 @@ export const getSearchResult = async(query: string) => {
   return data
 }
 
-export const useGetEvents = (category: string, timezoneStatus: TimezoneStatusType, date: number) => {
+export const useGetEvents = (category: string, timezoneStatus: TimezoneStatusType, date: string) => {
   return useQuery(['eventsV2', category, timezoneStatus, date], 
     () => timezoneStatus === TIMEZONE.LIVE ? getLiveEventsV2(category) : getEventsV2(category, date))
 }

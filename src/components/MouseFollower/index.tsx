@@ -7,7 +7,6 @@ import styles from './MouseFollower.module.scss'
 type MouseFollowerPropsTypes = {
   children: React.ReactNode
   className?: string
-  onClick?: () => void
 }
 
 function MouseFollower<T extends HTMLDivElement>({

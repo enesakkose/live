@@ -10,7 +10,7 @@ import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { getFormatTime } from '@/utils/helpers/getFormatTime'
 import { Url } from 'next/dist/shared/lib/router/router'
-import { Event } from '@/types/Events'
+import type { Status, TeamCountry, Event } from '@/types/Events'
 import styles from './Row.module.scss'
 
 type TeamRowPropsType = {
@@ -19,15 +19,17 @@ type TeamRowPropsType = {
   currentTennisPeriod?: number | string
   teamImage: string[] | null | string | number
   teamName: string
-  status: { code: number; description: string; type: string }
+  status: Status
   winner: boolean
   partScores: string[]
   service: boolean
+  subTeams: boolean
+  playerCountryFlag: TeamCountry
   categoryTennis: boolean
 }
 
 type EventStagePropsType = {
-  status: { code: number; description: string; type: string }
+  status: Status
   startTime: number
   categoryFootball: boolean
   currentPeriodStartTime: number
@@ -43,7 +45,9 @@ function TeamRow({
   winner,
   partScores,
   service,
+  playerCountryFlag,
   categoryTennis,
+  subTeams
 }: TeamRowPropsType) {
   const notPlayedDue = [
     'Not started',
@@ -55,17 +59,21 @@ function TeamRow({
   ].includes(status.description)
   const inprogress = status.type === 'inprogress'
   const SM = useGetWindowSize('SM')
+  const teamImgSrc = categoryTennis
+    ? `https://www.sofascore.com/static/images/flags/${playerCountryFlag?.alpha2?.toLowerCase()}.png`
+    : `https://api.sofascore.app/api/v1/team/${teamImage}/image/small`
 
   const TeamImg = () => {
     return (
       <>
-        {teamImage !== null ? (
+        {subTeams ? (
           <img
             loading='lazy'
-            src={`https://api.sofascore.app/api/v1/team/${teamImage}/image/small`}
-            width={16}
-            height={16}
-            alt='logo'
+            src={teamImgSrc}
+            width={18}
+            height={18}
+            alt={categoryTennis ? playerCountryFlag.name : teamName}
+            title={categoryTennis ? playerCountryFlag.name : teamName}
           />
         ) : null}
       </>
@@ -158,7 +166,7 @@ function FavEventBtn() {
   return <Button onClick={favEvent} variant='icon' icon={'bell'} size={20} />
 }
 
-function Row({ event, href }: { event: Event; href: Url }) {
+function Row({ event, href }: { event: Event, href: Url }) {
   const HOME_PART_SCORES = getFilterEventScores(event.homeScore)
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
 
@@ -170,11 +178,13 @@ function Row({ event, href }: { event: Event; href: Url }) {
           tennisPoint={event.homeScore.point}
           currentTennisPeriod={event.homeScore[event.lastPeriod]}
           partScores={HOME_PART_SCORES}
-          teamImage={event?.homeTeam.id}
+          teamImage={event.homeTeam.id}
           teamName={event.homeTeam.name}
           status={event.status}
           winner={event.winnerCode === 1}
           service={event.firstToServe === 1}
+          subTeams={event.homeTeam.subTeams.length === 0}
+          playerCountryFlag={event.homeTeam.country}
           categoryTennis={event.tournament.category.sport.id === 5}
         />
         <TeamRow
@@ -182,11 +192,13 @@ function Row({ event, href }: { event: Event; href: Url }) {
           tennisPoint={event.awayScore.point}
           currentTennisPeriod={event.awayScore[event.lastPeriod]}
           partScores={AWAY_PART_SCORES}
-          teamImage={event?.awayTeam.id}
+          teamImage={event.awayTeam.id}
           teamName={event.awayTeam.name}
           status={event.status}
           winner={event.winnerCode === 2}
           service={event.firstToServe === 2}
+          subTeams={event.awayTeam.subTeams.length === 0}
+          playerCountryFlag={event.awayTeam.country}
           categoryTennis={event.tournament.category.sport.id === 5}
         />
       </div>

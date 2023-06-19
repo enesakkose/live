@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState } from 'react'
 import dayjs from 'dayjs'
 
 type DateContextType = {
-  date: number
-  setDate: React.Dispatch<React.SetStateAction<number>>
+  date: string
+  setDate: React.Dispatch<React.SetStateAction<string>>
 }
 
 const DateContext = createContext<DateContextType | undefined>(undefined)
@@ -20,8 +20,8 @@ type DateProviderProps = {
 }
 
 export const DateProvider = ({ children }: DateProviderProps) => {
-  const today = dayjs().unix()
-  const [date, setDate] = useState<number>(today)
+  const today = dayjs().format('YYYY-MM-DD')
+  const [date, setDate] = useState(today)
   const value = { date, setDate }
 
   return <DateContext.Provider value={value}>{children}</DateContext.Provider>

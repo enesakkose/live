@@ -201,7 +201,7 @@ export type IconNameType =
   | 'house'
   | 'left'
   | 'search'
-  | 'soccer'
+  | 'football'
   | 'tennis'
   | 'calendar4-week'
   | 'favourites'

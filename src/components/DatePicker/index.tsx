@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import { Dropdown, DropdownTrigger, DropdownList } from '../Dropdown'
 import { Popover, PopoverContent, PopoverTrigger } from '../UI/Popover'
 import { DayPicker } from 'react-day-picker'
 import { useDateContext } from '@/context/DateContext'
@@ -10,9 +9,9 @@ import styles from '@/components/DatePicker/DatePicker.module.scss'
 
 function DatePicker() {
   const { date, setDate } = useDateContext()
-  const handleSelect = (selectedDate: any) => {
-    const formatSelectedDate = dayjs(selectedDate).unix() 
-    setDate(formatSelectedDate)
+  const handleSelect = (selectedDate: Date | undefined) => {
+    const formatSelectedDate = dayjs(selectedDate).format('YYYY-MM-DD')
+    if(formatSelectedDate !== date) return setDate(formatSelectedDate)
   }
 
   return (
@@ -22,7 +21,7 @@ function DatePicker() {
         <DayPicker
           showOutsideDays={true}
           mode='single'
-          selected={dayjs.unix(date).toDate()}
+          selected={dayjs(date).toDate()}
           onSelect={handleSelect}
           className={styles.datePicker}
           classNames={{

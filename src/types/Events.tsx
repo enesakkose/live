@@ -57,7 +57,7 @@ export interface Team {
   disabled?:       boolean;
   type:            number;
   id:              number;
-  country:         AwayTeamCountry;
+  country:         TeamCountry;
   subTeams:        any[];
   teamColors:      TeamColors;
   gender?:         string;
@@ -66,7 +66,7 @@ export interface Team {
   playerTeamInfo?: PlayerTeamInfo;
 }
 
-export interface AwayTeamCountry {
+export interface TeamCountry {
   alpha2: string;
   name:   string;
 }

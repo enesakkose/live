@@ -13,8 +13,8 @@ function BottomNav() {
   const pathname = usePathname()
   const SM = useGetWindowSize('SM')
   const navLinks = [
-    { href: '/', active: null, icon: 'soccer', text: 'FOOTBALL' },
-    { href: '/basketball', active: 'basketball', icon: 'basket', text: 'BASKETBALL' },
+    { href: '/', active: null, icon: 'football', text: 'FOOTBALL' },
+    { href: '/basketball', active: 'basketball', icon: 'basketball', text: 'BASKETBALL' },
     { href: '/tennis', active: 'tennis', icon: 'tennis', text: 'TENNIS' },
     /*{ href: '/favorites', active: 'favourites', icon: 'bell', text: 'FAVORITES' },*/
   ]

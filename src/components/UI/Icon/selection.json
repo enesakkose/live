@@ -162,7 +162,7 @@
         "attrs": [{}],
         "width": 1024
       },
-      "properties": { "name": "basket" }
+      "properties": { "name": "basketball" }
     },
     {
       "icon": {
@@ -212,7 +212,7 @@
         "attrs": [{}],
         "width": 1024
       },
-      "properties": { "name": "soccer" }
+      "properties": { "name": "football" }
     },
     {
       "icon": {

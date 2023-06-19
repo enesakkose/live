@@ -17,7 +17,7 @@ type InfoPropsType = {
 
 type SignPropsType = {
   children?: React.ReactNode
-  icon?: 'subs' | 'warning' | 'soccer'
+  icon?: 'subs' | 'warning' | 'football'
   className?: string
 }
 
@@ -34,7 +34,7 @@ const Info = ({ variant = 'GOAL', info, incidentTeam }: InfoPropsType) => {
   const Goal = ({ ...props }) => {
     return (
       <div className={clsx(styles.infoGoal, incidentTeam === 2 ? styles.incidentAwayRow : '')}>
-        <Sign icon='soccer' {...props}>
+        <Sign icon='football' {...props}>
           {info.HOME_SCORE} {info.HOME_SCORE ? '-' : ''} {info.AWAY_SCORE}
         </Sign>
         {info.PARTICIPANT_NAME}
