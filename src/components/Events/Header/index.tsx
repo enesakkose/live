@@ -8,17 +8,17 @@ type HeaderPropsType = {
   countryFlag?: string | null
   uniqueTournamentId: number
   uniqueFlag: string
+  categoryTennis: boolean
 }
 
-function Header({ name, countryFlag, uniqueFlag, uniqueTournamentId }: HeaderPropsType) {
+function Header({ name, countryFlag, uniqueFlag, uniqueTournamentId, categoryTennis }: HeaderPropsType) {
+  const TENNISTOURNAMENTFLAG = TENNISFLAG[uniqueFlag as keyof typeof TENNISFLAG] ?? uniqueFlag
   const tournamentImgSrc = countryFlag
     ? `https://www.sofascore.com/static/images/flags/${countryFlag}.png`
-    : `https://api.sofascore.app/api/v1/unique-tournament/${uniqueTournamentId}/image/dark`
-    
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const TOURNAMENTFLAG = TENNISFLAG[uniqueFlag as keyof typeof TENNISFLAG]
-    e.currentTarget.src = `https://www.sofascore.com/static/images/flags/${TOURNAMENTFLAG}.png`
-  }
+    : categoryTennis
+      ? `https://www.sofascore.com/static/images/flags/${TENNISTOURNAMENTFLAG}.png`
+      : `https://api.sofascore.app/api/v1/unique-tournament/${uniqueTournamentId}/image/dark`
+
 
   return (
     <div className={styles.eventsHeader}>
@@ -28,7 +28,6 @@ function Header({ name, countryFlag, uniqueFlag, uniqueTournamentId }: HeaderPro
           width={18}
           height={18}
           alt={name}
-          onError={handleImageError}
           loading='lazy'
         />
       )}
