@@ -21,8 +21,8 @@ type ContentPropsType = {
 
 function Content({ category = 'football' }: ContentPropsType) {
   const { date } = useDateContext()
-  const { timezone } = useTimezoneContext()
-  const { data: Events = [], isLoading } = useGetEvents(category, timezone, date)
+  const { timezoneStatus } = useTimezoneContext()
+  const { data: Events = [], isLoading } = useGetEvents(category, timezoneStatus, date)
   const groupedEvents = _.groupBy(Events, 'tournament.id')
 
   if (isLoading) return <Loading />
@@ -34,9 +34,10 @@ function Content({ category = 'football' }: ContentPropsType) {
           <AccordionItem>
             <AccordionHeader className={styles.accordionHeader}>
               <TournamentHeader
-                tournamentImage={groupedEvents[key][0].tournament.category.alpha2?.toLowerCase()}
+                countryFlag={groupedEvents[key][0].tournament.category.alpha2?.toLowerCase()}
+                uniqueFlag={groupedEvents[key][0].tournament.category?.flag}
                 uniqueTournamentId = {groupedEvents[key][0].tournament.uniqueTournament?.id}
-                tournamentName={groupedEvents[key][0].tournament.name}
+                name={groupedEvents[key][0].tournament.name}
               />
             </AccordionHeader>
             <AccordionContent>

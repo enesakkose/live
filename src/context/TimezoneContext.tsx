@@ -6,11 +6,11 @@ export enum TIMEZONE {
   LIVE = 'live',
 }
 
-type TimezoneStatusType = 'all' | 'live'
+export type TimezoneStatusType = 'all' | 'live'
 
 type TimezoneContextType = {
-  timezone: TimezoneStatusType
-  setTimezone: React.Dispatch<React.SetStateAction<TimezoneStatusType>>
+  timezoneStatus: TimezoneStatusType
+  setTimezoneStatus: React.Dispatch<React.SetStateAction<TimezoneStatusType>>
 }
 
 const TimezoneContext = createContext<TimezoneContextType | undefined>(undefined)
@@ -26,8 +26,8 @@ type TimezoneProviderProps = {
 }
 
 export const TimezoneProvider = ({ children }: TimezoneProviderProps) => {
-  const [timezone, setTimezone] = useState<TimezoneStatusType>(TIMEZONE.ALL)
-  const value = { timezone, setTimezone }
+  const [timezoneStatus, setTimezoneStatus] = useState<TimezoneStatusType>(TIMEZONE.ALL)
+  const value = { timezoneStatus, setTimezoneStatus }
 
   return <TimezoneContext.Provider value={value}>{children}</TimezoneContext.Provider>
 }

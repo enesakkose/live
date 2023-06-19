@@ -6,27 +6,27 @@ import { useTimezoneContext, TIMEZONE } from '@/context/TimezoneContext'
 import styles from './Timezone.module.scss'
 
 function Timezone() {
-  const { timezone, setTimezone } = useTimezoneContext()
+  const { timezoneStatus, setTimezoneStatus } = useTimezoneContext()
+  const TimezoneStatusTabs = [
+    { name: 'all', statusType: TIMEZONE.ALL },
+    { name: 'live', statusType: TIMEZONE.LIVE },
+  ]
 
   return (
     <div className={styles.timezone}>
       <div className={styles.filterActionBtns}>
-        <Button
-          active={timezone === TIMEZONE.ALL}
-          onClick={() => setTimezone(TIMEZONE.ALL)}
-          variant='primary'
-        >
-          all
-        </Button>
-        <Button
-          active={timezone === TIMEZONE.LIVE}
-          onClick={() => setTimezone(TIMEZONE.LIVE)}
-          variant='primary'
-        >
-          live
-        </Button>
+        {TimezoneStatusTabs.map((tab) => (
+          <Button
+            key={tab.name}
+            active={timezoneStatus === tab.statusType}
+            onClick={() => setTimezoneStatus(tab.statusType)}
+            variant='primary'
+          >
+            {tab.name}
+          </Button>
+        ))}
       </div>
-      {timezone === TIMEZONE.ALL && (
+      {timezoneStatus === TIMEZONE.ALL && (
         <div className={styles.queryBtns}>
           <Button icon='search' />
           <DatePicker />
