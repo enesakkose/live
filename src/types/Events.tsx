@@ -173,3 +173,12 @@ export interface UniqueTournament {
   hasBoxScore?:                boolean;
   groundType?:                 string;
 }
+
+export enum TENNISFLAG  {
+  'atp' = 'atp',
+  'wta' = 'wta',
+  'itf-men' = 'itf',
+  'itf-women' = 'itf',
+  'challenger' = 'challenger',
+  'challenger-women' = 'wta'
+}
