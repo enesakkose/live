@@ -23,14 +23,12 @@
 
     &.primary{
         border: 2px solid $SECONDARY-800;
-        transition: 200ms border-color ease-in-out;
 
         &:hover{
-            border-color: $GREEN-400;
+            background-color: $SECONDARY-800;
         }
 
         &.active{
-            border-color: transparent;
             background-color: $GREEN-400;
             color: $SECONDARY-900;
         }

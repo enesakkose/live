@@ -28,20 +28,16 @@
         height: 3rem;
         padding-inline: $P-2;
         border-radius: .5rem;
-        font-size: 14px;
-        background-color: transparent;
         border: 2px solid $SECONDARY-800;
         gap: .5rem;
-        transition: 200ms border-color ease-in-out;
 
         &:hover{
-            border-color: $GREEN-400;
+            background-color: $SECONDARY-800;
         }
 
         &.active{
             background-color: $GREEN-400;
             color: $SECONDARY-900;
-            border-color: transparent;
         }
 
         @media only screen and (max-width: $SM){
