@@ -8,7 +8,6 @@ type NavLinkPropsType = {
   children: ReactNode
   variant?: 'primary' | 'secondary' | 'tertiary'
   active: boolean
-  title?: string
   className?: string
 } & LinkProps
 

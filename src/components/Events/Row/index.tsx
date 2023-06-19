@@ -56,8 +56,6 @@ function TeamRow({
   const inprogress = status.type === 'inprogress'
   const SM = useGetWindowSize('SM')
 
-  const EmptyPlayerImg = () => <Icon icon='user' size={20} />
-
   const TeamImg = () => {
     return (
       <>
@@ -69,9 +67,7 @@ function TeamRow({
             height={16}
             alt='logo'
           />
-        ) : (
-          <EmptyPlayerImg />
-        )}
+        ) : null}
       </>
     )
   }
