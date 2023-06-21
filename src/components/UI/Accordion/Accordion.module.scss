@@ -1,0 +1,20 @@
+.accordionContainerr{
+
+    .accordionTrigger{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .chevronBtnn{
+        transition: rotate 300ms ease-in-out;
+    }
+
+
+    &[data-state='open']{
+        .chevronBtnn{
+            rotate: 180deg;
+        }
+    }
+}
