@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getDateV2 } from '@/utils/helpers/getFormatTime'
 import { type Events } from '@/types/Events'
-import { type Search } from '@/types/SearchQuery'
+import { type SearchResult } from '@/types/SearchQuery'
 import { TIMEZONE, type TimezoneStatusType } from '@/context/TimezoneContext'
 
 export const getEventsV2 = async(category: string, date: string) => {
@@ -19,8 +19,8 @@ export const getLiveEventsV2 = async(category: string) => {
 
 export const getSearchResult = async(query: string) => {
   const res = await (fetch(`/api/getSearchData?q=${query}`))
-  const data: Search[] = await res.json()
-  return data
+  const data: SearchResult = await res.json()
+  return data.results
 }
 
 export const useGetEvents = (category: string, timezoneStatus: TimezoneStatusType, date: string) => {
@@ -29,5 +29,5 @@ export const useGetEvents = (category: string, timezoneStatus: TimezoneStatusTyp
 }
 
 export const useGetSearchResult = (query: string) => {
-  return useQuery([query], () => getSearchResult(query))
+  return useQuery([query, 0], () => getSearchResult(query))
 }

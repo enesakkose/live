@@ -1,3 +1,7 @@
+export interface SearchResult {
+  results: Search[]
+}
+
 export interface Search {
   type:   Type;
   entity: Entity;
@@ -10,6 +14,7 @@ export interface Entity {
   shortName:   string;
   gender?:     string;
   sport?:      Sport;
+  category?:   Category;
   userCount?:  number;
   nameCode?:   string;
   ranking?:    number;
@@ -24,6 +29,15 @@ export interface Entity {
   position?:   string;
   firstName?:  string;
   lastName?:   string;
+}
+
+export interface Category {
+  name:   string;
+  slug:   string;
+  sport:  Sport;
+  id:     number;
+  flag:   string;
+  alpha2: string;
 }
 
 export interface Country {
@@ -76,4 +90,6 @@ export enum Type {
   Manager = "manager",
   Player = "player",
   Team = "team",
+  UniqueTournament = "uniqueTournament",
+  Referee = 'referee'
 }

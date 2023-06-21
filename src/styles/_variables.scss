@@ -18,7 +18,7 @@ $SECONDARY-500: #7b7b7b;
 $SECONDARY-600: #555555;
 $SECONDARY-700: #434343;
 $SECONDARY-800: #262626;
-$SECONDARY-900: #000000;
+$SECONDARY-900: #090909;
 
 $DARK-GRAY-50:  #f6fbfd;
 $DARK-GRAY-100: #f1f7f8;
@@ -100,12 +100,15 @@ $BLACK-8: hsla(0, 0%, 0%, 0.220);
 $BLACK-9: hsla(0, 0%, 0%, 0.439);
 $BLACK-10: hsla(0, 0%, 0%, 0.478);
 $BLACK-11: hsla(0, 0%, 0%, 0.565);
-$BLACK-12: hsla(0, 0%, 0%, 0.910);
+$BLACK-12: hsla(0, 0%, 0%, 1);
 
 $BADGE-WIN: #00a83f;
 $BADGE-DRAW: #f3a000;
 $BADGE-LOSE: red;
 $BADGE-YELLOW: #ffcd00;
+
+//BOX-SHADOW
+$POPOVER-SHADOW: 0 1px 8px 2px rgba(6, 6, 6, 0.41);
 
 //BREAKPOINTS
 $SM: 560px;

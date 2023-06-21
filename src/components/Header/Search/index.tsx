@@ -20,7 +20,7 @@ function Search() {
         </div>
       </PopoverTrigger>
       <PopoverContent>
-        <QueryResult />
+        <QueryResult query={query} />
       </PopoverContent>
     </Popover>
   )

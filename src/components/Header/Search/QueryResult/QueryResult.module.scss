@@ -4,36 +4,11 @@
     background-color: $SECONDARY-900;
     border: 1px solid $SECONDARY-800;
     border-radius: .5rem;
-    animation: contentAnimation 200ms ease-in-out;
+    box-shadow: $POPOVER-SHADOW;
+    max-width: 20rem;
+    overflow: hidden;
 
     .list{
         padding-block: $P-2;
-
-        .result{
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: $P-2;
-
-            &:hover{
-                background-color: $WHITE-3;
-            }
-
-            .slug{
-                display: flex;
-                align-items: center;
-                gap: .5rem;
-            }
-        }
-    }
-}
-
-
-@keyframes contentAnimation {
-    0%{
-        top: calc(100% - 1rem);
-    }
-    100%{
-        top: calc(100% + .5rem);
     }
 }

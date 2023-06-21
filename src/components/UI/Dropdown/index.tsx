@@ -1,10 +1,10 @@
 import React, { useId } from 'react'
 import clsx from 'clsx'
-import Button from '../UI/Button'
+import Button from '../Button'
 import { useDropdownContext } from '@/context/DropdownContext'
 import { useClickOutside } from '@/utils/hooks/useClickOutside'
 import { DropdownProvider } from '@/context/DropdownContext'
-import { type ButtonPropTypes } from '../UI/Button'
+import { type ButtonPropTypes } from '../Button'
 import styles from './Dropdown.module.scss'
 
 type DropdownElementType<T extends HTMLElement> = {
