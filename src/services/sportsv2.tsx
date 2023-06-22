@@ -9,7 +9,7 @@ export const getEventsV2 = async(category: string, date: string) => {
   const data: Events = await res.json()
   const currentDateEvents = data.events.filter(event => getDateV2(event.startTimestamp) === date)
   const liveEventsFromPastDays = data.events.filter(event => event.status.type === 'inprogress')
-  return [...currentDateEvents, ...liveEventsFromPastDays]
+  return [...liveEventsFromPastDays, ...currentDateEvents]
 }
 
 export const getLiveEventsV2 = async(category: string) => {
