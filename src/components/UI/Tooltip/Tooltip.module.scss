@@ -1,0 +1,16 @@
+.tooltipContainer{
+    position: relative;
+
+    .tooltipTrigger{
+        width: 100%;
+    }
+
+    .tooltipContent{
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        min-width: fit-content;
+        animation: tooltipContenAnimation 400ms ease-in-out;
+    }
+}
