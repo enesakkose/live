@@ -12,14 +12,14 @@ function Search() {
   }
 
   return (
-    <Popover>
+    <Popover className={styles.searchPopover}>
       <PopoverTrigger asChild>
         <div className={styles.search}>
           <input type='text' value={query} onChange={handleQuery} placeholder='Search' />
           <Icon icon='search' />
         </div>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className={styles.content}>
         <QueryResult query={query} />
       </PopoverContent>
     </Popover>

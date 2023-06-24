@@ -7,6 +7,7 @@
     box-shadow: $POPOVER-SHADOW;
     max-width: 20rem;
     overflow: hidden;
+    z-index: 17;
 
     .list{
         padding-block: $P-2;
