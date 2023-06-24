@@ -8,6 +8,8 @@
     font-size: 14px;
     border-bottom: 1px solid $SECONDARY-800;
     cursor: default;
+    width: 100%;
+    z-index: 16;
 
     &:hover{
         background-color: $SECONDARY-800;
@@ -32,6 +34,7 @@
         gap: .5rem;
 
         .teamName{
+            text-align: start;
             flex: 1;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -104,6 +107,16 @@
             color: $SECONDARY-200;
         }
     }
+
+}
+
+.rowTooltipContent{
+    width: 18.75rem;
+    height: 18.75rem;
+    background-color: $SECONDARY-900;
+    border: 1px solid $SECONDARY-800;
+    border-radius: .5rem;
+    padding-block: $P-2;
 }
 
 @keyframes blink {

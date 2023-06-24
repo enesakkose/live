@@ -4,11 +4,13 @@ import Icon from '@/components/UI/Icon'
 import Button from '@/components/UI/Button'
 import clsx from 'clsx'
 import Link from 'next/link'
+import RowTooltipContent from './RowTooltipContent'
 import { getFilterEventScores } from '@/utils/helpers'
 import { getStageType } from '@/utils/helpers/getStageType'
 import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { getFormatTime } from '@/utils/helpers/getFormatTime'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/UI/Tooltip'
 import { Url } from 'next/dist/shared/lib/router/router'
 import type { Status, TeamCountry, Event } from '@/types/Events'
 import styles from './Row.module.scss'
@@ -171,44 +173,51 @@ function Row({ event, href }: { event: Event, href: Url }) {
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
 
   return (
-    <div className={styles.eventRow}>
-      <div className={styles.teams}>
-        <TeamRow
-          score={event.homeScore.current}
-          tennisPoint={event.homeScore.point}
-          currentTennisPeriod={event.homeScore[event.lastPeriod]}
-          partScores={HOME_PART_SCORES}
-          teamImage={event.homeTeam.id}
-          teamName={event.homeTeam.name}
+    <Tooltip>
+      <TooltipTrigger>
+        <div className={styles.eventRow}>
+          <div className={styles.teams}>
+            <TeamRow
+              score={event.homeScore.current}
+              tennisPoint={event.homeScore.point}
+              currentTennisPeriod={event.homeScore[event.lastPeriod]}
+              partScores={HOME_PART_SCORES}
+              teamImage={event.homeTeam.id}
+              teamName={event.homeTeam.name}
+              status={event.status}
+              winner={event.winnerCode === 1}
+              service={event.firstToServe === 1}
+              subTeams={event.homeTeam.subTeams.length === 0}
+              playerCountryFlag={event.homeTeam.country}
+              categoryTennis={event.tournament.category.sport.id === 5}
+            />
+            <TeamRow
+              score={event.awayScore.current}
+              tennisPoint={event.awayScore.point}
+              currentTennisPeriod={event.awayScore[event.lastPeriod]}
+              partScores={AWAY_PART_SCORES}
+              teamImage={event.awayTeam.id}
+              teamName={event.awayTeam.name}
+              status={event.status}
+              winner={event.winnerCode === 2}
+              service={event.firstToServe === 2}
+              subTeams={event.awayTeam.subTeams.length === 0}
+              playerCountryFlag={event.awayTeam.country}
+              categoryTennis={event.tournament.category.sport.id === 5}
+            />
+          </div>
+        <EventStage
           status={event.status}
-          winner={event.winnerCode === 1}
-          service={event.firstToServe === 1}
-          subTeams={event.homeTeam.subTeams.length === 0}
-          playerCountryFlag={event.homeTeam.country}
-          categoryTennis={event.tournament.category.sport.id === 5}
-        />
-        <TeamRow
-          score={event.awayScore.current}
-          tennisPoint={event.awayScore.point}
-          currentTennisPeriod={event.awayScore[event.lastPeriod]}
-          partScores={AWAY_PART_SCORES}
-          teamImage={event.awayTeam.id}
-          teamName={event.awayTeam.name}
-          status={event.status}
-          winner={event.winnerCode === 2}
-          service={event.firstToServe === 2}
-          subTeams={event.awayTeam.subTeams.length === 0}
-          playerCountryFlag={event.awayTeam.country}
-          categoryTennis={event.tournament.category.sport.id === 5}
+          startTime={event.startTimestamp}
+          currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
+          categoryFootball={event.tournament.category.sport.id === 1}
         />
       </div>
-      <EventStage
-        status={event.status}
-        startTime={event.startTimestamp}
-        currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
-        categoryFootball={event.tournament.category.sport.id === 1}
-      />
-    </div>
+      </TooltipTrigger>
+      <TooltipContent className={styles.rowTooltipContent}>
+        <RowTooltipContent eventId={event.id}/>
+      </TooltipContent>
+    </Tooltip>
   )
 }
 

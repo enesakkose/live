@@ -1,0 +1,41 @@
+    .statsGroups{
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    
+        .statsList{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+    
+            .stats{
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1fr 4fr 1fr;
+                place-content: center;
+                padding: $P-1 $P-2;
+                cursor: default;
+    
+                &:hover{
+                    background-color: $SECONDARY-800;
+                }
+    
+                .ahead{
+                    color: $BLACK-12;
+                    font-weight: 600;
+                    background-color: $GREEN-400;
+                    padding: 0 $P-2;
+                    border-radius: .5rem;
+                }
+    
+                .homeStats, .awayStats{
+                    font-size: 14px;
+                    text-align: center;
+                }
+    
+                .statsType{
+                    text-align: center;
+                }
+            }
+        }
+    }
