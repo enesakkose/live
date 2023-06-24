@@ -1,3 +1,4 @@
+"use client"
 import React, { useId } from 'react'
 import clsx from 'clsx'
 import Button from '../Button'
@@ -7,7 +8,7 @@ import { DropdownProvider } from '@/context/DropdownContext'
 import { type ButtonPropTypes } from '../Button'
 import styles from './Dropdown.module.scss'
 
-type DropdownElementType<T extends HTMLElement> = {
+type DropdownElementType<T> = {
   children?: React.ReactNode
 } & React.HTMLAttributes<T>
 

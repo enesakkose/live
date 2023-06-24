@@ -34,23 +34,23 @@ export const PopoverContent = ({ children, className, ...props }: PopoverElement
   )
 }
 
-const PopoverContainer = ({ children, ...props }: PopoverElementType) => {
+const PopoverContainer = ({ children, className, ...props }: PopoverElementType) => {
   const { setOpen } = usePopoverContext()
   const popoverRef = useClickOutside<HTMLDivElement>(() => setOpen(false))
 
   return (
-    <div ref={popoverRef} className={styles.popoverContainer} {...props}>
+    <div ref={popoverRef} className={clsx(styles.popoverContainer, className)} {...props}>
       {children}
     </div>
   )
 }
 
-export const Popover = ({ children }: { children: React.ReactNode }) => {
+export const Popover = ({ children, className }: PopoverElementType) => {
   const popoverId = useId()
 
   return (
     <PopoverProvider key={popoverId}>
-      <PopoverContainer>{children}</PopoverContainer>
+      <PopoverContainer className={className}>{children}</PopoverContainer>
     </PopoverProvider>
   )
 }

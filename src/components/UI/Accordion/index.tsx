@@ -1,3 +1,4 @@
+"use client"
 import React, { useId } from 'react'
 import clsx from 'clsx'
 import Button from '../Button'
@@ -55,12 +56,12 @@ export const AccordionTrigger = ({ children, className }: Partial<ButtonPropType
   )
 }
 
-export const Accordion = ({ children, className }: AccordionElementType) => {
+export const Accordion = ({ children, className, ...props }: AccordionElementType) => {
   const id = useId()
 
   return (
     <AccordionProvider key={id}>
-      <AccordionContainer className={className}>{children}</AccordionContainer>
+      <AccordionContainer className={className} {...props}>{children}</AccordionContainer>
     </AccordionProvider>
   )
 }
