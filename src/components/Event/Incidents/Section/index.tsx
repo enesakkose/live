@@ -6,15 +6,14 @@ import styles from './Section.module.scss'
 type SectionPropsTypes = {
   children: React.ReactNode
   title: string | React.ReactNode
-  className?: string
 }
 
-function Section({ children, title, className }: SectionPropsTypes) {
+function Section({ children, title }: SectionPropsTypes) {
   return (
-    <div className={clsx(styles.incidentSection, className)}>
+    <>
       <GroupLabel label={title} />
       {children}
-    </div>
+    </>
   )
 }
 
