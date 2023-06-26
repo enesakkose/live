@@ -12,6 +12,7 @@ type TooltipElementType<T = HTMLDivElement> = {
   asChild?: boolean
 } & React.HTMLAttributes<T>
 
+
 export const TooltipTrigger = ({ children, className, ...props }: Partial<ButtonPropTypes>) => {
   const { setIsHovered } = useTooltipContext()
   

@@ -64,6 +64,7 @@ export interface Team {
   nameCode?:       string;
   national?:       boolean;
   playerTeamInfo?: PlayerTeamInfo;
+  ranking?:        number;
 }
 
 export interface TeamCountry {

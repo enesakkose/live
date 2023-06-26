@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import RoundedImg from '@/components/RoundedImg'
-import { getDate, getFormatTime } from '@/utils/helpers/getFormatTime'
+import { getDate, getStartTime } from '@/utils/helpers/getFormatTime'
 import { getStageType } from '@/utils/helpers/getStageType'
 import type { EVENTDATA } from '@/types/event.types'
 import { Josefin_Sans } from 'next/font/google'
@@ -55,7 +55,7 @@ function Hero({ event }: HeroType) {
           )}
         >
           <span>
-            {getDate(event.START_UTIME)} {getFormatTime(event.START_UTIME)}
+            {getDate(event.START_UTIME)} {getStartTime(event.START_UTIME)}
           </span>
           <EventCurrentScore />
           {event.STAGE !== 'SCHEDULED' && (

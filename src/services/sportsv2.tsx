@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { getDateV2 } from '@/utils/helpers/getFormatTime'
-import { type Events } from '@/types/Events'
+import { type Events, type Event } from '@/types/Events'
 import { type SearchResult } from '@/types/SearchQuery'
 import { type Statistics } from '@/types/Statistics'
 import { TIMEZONE, type TimezoneStatusType } from '@/context/TimezoneContext'
@@ -35,6 +35,12 @@ export const getEventStats = async(eventId: number) => {
   return data.statistics
 }
 
+export const getEvent = async(eventId: number) => {
+  const res = await fetch(`/api/event?eventId=${eventId}`)
+  const { event }: { event: Event } = await res.json()
+  return event
+}
+
 export const useGetEvents = (
   category: string,
   timezoneStatus: TimezoneStatusType,
@@ -51,4 +57,8 @@ export const useGetSearchResult = (query: string) => {
 
 export const useGetEventStats = (eventId: number) => {
   return useQuery(['statistics', eventId], () => getEventStats(eventId))
+}
+
+export const useGetEvent = (eventId: number) => {
+  return useQuery(['event', eventId], () => getEvent(eventId))
 }

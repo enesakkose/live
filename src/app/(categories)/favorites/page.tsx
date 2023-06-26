@@ -2,7 +2,10 @@ import React from 'react'
 
 function Favoritespage() {
   return (
-    <div>Favoritespage</div>
+    <div>
+      f
+      
+    </div>
   )
 }
 

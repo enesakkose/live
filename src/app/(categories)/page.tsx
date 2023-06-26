@@ -3,8 +3,8 @@ import Page from './[category]/page'
 
 function HomePage() {
   return (
-     // @ts-expect-error
-    <Page params={{ category: 'football' }}/>
+    // @ts-expect-error
+    <Page params={{ category: 'football' }} />
   )
 }
 

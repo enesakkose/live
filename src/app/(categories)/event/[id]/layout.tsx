@@ -1,15 +1,16 @@
 import React from 'react'
+import Scoreboard from '@/components/Scoreboard'
 import EventContainer from '@/containers/EventContainer'
 
 type EventsParamsType = {
   children: React.ReactNode
-  params: { id: string }
+  params: { id: number }
 }
 
 function Layout({ children, params }: EventsParamsType) {
   return (
     <>
-      <EventContainer id={params.id} />
+      <Scoreboard eventId={params.id} />
       {children}
     </>
   )

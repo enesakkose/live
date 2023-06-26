@@ -1,8 +1,13 @@
 .eventHeader{
     background-color: $WHITE-3;
     padding: $P-2 $P-3;
-    border-radius: .5rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
+
+    .tournamentName{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }

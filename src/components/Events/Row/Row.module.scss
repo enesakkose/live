@@ -1,6 +1,6 @@
 .eventRow{
     --columns: /*3.75rem*/ auto 5.5rem;
-    display: grid;
+    display: grid !important;
     grid-template-columns: var(--columns);
     padding-block: $P-2;
     font-weight: 500;
@@ -10,6 +10,8 @@
     cursor: default;
     width: 100%;
     z-index: 16;
+    justify-content: unset !important;//temporary
+    align-items: unset !important;//temporary
 
     &:hover{
         background-color: $SECONDARY-800;
@@ -81,33 +83,6 @@
             }
         }
     }
-
-    
-    .stage{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $GREEN-400;
-        text-align: center;
-        border-left: 1px solid $SECONDARY-800;
-        
-        .time{
-            position: relative;
-
-            .liveBlink{
-                position: absolute;
-                top: 0;
-                right: -.25rem;
-                animation: blink 1s infinite ease-in;
-                color: $GREEN-400;
-            }
-        }
-
-        &.finishOrScheduled{
-            color: $SECONDARY-200;
-        }
-    }
-
 }
 
 .rowTooltipContent{
@@ -117,14 +92,4 @@
     border: 1px solid $SECONDARY-800;
     border-radius: .5rem;
     padding-block: $P-2;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
 }

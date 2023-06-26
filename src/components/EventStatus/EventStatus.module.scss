@@ -1,0 +1,35 @@
+.stage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $GREEN-400;
+    text-align: center;
+    border-left: 1px solid $SECONDARY-800;
+    
+    &.finishOrScheduled{
+        color: $SECONDARY-200;
+    }
+}
+
+.time{
+    position: relative;
+
+    .liveBlink{
+        position: absolute;
+        top: 0;
+        right: -.25rem;
+        animation: blink 1s infinite ease-in;
+        color: $GREEN-400;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+    
+        100% {
+            opacity: 0;
+        }
+    }
+}
+

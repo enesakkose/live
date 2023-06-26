@@ -5,11 +5,11 @@ import Button from '@/components/UI/Button'
 import clsx from 'clsx'
 import Link from 'next/link'
 import RowTooltipContent from './RowTooltipContent'
+import EventStatus from '@/components/EventStatus'
 import { getFilterEventScores } from '@/utils/helpers'
 import { getStageType } from '@/utils/helpers/getStageType'
 import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
-import { getFormatTime } from '@/utils/helpers/getFormatTime'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/UI/Tooltip'
 import { Url } from 'next/dist/shared/lib/router/router'
 import type { Status, TeamCountry, Event } from '@/types/Events'
@@ -28,13 +28,6 @@ type TeamRowPropsType = {
   subTeams: boolean
   playerCountryFlag: TeamCountry
   categoryTennis: boolean
-}
-
-type EventStagePropsType = {
-  status: Status
-  startTime: number
-  categoryFootball: boolean
-  currentPeriodStartTime: number
 }
 
 function TeamRow({
@@ -123,41 +116,6 @@ function TeamRow({
   )
 }
 
-function CurrentEventTime({
-  currentPeriodStartTime,
-  status,
-}: Pick<EventStagePropsType, 'currentPeriodStartTime' | 'status'>) {
-  return (
-    <div className={styles.time}>
-      {useGetEventTime(currentPeriodStartTime, status.description)}
-      <span className={styles.liveBlink}>&apos;</span>
-    </div>
-  )
-}
-
-function EventStage({
-  status,
-  startTime,
-  categoryFootball,
-  currentPeriodStartTime,
-}: EventStagePropsType) {
-  const inprogress = status.type === 'inprogress'
-  const playing = status.code === 7 || status.code === 6
-  const SM = useGetWindowSize('SM')
-
-  return (
-    <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '')}>
-      {status.description === 'Not started' ? (
-        getFormatTime(startTime)
-      ) : categoryFootball && inprogress && playing ? (
-        <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
-      ) : (
-        <span className={styles.status}>{getStageType(status.description, SM)}</span>
-      )}
-    </div>
-  )
-}
-
 function FavEventBtn() {
   const favEvent = () => {
     const favListJson = localStorage.getItem('idList')
@@ -174,8 +132,8 @@ function Row({ event, href }: { event: Event, href: Url }) {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <div className={styles.eventRow}>
+      <TooltipTrigger asChild>
+        <Link href={`/event/${event.id}/summary/event-summary`} prefetch={false} className={styles.eventRow}>
           <div className={styles.teams}>
             <TeamRow
               score={event.homeScore.current}
@@ -206,13 +164,13 @@ function Row({ event, href }: { event: Event, href: Url }) {
               categoryTennis={event.tournament.category.sport.id === 5}
             />
           </div>
-        <EventStage
+        <EventStatus
           status={event.status}
           startTime={event.startTimestamp}
           currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
           categoryFootball={event.tournament.category.sport.id === 1}
         />
-      </div>
+      </Link>
       </TooltipTrigger>
       <TooltipContent className={styles.rowTooltipContent}>
         <RowTooltipContent eventId={event.id}/>

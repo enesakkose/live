@@ -2,19 +2,14 @@ import React, { ReactNode } from 'react'
 import clsx from 'clsx'
 import styles from '@/components/RoundedImg/RoundedImg.module.scss'
 
-function RoundedImg({
-  width,
-  height,
-  full = false,
-  children,
-  className
-}: {
-  width: string | number,
+type RoundedImg = {
+  width: string | number
   height: string | number
-  full?: boolean
   children: ReactNode
   className?: string
-}) {
+}
+
+function RoundedImg({ width, height, children, className }: RoundedImg) {
   return (
     <div
       className={clsx(styles.roundedImg, className)}
