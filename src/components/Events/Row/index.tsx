@@ -7,12 +7,9 @@ import Link from 'next/link'
 import RowTooltipContent from './RowTooltipContent'
 import EventStatus from '@/components/EventStatus'
 import { getFilterEventScores } from '@/utils/helpers'
-import { getStageType } from '@/utils/helpers/getStageType'
-import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/UI/Tooltip'
-import { Url } from 'next/dist/shared/lib/router/router'
-import type { Status, TeamCountry, Event } from '@/types/Events'
+import { type Status, type TeamCountry, type Event, CategoryById } from '@/types/Events'
 import styles from './Row.module.scss'
 
 type TeamRowPropsType = {
@@ -126,7 +123,7 @@ function FavEventBtn() {
   return <Button onClick={favEvent} variant='icon' icon={'bell'} size={20} />
 }
 
-function Row({ event, href }: { event: Event, href: Url }) {
+function Row({ event }: { event: Event }) {
   const HOME_PART_SCORES = getFilterEventScores(event.homeScore)
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
 
@@ -147,7 +144,7 @@ function Row({ event, href }: { event: Event, href: Url }) {
               service={event.firstToServe === 1}
               subTeams={event.homeTeam.subTeams.length === 0}
               playerCountryFlag={event.homeTeam.country}
-              categoryTennis={event.tournament.category.sport.id === 5}
+              categoryTennis={event.tournament.category.sport.id === CategoryById.TENNIS}
             />
             <TeamRow
               score={event.awayScore.current}
@@ -161,14 +158,14 @@ function Row({ event, href }: { event: Event, href: Url }) {
               service={event.firstToServe === 2}
               subTeams={event.awayTeam.subTeams.length === 0}
               playerCountryFlag={event.awayTeam.country}
-              categoryTennis={event.tournament.category.sport.id === 5}
+              categoryTennis={event.tournament.category.sport.id === CategoryById.TENNIS}
             />
           </div>
         <EventStatus
           status={event.status}
           startTime={event.startTimestamp}
           currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
-          categoryFootball={event.tournament.category.sport.id === 1}
+          categoryFootball={event.tournament.category.sport.id === CategoryById.FOOTBALL}
         />
       </Link>
       </TooltipTrigger>

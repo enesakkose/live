@@ -25,6 +25,7 @@ const setTypes = [
   { value: 'PENDING', label: 'PENDING', mobileLabel: 'Pend.' },
   { value: 'Suspended', label: 'Suspended', mobileLabel: 'Susp.' },
   { value: 'Canceled', label: 'Canceled', mobileLabel: 'Canc.' },
+  { value: 'Abandoned', label: 'Abandoned', mobileLabel: 'Aban.' },
 ]
 
 const periodTypes = [

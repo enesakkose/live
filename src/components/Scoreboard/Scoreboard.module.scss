@@ -12,6 +12,7 @@
         place-items: center;
         font-weight: 500;
         font-size: 14px;
+        padding-inline: $P-6;
         grid-template-areas: 
             "homeTeam eventTime awayTeam"
             "homeTeam score awayTeam"
@@ -20,6 +21,7 @@
 
         @media only screen and (max-width: $SM){
             font-size: 13px;
+            padding-inline: $P-1;
         }
 
         .homeTeamInfo, .awayTeamInfo{
@@ -41,11 +43,7 @@
 
             .homeImg{
                 align-items: flex-end;
-
-                .teamImg{
-                    position: relative;
-
-                }
+                position: relative;
             }
 
             .homeToServe{
@@ -58,11 +56,7 @@
 
             .awayImg{
                 align-items: flex-end;
-                
-                .teamImg{
-                    position: relative;
-
-                }
+                position: relative;
             }
 
             .awayToServe{
@@ -80,7 +74,7 @@
             @media only screen and (max-width: $SM){
                 width: 1.25rem;
                 height: 1.25rem;
-                left: 1rem;
+                left: 1.25rem;
             }
         }
 
@@ -104,6 +98,7 @@
             grid-area: eventStatus;
             border-left: none;
             font-weight: 600;
+            align-self: flex-start;
         }
 
         .homeRank, .awayRank{

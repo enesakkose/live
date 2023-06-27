@@ -10,6 +10,7 @@ import Header from '../Event/Header'
 import { Josefin_Sans } from 'next/font/google'
 import { useGetEvent } from '@/services/sportsv2'
 import { getStartTime, getDate } from '@/utils/helpers/getFormatTime'
+import { CategoryById } from '@/types/Events'
 import styles from './Scoreboard.module.scss'
 
 const josefin = Josefin_Sans({
@@ -26,9 +27,9 @@ function Scoreboard({ eventId }: ScoreboardPropsType) {
   if (isLoading || isError || !event) return <Loading />
   const inprogress = event.status.type === 'inprogress'
   const notStarted = event.status.type === 'notstarted'
+  const categoryTennis = event.tournament.category.sport.id === CategoryById.TENNIS
   const startTime = getStartTime(event.startTimestamp)
   const startDate = getDate(event.startTimestamp)
-  console.log(event)
 
   return (
     <div className={styles.scoreboardContainer}>
@@ -43,7 +44,7 @@ function Scoreboard({ eventId }: ScoreboardPropsType) {
               height={100}
               className={styles.teamImg}
             />
-            {event?.homeTeam?.ranking && (
+            {event?.homeTeam?.ranking && categoryTennis && (
               <img
                 src={`https://www.sofascore.com/static/images/flags/${event.homeTeam.country.alpha2.toLowerCase()}.png`}
                 title={`${event.homeTeam.country.name}`}
@@ -53,7 +54,7 @@ function Scoreboard({ eventId }: ScoreboardPropsType) {
             )}
           </RoundedImg>
           <span className={clsx(styles.teamName, styles.homeName)}>{event.homeTeam.shortName}</span>
-          {event.homeTeam?.ranking && (
+          {event.homeTeam?.ranking && categoryTennis && (
             <TennisPlayerRank
               gender={event.homeTeam?.gender}
               rank={event?.homeTeam?.ranking}
@@ -90,7 +91,7 @@ function Scoreboard({ eventId }: ScoreboardPropsType) {
               height={100}
               className={styles.teamImg}
             />
-            {event?.awayTeam?.ranking && (
+            {event?.awayTeam?.ranking && categoryTennis && (
               <img
                 src={`https://www.sofascore.com/static/images/flags/${event.awayTeam.country.alpha2.toLowerCase()}.png`}
                 title={`${event.awayTeam.country.name}`}
@@ -100,7 +101,7 @@ function Scoreboard({ eventId }: ScoreboardPropsType) {
             )}
           </RoundedImg>
           <span className={clsx(styles.teamName, styles.awayName)}>{event.awayTeam.shortName}</span>
-          {event.awayTeam?.ranking && (
+          {event.awayTeam?.ranking && categoryTennis && (
             <TennisPlayerRank
               gender={event.awayTeam.gender}
               rank={event?.awayTeam?.ranking}

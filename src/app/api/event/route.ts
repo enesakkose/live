@@ -2,7 +2,9 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const eventId = searchParams.get('eventId')
-    const response = await fetch(`https://api.sofascore.com/api/v1/event/${eventId}`)
+    const response = await fetch(`https://api.sofascore.com/api/v1/event/${eventId}`, {
+      cache: 'no-store',
+    })
     const data = await response.json()
 
     return new Response(JSON.stringify(data), {

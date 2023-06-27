@@ -9,6 +9,7 @@ import { useTimezoneContext } from '@/context/TimezoneContext'
 import { useDateContext } from '@/context/DateContext'
 import { useGetEvents } from '@/services/sportsv2'
 import { Accordion, AccordionContent, AccordionTrigger } from '@/components/UI/Accordion'
+import { CategoryById } from '@/types/Events'
 import styles from './Content.module.scss'
 
 type ContentPropsType = { category: string }
@@ -31,17 +32,15 @@ function Content({ category = 'football' }: ContentPropsType) {
               countryFlag={groupedEvents[key][0].tournament.category.alpha2?.toLowerCase()}
               uniqueFlag={groupedEvents[key][0].tournament.category?.flag}
               uniqueTournamentId={groupedEvents[key][0].tournament.uniqueTournament?.id}
-              categoryTennis={groupedEvents[key][0].tournament.category.sport.id === 5}
+              categoryTennis={
+                groupedEvents[key][0].tournament.category.sport.id === CategoryById.TENNIS
+              }
               name={groupedEvents[key][0].tournament.name}
             />
           </AccordionTrigger>
           <AccordionContent>
             {groupedEvents[key].map((match) => (
-              <EventRow
-                key={match.id}
-                href={`/event/${match.id}/summary/event-summary`}
-                event={match}
-              />
+              <EventRow key={match.id} event={match} />
             ))}
           </AccordionContent>
         </Accordion>

@@ -94,6 +94,12 @@ export enum Slug {
   Tennis = "tennis",
 }
 
+export enum CategoryById {
+  TENNIS = 5,
+  FOOTBALL = 1,
+  BASKETBALL = 2
+}
+
 export interface TeamColors {
   primary:   string;
   secondary: string;
