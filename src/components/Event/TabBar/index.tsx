@@ -1,57 +1,58 @@
 'use client'
 import React from 'react'
 import NavLink from '@/components/UI/NavLink'
+import MouseFollower from '@/components/MouseFollower'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './TabBar.module.scss'
 
-function TabBar({ id }: { id: string }) {
+function TabBar({ eventId }: { eventId: string }) {
   const segment = useSelectedLayoutSegment()
   const eventTabs = [
     {
-      tabName: 'SUMMARY',
-      href: `/event/${id}/summary/event-summary`,
+      tabName: 'Summary',
+      href: `/event/${eventId}/summary/event-summary`,
       segment: 'event-summary',
     },
     {
-      tabName: 'PLAYER STATISTICS',
-      href: `/event/${id}/summary/player-statistics`,
+      tabName: 'Player Statistics',
+      href: `/event/${eventId}/summary/player-statistics`,
       segment: 'player-statistics',
     },
     {
-      tabName: 'STATS',
-      href: `/event/${id}/summary/stats/0`,
+      tabName: 'Stats',
+      href: `/event/${eventId}/summary/stats`,
       segment: 'stats',
     },
     {
-      tabName: 'LINEUPS',
-      href: `/event/${id}/summary/lineups`,
+      tabName: 'Lineups',
+      href: `/event/${eventId}/summary/lineups`,
       segment: 'lineups',
     },
     {
-      tabName: 'MATCH HISTORY',
-      href: `/event/${id}/summary/match-history`,
+      tabName: 'Match History',
+      href: `/event/${eventId}/summary/match-history`,
       segment: 'match-history',
     },
     {
       tabName: 'H2H',
-      href: `/event/${id}/summary/h2h/0`,
+      href: `/event/${eventId}/summary/h2h/0`,
       segment: 'h2h',
     },
     {
-      tabName: 'STANDINGS',
-      href: `/event/${id}/standings`,
+      tabName: 'Standings',
+      href: `/event/${eventId}/standings`,
       segment: 'standings',
     },
   ]
 
   return (
-    <div className={styles.tabBar}>
+    <nav className={styles.tabBar}>
       {eventTabs.map((tab) => (
-        <NavLink key={tab.tabName} href={tab.href} active={segment === tab.segment}>
-          {tab.tabName}
+        <NavLink variant='primary' key={tab.tabName} href={tab.href} active={segment === tab.segment}>
+          {tab.tabName.toUpperCase()}
         </NavLink>
       ))}
-    </div>
+    </nav>
   )
 }
 

@@ -1,8 +1,10 @@
 .navLink{
     display: inline-flex;
+
     &.primary{
-        letter-spacing: 1px;
         gap: .5rem;
+        padding-block: .5rem;
+        font-weight: 500;
     
         &:hover{
             color: $SECONDARY-100;
@@ -17,7 +19,7 @@
                 content: '';
                 bottom: 0;
                 height: 3px;
-                width: calc(100% - 1.75rem);
+                width: calc(100%);
                 border-radius: .5rem;
                 background-color: $GREEN-400;
             }

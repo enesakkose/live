@@ -9,6 +9,7 @@ type SummaryParamsType = {
 function Layout({ params, children }: SummaryParamsType) {
   return (
     <>
+      <TabBar eventId={params.id}/>
       {children}
     </>
   )

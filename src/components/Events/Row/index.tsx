@@ -4,8 +4,8 @@ import Icon from '@/components/UI/Icon'
 import Button from '@/components/UI/Button'
 import clsx from 'clsx'
 import Link from 'next/link'
-import RowTooltipContent from './RowTooltipContent'
 import EventStatus from '@/components/EventStatus'
+import Stats from '@/components/Event/Stats'
 import { getFilterEventScores } from '@/utils/helpers'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/UI/Tooltip'
@@ -170,7 +170,7 @@ function Row({ event }: { event: Event }) {
       </Link>
       </TooltipTrigger>
       <TooltipContent className={styles.rowTooltipContent}>
-        <RowTooltipContent eventId={event.id}/>
+        <Stats eventId={event.id} periodTabs={false}/>
       </TooltipContent>
     </Tooltip>
   )
