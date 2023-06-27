@@ -1,6 +1,5 @@
 import React from 'react'
 import Scoreboard from '@/components/Scoreboard'
-import EventContainer from '@/containers/EventContainer'
 
 type EventsParamsType = {
   children: React.ReactNode
