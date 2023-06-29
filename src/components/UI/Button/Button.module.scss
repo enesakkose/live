@@ -1,18 +1,21 @@
 .button{
     cursor: pointer;
     background-color: transparent;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    justify-content: center;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     color: $SECONDARY-200;
-    font-weight: 600;
 
     &:disabled, &[disabled]{
         opacity: .5;
         pointer-events: none;
+    }
+
+    &:not(.unstyled){ //this style applied all classes except .unstyled class
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        justify-content: center;
+        font-weight: 600;
     }
 
     &:is(.primary, .secondary, .tertiary){
@@ -48,6 +51,7 @@
     }
 
     &.icon{
+        display: flex;
         gap: .5rem;
 
         &:hover{

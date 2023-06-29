@@ -1,5 +1,8 @@
 .navLink{
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
 
     &.primary{
         gap: .5rem;

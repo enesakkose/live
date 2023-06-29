@@ -1,6 +1,6 @@
 .eventRow{
     --columns: /*3.75rem*/ auto 5.5rem;
-    display: grid !important;
+    display: grid;
     grid-template-columns: var(--columns);
     padding-block: $P-2;
     font-weight: 500;
@@ -10,8 +10,6 @@
     cursor: default;
     width: 100%;
     z-index: 16;
-    justify-content: unset !important;//temporary
-    align-items: unset !important;//temporary
 
     &:hover{
         background-color: $SECONDARY-800;
