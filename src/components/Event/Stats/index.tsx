@@ -26,7 +26,7 @@ function Stats({ eventId, periodTabs = true }: StatsPropsType) {
             active={tabIndex === index}
             key={period.period}
             onClick={() => setTabIndex(index)}
-            variant='primary'
+            variant='tertiary'
           >
             {period.period}
           </Button>

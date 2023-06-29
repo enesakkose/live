@@ -31,7 +31,7 @@ const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonPropTypes>>((pr
     return (
       <Element
         type='button'
-        className={clsx(styles.button, styles.icon, className)}
+        className={clsx(styles.button, styles.icon, styles[variant], className)}
         ref={ref}
         {...rest}
       >

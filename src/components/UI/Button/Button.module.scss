@@ -15,10 +15,15 @@
         pointer-events: none;
     }
 
-    &:is(.primary, .secondary){
+    &:is(.primary, .secondary, .tertiary){
         padding-inline: $P-3;
         height: 2.25rem;
         border-radius: .5rem;
+
+        @media only screen and (max-width: $SM){
+            font-size: 14px;
+            height: 2rem;
+        }
     }
 
     &.primary{
@@ -43,7 +48,7 @@
     }
 
     &.icon{
-        
+        gap: .5rem;
 
         &:hover{
             color: $SECONDARY-100;
@@ -51,7 +56,15 @@
     }
 
     &.tertiary{
+        border: 2px solid $SECONDARY-800;
 
+        &:hover{
+            background-color: $SECONDARY-800;
+        }
+
+        &.active{
+            background-color: $SECONDARY-800;
+        }
     }
 
     &.underline{

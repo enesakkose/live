@@ -14,10 +14,14 @@ function DatePicker() {
     if(formatSelectedDate !== date) return setDate(formatSelectedDate)
   }
 
+  
+
   return (
     <Popover>
-      <PopoverTrigger icon='calendar4-week' size={20} />
-      <PopoverContent  className={styles.datePickerContainer}>
+      <PopoverTrigger variant='tertiary' icon='calendar4-week' size={16}>
+        {date}
+      </PopoverTrigger>
+      <PopoverContent className={styles.datePickerContainer}>
         <DayPicker
           showOutsideDays={true}
           mode='single'

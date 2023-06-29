@@ -26,12 +26,7 @@ function Timezone() {
           </Button>
         ))}
       </div>
-      {timezoneStatus === TIMEZONE.ALL && (
-        <div className={styles.queryBtns}>
-          <Button icon='search' />
-          <DatePicker />
-        </div>
-      )}
+      {timezoneStatus === TIMEZONE.ALL && <DatePicker />}
     </div>
   )
 }
