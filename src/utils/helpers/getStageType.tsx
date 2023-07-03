@@ -10,7 +10,7 @@ const setTypes = [
   { value: 'Postponed', label: 'Postponed', mobileLabel: 'Post.' },
   { value: 'DELAYED', label: 'Delayed', mobileLabel: 'Dely.' },
   { value: 'AWARDED', label: 'Awarded', mobileLabel: 'Awar.' },
-  { value: 'Interrupted', label: 'Interrupted', mobileLabel: '' },
+  { value: 'Interrupted', label: 'Interrupted', mobileLabel: 'Interr.' },
   { value: 'FIRST_SET_TIEBREAK', label: `SET 1 TIEBREAK`, mobileLabel: 'S1' },
   { value: 'SECOND_SET_TIEBREAK', label: 'SET 2 TIEBREAK', mobileLabel: 'S2' },
   { value: 'THIRD_SET_TIEBREAK', label: 'SET 3 TIEBREAK', mobileLabel: 'S3' },

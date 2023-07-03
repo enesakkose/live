@@ -40,7 +40,8 @@ function Stats({ eventId, periodTabs = true }: StatsPropsType) {
       {periodTabs && <PeriodTabs />}
       <div className={styles.statsGroups}>
         {eventStats[tabIndex].groups.map((stats) => (
-          <Section key={stats.groupName} title={stats.groupName}>
+          <>
+            <Section key={stats.groupName} title={stats.groupName} />
             <ul className={styles.statsList}>
               {stats.statisticsItems.map((item) => (
                 <li key={item.name} className={styles.stats}>
@@ -58,7 +59,7 @@ function Stats({ eventId, periodTabs = true }: StatsPropsType) {
                 </li>
               ))}
             </ul>
-          </Section>
+          </>
         ))}
       </div>
     </ScrollContainer>

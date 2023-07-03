@@ -5,6 +5,7 @@
 }
 
 .incidentRow{
+    font-weight: 500;
 
     &:not(.periodRow, .injuryTimeRow){
         display: flex;
@@ -20,16 +21,9 @@
         justify-content: center;
     }
 
-
     @media only screen and (max-width: $SM){
         font-size: 14px;
     }
-
-
-    .incidentTime{
-        font-weight: 500;
-    }
-    
 
     .sign{
         @include flexContainer;
@@ -41,16 +35,10 @@
     .goal{
         @include flexContainer;
         font-weight: 600;
-
-        .assist{
-            font-weight: 500;
-        }
-
     }
 
     .incidentClass{
         text-transform: capitalize;
-        font-weight: 500;
     }
 
     .penalty{
@@ -59,7 +47,7 @@
 
     .missedPenalty{
         @include flexContainer;
-        font-weight: 600
+        font-weight: 600;
     }
 
     .card{

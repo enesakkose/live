@@ -57,8 +57,8 @@ function Row({ incident }: RowPropsType) {
         <div className={clsx(styles.goal, incident.isHome ? '' : styles.incidentAwayRow)}>
           {incident.time && <IncidentTime />}
           <Sign icon='football'>{incident.homeScore} - {incident.awayScore}</Sign>
-          {incident.player?.name}
-          {incident.assist1?.name && <span className={styles.assist}>({incident.assist1?.name})</span>}
+          {incident.player?.shortName}
+          {incident.assist1?.shortName && <span className={styles.assist}>({incident.assist1?.shortName})</span>}
           <IncidentGoalType />
         </div>
       )
@@ -85,11 +85,11 @@ function Row({ incident }: RowPropsType) {
           <IncidentTime />
           <div className={styles.subIn}>
             <Sign><span className={styles.in}>IN</span></Sign>
-            {incident.playerIn?.name}
+            {incident.playerIn?.shortName}
           </div>
           <div className={styles.subOut}>
             <Sign><span className={styles.out}>OUT</span></Sign>
-            {incident.playerOut?.name}
+            {incident.playerOut?.shortName}
           </div>
         </div>
       )
@@ -99,7 +99,7 @@ function Row({ incident }: RowPropsType) {
       return(
         <div className={clsx(styles.missedPenalty, incident.isHome ? '' : styles.incidentAwayRow)}>
           <Sign icon='redball' />
-          {incident.player?.name}
+          {incident.player?.shortName}
           <IncidentGoalType/>
         </div>
       )
@@ -123,7 +123,7 @@ function Row({ incident }: RowPropsType) {
       case IncidentType.PENALTY_SHOOTOUT:
         return <Penalty />
       case IncidentType.PERIOD:
-        return <Section title={incident.text} />
+        return <Section title={incident.text}>{incident.homeScore} - {incident.awayScore}</Section>
       case IncidentType.INJURY_TIME:
         return <InjuryTime />
       /*case 'OWN_GOAL':

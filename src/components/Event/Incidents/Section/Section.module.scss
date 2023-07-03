@@ -1,0 +1,9 @@
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $WHITE-3;
+    padding: $P-1 $P-3;
+    margin-bottom: $M-2;
+    font-weight: 500;
+}
