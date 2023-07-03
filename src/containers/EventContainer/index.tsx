@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import Hero from '@/components/Event/Hero'
 import EventLoading from '@/app/(categories)/event/[id]/summary/h2h/[h2h]/loading'
 import { useGetEvent } from '@/services/sports'
 
@@ -15,7 +14,6 @@ function EventContainer({ id }: PropsType) {
 
   return (
     <div className='event'>
-      <Hero event={data.EVENT} />
     </div>
   )
 }

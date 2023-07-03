@@ -1,7 +1,6 @@
 import React from 'react'
 import H2HContainer from '@/containers/H2HContainer'
 import NavLink from '@/components/UI/NavLink'
-import Loading from '@/components/Event/Hero/loading'
 
 type H2hParamsType = {
   params: {
