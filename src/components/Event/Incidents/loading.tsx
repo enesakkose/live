@@ -10,6 +10,7 @@ function Loading() {
         .fill(null)
         .map((_, index) => (
           <Skeleton
+            key={index}
             width={'40%'}
             height={28}
             className={index % 2 === 0 ? styles.incidentAwaySkeleton : ''}
