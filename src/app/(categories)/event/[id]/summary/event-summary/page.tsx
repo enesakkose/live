@@ -1,18 +1,12 @@
-'use client'
 import React from 'react'
+import Incidents from '@/components/Event/Incidents'
 
 type EventSummaryParamsType = {
-  params: { id: string }
+  params: { id: number }
 }
 
 function Page({ params }: EventSummaryParamsType) {
-
-
-  return (
-    <div>
-      eventSummary
-    </div>
-  )
+  return <Incidents eventId={params.id} />
 }
 
 export default Page

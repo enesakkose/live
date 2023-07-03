@@ -3,6 +3,7 @@ import { getDateV2 } from '@/utils/helpers/getFormatTime'
 import { type Events, type Event } from '@/types/Events'
 import { type SearchResult } from '@/types/SearchQuery'
 import { type Statistics } from '@/types/Statistics'
+import { type Incidents } from '@/types/EventIncidents'
 import { TIMEZONE, type TimezoneStatusType } from '@/context/TimezoneContext'
 
 export const getEventsV2 = async (category: string, date: string) => {
@@ -41,6 +42,12 @@ export const getEvent = async(eventId: number) => {
   return event
 }
 
+export const getEventIncidents = async(eventId: number) => {
+  const res = await fetch(`/api/incidents?eventId=${eventId}`)
+  const incidents: Incidents = await res.json()
+  return incidents.incidents
+} 
+
 export const useGetEvents = (
   category: string,
   timezoneStatus: TimezoneStatusType,
@@ -61,4 +68,8 @@ export const useGetEventStats = (eventId: number) => {
 
 export const useGetEvent = (eventId: number) => {
   return useQuery(['event', eventId], () => getEvent(eventId))
+}
+
+export const useGetIncidents = (eventId: number) => {
+  return useQuery(['incidents', eventId], () => getEventIncidents(eventId))
 }

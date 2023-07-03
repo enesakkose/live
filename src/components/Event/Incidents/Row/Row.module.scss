@@ -1,0 +1,97 @@
+@mixin flexContainer{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.incidentRow{
+
+    &:not(.periodRow, .injuryTimeRow){
+        display: flex;
+        align-items: center;
+        gap: .875rem;
+        padding: $P-2 $P-3;
+        cursor: default;
+    }
+
+    &.injuryTimeRow{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    @media only screen and (max-width: $SM){
+        font-size: 14px;
+    }
+
+
+    .incidentTime{
+        font-weight: 500;
+    }
+    
+
+    .sign{
+        @include flexContainer;
+        padding: $P-1 $P-2;
+        border: 1px solid $SECONDARY-800;
+        border-radius: .5rem;
+    }
+    
+    .goal{
+        @include flexContainer;
+        font-weight: 600;
+
+        .assist{
+            font-weight: 500;
+        }
+
+    }
+
+    .incidentClass{
+        text-transform: capitalize;
+        font-weight: 500;
+    }
+
+    .penalty{
+        @include flexContainer;
+    }
+
+    .missedPenalty{
+        @include flexContainer;
+        font-weight: 600
+    }
+
+    .card{
+        @include flexContainer;
+    }
+
+    .injuryTime{
+        font-size: 600;
+        color: $GREEN-400;
+        text-align: center
+    }
+
+    .substitution{
+        @include flexContainer;
+
+        .subIn{
+            @include flexContainer;
+            
+            .in{
+                color: $BADGE-WIN;
+            }
+        }
+        .subOut{
+            @include flexContainer;
+
+            .out{
+                color: $BADGE-LOSE;
+            }
+        }
+    }
+}
+
+.incidentAwayRow{
+    flex-direction: row-reverse;
+}
