@@ -3,8 +3,8 @@ import clsx from 'clsx'
 import styles from './Skeleton.module.scss'
 
 type SkeletonPropsType = {
-  width?: number
-  height: number
+  width?: number | string
+  height: number | string
   className?: string
 }
 

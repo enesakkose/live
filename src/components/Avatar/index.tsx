@@ -5,7 +5,7 @@ import styles from './Avatar.module.scss'
 function Avatar() {
   return (
     <div className={styles.avatar}>
-      <Icon icon='user' size={24} />
+      <Icon icon='user' size={20} />
     </div>
   )
 }
