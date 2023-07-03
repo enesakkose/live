@@ -8,6 +8,7 @@
         gap: .5rem;
         padding-block: .5rem;
         font-weight: 500;
+        white-space: nowrap;
     
         &:hover{
             color: $SECONDARY-100;
@@ -35,6 +36,7 @@
         border-radius: .5rem;
         border: 2px solid $SECONDARY-800;
         gap: .5rem;
+        white-space: nowrap;
 
         &:hover{
             background-color: $SECONDARY-800;
