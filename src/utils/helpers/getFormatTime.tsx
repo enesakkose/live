@@ -11,3 +11,10 @@ export const getDate = (time: number) => {
 export const getDateV2 = (time: number) => {
   return dayjs.unix(time).format('YYYY-MM-DD')
 }
+
+export const getConvertDaysToAge = (timestamp: number) => {
+  const birthDate = dayjs(timestamp * 1000)
+  const age = dayjs().diff(birthDate, 'year')
+
+  return age
+}

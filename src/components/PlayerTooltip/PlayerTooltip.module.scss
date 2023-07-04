@@ -1,0 +1,16 @@
+.playerTooltip{
+    
+    .playerTooltipContent{
+        border: 1px solid $SECONDARY-800;
+        border-radius: .5rem;
+        background-color: $SECONDARY-900;
+        box-shadow: $POPOVER-SHADOW;
+        width: 13.75rem;
+        height: 13.75rem;
+        bottom: 100%;
+        transform: translateX(-50%);
+        left: 50%;
+        top: unset;
+        z-index: 24;
+    }
+}

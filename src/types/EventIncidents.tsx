@@ -10,21 +10,22 @@ export interface Incident {
   time?: number
   addedTime?: number
   incidentType: string
-  player?: Player
+  player: Player
+  manager: Player
   sequence?: number
   description?: string
-  id?: number
+  id: number
   isHome?: boolean
   incidentClass?: string
-  playerName?: string
+  playerName: string
   rescinded?: boolean
   reversedPeriodTime?: number
-  playerIn?: PlayerIn
-  playerOut?: PlayerOut
+  playerIn: PlayerIn
+  playerOut: PlayerOut
   length?: number
   reason?: string
   injury?: boolean
-  assist1?: Assist1
+  assist1: Assist1
 }
 
 export interface Player {

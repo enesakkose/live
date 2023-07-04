@@ -1,0 +1,40 @@
+.player{
+    padding: $P-2 $P-3;
+
+    .personalInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        .infos{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .875rem;
+            font-size: 14px;
+
+            .info{
+                text-align: center;
+
+                .title{
+                    font-weight: 400;
+                    color: $SECONDARY-300;
+                    white-space: nowrap;
+                }
+
+                .marketValue{
+                    color: $GREEN-400;
+                }
+
+                .teamImg{
+                    margin: 0 auto;
+                }
+            }
+
+        }
+
+        img{
+            border-radius: .5rem;
+        }
+    }
+}

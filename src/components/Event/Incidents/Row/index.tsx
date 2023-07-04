@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import Icon from '@/components/UI/Icon'
 import Section from '../Section'
+import PlayerTooltip from '@/components/PlayerTooltip'
 import { type Incident } from '@/types/EventIncidents'
 import { IncidentType, IncidentClass } from '@/types/EventIncidents'
 import styles from './Row.module.scss'
@@ -28,11 +29,11 @@ function Row({ incident }: RowPropsType) {
     const IncidentGoalType = () => {
       return(
         <>
-          {incident.incidentClass !== IncidentClass.REGULAR ?
+          {incident.incidentClass !== IncidentClass.REGULAR &&
             <span className={styles.incidentClass}>
               ({incident.incidentClass})
             </span>
-          : null}
+          }
         </>
       )
     }
@@ -57,8 +58,18 @@ function Row({ incident }: RowPropsType) {
         <div className={clsx(styles.goal, incident.isHome ? '' : styles.incidentAwayRow)}>
           {incident.time && <IncidentTime />}
           <Sign icon='football'>{incident.homeScore} - {incident.awayScore}</Sign>
-          {incident.player?.shortName}
-          {incident.assist1?.shortName && <span className={styles.assist}>({incident.assist1?.shortName})</span>}
+          {incident.player.shortName && 
+            <PlayerTooltip 
+              playerId={incident.player.id} 
+              playerName={incident.player.shortName}
+            />
+          }
+          {incident.assist1?.shortName && 
+            <PlayerTooltip 
+              playerId={incident.assist1.id} 
+              playerName={`(${incident.assist1?.shortName})`}
+            />
+          }
           <IncidentGoalType />
         </div>
       )
@@ -69,7 +80,12 @@ function Row({ incident }: RowPropsType) {
         <div className={clsx(styles.card, incident.isHome ? '' : styles.incidentAwayRow)}>
           <IncidentTime />
           <Sign icon={incident.incidentClass} />
-          {incident.playerName}
+          {incident?.playerName && 
+            <PlayerTooltip 
+              playerId={incident.player ? incident.player.id :  incident.manager.id} 
+              playerName={incident?.playerName}
+            />
+          }
           {incident.reason && <span className={styles.reason}>({incident.reason})</span>}
         </div>
       )
@@ -85,11 +101,14 @@ function Row({ incident }: RowPropsType) {
           <IncidentTime />
           <div className={styles.subIn}>
             <Sign><span className={styles.in}>IN</span></Sign>
-            {incident.playerIn?.shortName}
+            <PlayerTooltip playerId={incident.playerIn.id} playerName={incident.playerIn?.shortName}/>
           </div>
           <div className={styles.subOut}>
             <Sign><span className={styles.out}>OUT</span></Sign>
-            {incident.playerOut?.shortName}
+            <PlayerTooltip 
+              playerId={incident.playerOut.id} 
+              playerName={incident.playerOut?.shortName}
+            />
           </div>
         </div>
       )
@@ -99,7 +118,7 @@ function Row({ incident }: RowPropsType) {
       return(
         <div className={clsx(styles.missedPenalty, incident.isHome ? '' : styles.incidentAwayRow)}>
           <Sign icon='redball' />
-          {incident.player?.shortName}
+          <PlayerTooltip playerId={incident.player.id} playerName={incident.player?.shortName}/>
           <IncidentGoalType/>
         </div>
       )

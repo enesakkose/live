@@ -4,6 +4,7 @@ import { type Events, type Event } from '@/types/Events'
 import { type SearchResult } from '@/types/SearchQuery'
 import { type Statistics } from '@/types/Statistics'
 import { type Incidents } from '@/types/EventIncidents'
+import { type Player } from '@/types/Player'
 import { TIMEZONE, type TimezoneStatusType } from '@/context/TimezoneContext'
 
 export const getEventsV2 = async (category: string, date: string) => {
@@ -46,7 +47,13 @@ export const getEventIncidents = async(eventId: number) => {
   const res = await fetch(`/api/incidents?eventId=${eventId}`)
   const incidents: Incidents = await res.json()
   return incidents.incidents
-} 
+}
+
+export const getPlayerData = async(playerId: number) => {
+  const res = await fetch(`/api/player?playerId=${playerId}`)
+  const playerData: Player = await res.json()
+  return playerData.player
+}
 
 export const useGetEvents = (
   category: string,
@@ -72,4 +79,8 @@ export const useGetEvent = (eventId: number) => {
 
 export const useGetIncidents = (eventId: number) => {
   return useQuery(['incidents', eventId], () => getEventIncidents(eventId))
+}
+
+export const useGetPlayerData = (playerId: number) => {
+  return useQuery(['player', playerId], () => getPlayerData(playerId))
 }
