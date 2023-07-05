@@ -9,7 +9,8 @@
         border: 1px solid $SECONDARY-800;
         
         @media only screen and (max-width: $SM){
-            padding-inline: 0;
+            padding-inline: $P-0;
+            padding-top: $P-0;
             border: none;
         }
     }

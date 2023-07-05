@@ -9,6 +9,10 @@
         padding-block: .5rem;
         font-weight: 500;
         white-space: nowrap;
+
+        @media only screen and (max-width: $SM){
+            font-size: 13px;
+        }
     
         &:hover{
             color: $SECONDARY-100;

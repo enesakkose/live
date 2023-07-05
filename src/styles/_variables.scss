@@ -78,11 +78,12 @@ $BADGE-YELLOW: #ffcd00;
 $POPOVER-SHADOW: 0 1px 8px 2px rgba(6, 6, 6, 0.41);
 
 //BREAKPOINTS
-$SM: 560px;
-$MD: 768px;
+$SM: 768px;
+$MD: 1024px;
 $LG: 1280px;
 
 //PADDING
+$P-0: 0;
 $P-1: .25rem;
 $P-2: .5rem;
 $P-3: 1rem;
@@ -93,6 +94,7 @@ $P-9: 3.5rem;
 $P-SPORTTIMEZONE-BOTTOM: 9rem;
 
 //MARGIN
+$M-0: 0;
 $M-1: .25rem;
 $M-2: .5rem;
 $M-3: 1rem;
