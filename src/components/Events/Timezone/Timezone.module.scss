@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: space-between;
     padding: $P-3;
+    padding-top: $P-0;
+
+    @media only screen and (max-width: $SM){
+        padding-top: $P-3;
+    }
 
     .filterActionBtns{
         display: flex;

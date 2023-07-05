@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import NavLink from '@/components/UI/NavLink'
-import MouseFollower from '@/components/MouseFollower'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import styles from './TabBar.module.scss'
 

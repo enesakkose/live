@@ -9,7 +9,7 @@ import Stats from '@/components/Event/Stats'
 import { getFilterEventScores } from '@/utils/helpers'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/UI/Tooltip'
-import { type Status, type TeamCountry, type Event, CategoryById } from '@/types/Events'
+import { type Status, type TeamCountry, type Event, CATEGORY_BY_ID } from '@/types/Events'
 import styles from './Row.module.scss'
 
 type TeamRowPropsType = {
@@ -144,7 +144,7 @@ function Row({ event }: { event: Event }) {
               service={event.firstToServe === 1}
               subTeams={event.homeTeam.subTeams.length === 0}
               playerCountryFlag={event.homeTeam.country}
-              categoryTennis={event.tournament.category.sport.id === CategoryById.TENNIS}
+              categoryTennis={event.tournament.category.sport.id === CATEGORY_BY_ID.TENNIS}
             />
             <TeamRow
               score={event.awayScore.current}
@@ -158,14 +158,14 @@ function Row({ event }: { event: Event }) {
               service={event.firstToServe === 2}
               subTeams={event.awayTeam.subTeams.length === 0}
               playerCountryFlag={event.awayTeam.country}
-              categoryTennis={event.tournament.category.sport.id === CategoryById.TENNIS}
+              categoryTennis={event.tournament.category.sport.id === CATEGORY_BY_ID.TENNIS}
             />
           </div>
         <EventStatus
           status={event.status}
           startTime={event.startTimestamp}
           currentPeriodStartTime={event.time.currentPeriodStartTimestamp}
-          categoryFootball={event.tournament.category.sport.id === CategoryById.FOOTBALL}
+          categoryFootball={event.tournament.category.sport.id === CATEGORY_BY_ID.FOOTBALL}
         />
       </Link>
       </TooltipTrigger>

@@ -94,7 +94,7 @@ export enum Slug {
   Tennis = "tennis",
 }
 
-export enum CategoryById {
+export enum CATEGORY_BY_ID {
   TENNIS = 5,
   FOOTBALL = 1,
   BASKETBALL = 2
@@ -181,7 +181,7 @@ export interface UniqueTournament {
   groundType?:                 string;
 }
 
-export enum TENNISFLAG  {
+export enum TENNIS_FLAG  {
   'atp' = 'atp',
   'wta' = 'wta',
   'itf-men' = 'itf',
