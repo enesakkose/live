@@ -169,9 +169,9 @@ function Row({ event }: { event: Event }) {
         />
       </Link>
       </TooltipTrigger>
-      {/*<TooltipContent className={styles.rowTooltipContent}>
-        {/*<Stats eventId={event.id} periodTabs={false}/>}
-      </TooltipContent>*/}
+      <TooltipContent className={styles.rowTooltipContent}>
+        <Stats eventId={event.id} periodTabs={false}/>
+      </TooltipContent>
     </Tooltip>
   )
 }

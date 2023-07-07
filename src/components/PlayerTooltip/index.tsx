@@ -12,9 +12,9 @@ function PlayerTooltip({ playerId, playerName }: PlayerTooltipPropsType) {
   return (
     <Tooltip className={styles.playerTooltip}>
       <TooltipTrigger variant='underline'>{playerName}</TooltipTrigger>
-      {/*<TooltipContent className={styles.playerTooltipContent}>
+      <TooltipContent className={styles.playerTooltipContent}>
         <Content playerId={playerId}/>
-  </TooltipContent>*/}
+      </TooltipContent>
     </Tooltip>
   )
 }
