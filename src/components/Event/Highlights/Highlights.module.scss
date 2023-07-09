@@ -1,0 +1,57 @@
+.highlights{
+    background-color: $WHITE-3;
+    display: flex;
+    align-items: center;
+    padding: $P-3;
+    gap: 1rem;
+
+    .linkBtn{
+        position: relative;
+        flex-shrink: 0;
+
+        .thumbnail{
+            width: 9rem;
+            height: 5rem;
+            border-radius: .5rem;
+            opacity: .7;
+        }
+    
+        .playIcon{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        font-weight: 500;
+        overflow: hidden;
+
+
+        @media only screen and (max-width: $SM){
+            font-size: 14px;
+        }
+
+        .title{
+            font-weight: 600;
+        }
+
+        .eventScore{
+
+            @media only screen and (max-width: $SM){
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .shareTime{
+            color: $SECONDARY-500;
+            justify-self: flex-end;
+        }
+    }
+
+}

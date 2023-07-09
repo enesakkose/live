@@ -1,0 +1,22 @@
+.rating{
+    font-weight: 600;
+    padding: $P-1;
+    border-radius: .25rem;
+    color: $SECONDARY-900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+
+    &.low{
+        background-color: $BADGE-LOSE;
+    }
+
+    &.medium{
+        background-color: $BADGE-DRAW;
+    }
+
+    &.high{
+        background-color: $BADGE-WIN;
+    }
+}

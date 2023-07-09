@@ -14,8 +14,6 @@ function DatePicker() {
     if(formatSelectedDate !== date) return setDate(formatSelectedDate)
   }
 
-  
-
   return (
     <Popover>
       <PopoverTrigger variant='tertiary' icon='calendar4-week' size={16}>

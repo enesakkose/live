@@ -1,4 +1,6 @@
 import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime)
 
 export const getStartTime = (time: number) => {
   return dayjs.unix(time).format('HH:mm')
@@ -17,4 +19,10 @@ export const getConvertDaysToAge = (timestamp: number) => {
   const age = dayjs().diff(birthDate, 'year')
 
   return age
+}
+
+export const getTimeFromNow = (timestamp: number) => {
+  const date = dayjs(timestamp * 1000).format('YYYY-MM-DD')
+
+  return dayjs(date).fromNow()
 }
