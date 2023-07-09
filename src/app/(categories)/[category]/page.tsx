@@ -14,7 +14,7 @@ type CategoryRouteType = {
 async function Page({ params }: CategoryRouteType) {
   const today = dayjs().format('YYYY-MM-DD')
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(['eventsV2'], () => getEventsV2(params.category, today))
+  await queryClient.prefetchQuery(['eventsV2', params.category, 'all', today], () => getEventsV2(params.category, today))
   const dehydratedState = dehydrate(queryClient)
 
   return (

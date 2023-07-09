@@ -20,11 +20,13 @@ export type IconNameType =
   | 'red'
   | 'yellow'
   | 'redball'
+  | 'stats'
   | 'a'
   | 'round'
   | 'subs'
   | 'warning'
   | 'user'
+  | 'play'
   | string
 
 type IconPropsType = { icon: IconNameType } & IconProps

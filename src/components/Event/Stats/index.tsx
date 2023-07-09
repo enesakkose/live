@@ -42,7 +42,7 @@ function Stats({ eventId, periodTabs = true }: StatsPropsType) {
         {eventStats[tabIndex].groups.map((stats) => (
           <>
             <Section key={stats.groupName} title={stats.groupName} />
-            <ul className={styles.statsList}>
+            <ul key={stats.groupName} className={styles.statsList}>
               {stats.statisticsItems.map((item) => (
                 <li key={item.name} className={styles.stats}>
                   <span
