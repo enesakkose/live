@@ -62,7 +62,7 @@ function Content({ playerId }: PlayerTooltipContenPropsType) {
     <>
       <Section title={player.shortName}>
         <img
-          src={`https://www.sofascore.com/static/images/flags/${player.country.alpha2.toLowerCase()}.png`}
+          src={`https://www.sofascore.com/static/images/flags/${player.country?.alpha2?.toLowerCase()}.png`}
           alt={player.country.name}
           width={20}
           height={20}

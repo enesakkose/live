@@ -1,11 +1,20 @@
 import React from 'react'
+import clsx from 'clsx'
 import styles from './ScrollContainer.module.scss'
 
-function ScrollContainer({ children }: { children: React.ReactNode}) {
+type ScrollContainerPropsType = {
+  children: React.ReactNode
+  className?: string
+  as?: keyof JSX.IntrinsicElements
+}
+
+function ScrollContainer({ children, as = 'div', className }: ScrollContainerPropsType) {
+  const Element = as
+
   return (
-    <div className={styles.scrollContainer}>
+    <Element className={clsx(styles.scrollContainer, className)}>
       {children}
-    </div>
+    </Element>
   )
 }
 

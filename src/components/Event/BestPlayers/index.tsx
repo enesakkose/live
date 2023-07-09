@@ -36,7 +36,7 @@ function BestPlayers({ eventId } : { eventId: number }) {
   const { data: bestPlayers, isLoading, isError } = useGetBestPlayers(eventId)
   
   if(isLoading) return <Loading/>
-  if(isError) return null
+  if(isError || !bestPlayers.bestHomeTeamPlayer) return null
 
   return (
     <div className={styles.bestPlayers}>
