@@ -22,6 +22,7 @@ export interface Event {
   startTimestamp:            number;
   slug:                      string;
   finalResultOnly:           boolean;
+  venue?:                    Venue;
   periods?:                  Periods;
   previousLegEventId?:       number;
   firstToServe?:             number;
@@ -80,6 +81,27 @@ export interface Sport {
   name: Name;
   slug: Slug;
   id:   number;
+}
+
+export interface Venue {
+  city: City
+  stadium: Stadium
+  id: number
+  country: Country
+}
+
+export interface City {
+  name: string
+}
+
+export interface Stadium {
+  name: string
+  capacity: number
+}
+
+export interface Country {
+  alpha2: string
+  name: string
 }
 
 export enum Name {

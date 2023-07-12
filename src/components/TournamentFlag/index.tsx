@@ -3,9 +3,9 @@ import { TENNIS_FLAG } from '@/types/Events'
 
 type TournamenFlagPropsType = {
   countryFlag?: string | null
-  uniqueTournamentId: number
-  uniqueFlag: string
-  categoryTennis: boolean
+  uniqueTournamentId?: number
+  uniqueFlag?: string
+  categoryTennis?: boolean
 } & React.ComponentPropsWithoutRef<"img">
 
 function TournamentFlag({
