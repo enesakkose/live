@@ -22,7 +22,6 @@ export const getConvertDaysToAge = (timestamp: number) => {
 }
 
 export const getTimeFromNow = (timestamp: number) => {
-  const date = dayjs(timestamp * 1000).format('YYYY-MM-DD')
-
+  const date = dayjs(timestamp * 1000)
   return dayjs(date).fromNow()
 }

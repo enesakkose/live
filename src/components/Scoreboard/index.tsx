@@ -10,7 +10,7 @@ import Loading from './Loading'
 import { Josefin_Sans } from 'next/font/google'
 import { useGetEvent } from '@/services/sportsv2'
 import { getStartTime, getDate } from '@/utils/helpers/getFormatTime'
-import { CATEGORY_BY_ID } from '@/types/Events'
+import { CATEGORY_BY_ID, EVENT_STATUS } from '@/types/Events'
 import styles from './Scoreboard.module.scss'
 
 const josefin = Josefin_Sans({
@@ -24,9 +24,9 @@ type ScoreboardPropsType = {
 
 function Scoreboard({ eventId }: ScoreboardPropsType) {
   const { data: event, isLoading, isError } = useGetEvent(eventId)
-  if (isLoading || isError || !event) return <Loading />
-  const inprogress = event.status.type === 'inprogress'
-  const notStarted = event.status.type === 'notstarted'
+  if (isLoading || isError) return <Loading />
+  const inprogress = event.status.description === EVENT_STATUS.INPROGRESS
+  const notStarted = event.status.description === EVENT_STATUS.NOT_STARTED
   const categoryTennis = event.tournament.category.sport.id === CATEGORY_BY_ID.TENNIS
   const startTime = getStartTime(event.startTimestamp)
   const startDate = getDate(event.startTimestamp)
