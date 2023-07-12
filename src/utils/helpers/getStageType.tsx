@@ -26,6 +26,9 @@ const setTypes = [
   { value: 'Suspended', label: 'Suspended', mobileLabel: 'Susp.' },
   { value: 'Canceled', label: 'Canceled', mobileLabel: 'Canc.' },
   { value: 'Abandoned', label: 'Abandoned', mobileLabel: 'Aban.' },
+  { value: '1st extra', label: 'ET', mobileLabel: 'ET' },
+  { value: '2nd extra', label: 'ET', mobileLabel: 'ET' },
+  { value: 'Extra time halftime', label: 'ET-HT', mobileLabel: 'ET-HT' },
 ]
 
 const periodTypes = [

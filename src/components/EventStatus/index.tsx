@@ -1,14 +1,14 @@
-"use client"
+'use client'
 import React from 'react'
 import clsx from 'clsx'
 import { useGetEventTime } from '@/utils/hooks/useGetEventTime'
 import { useGetWindowSize } from '@/utils/helpers/getWindowSize'
 import { getStartTime } from '@/utils/helpers/getFormatTime'
 import { getStageType } from '@/utils/helpers/getStageType'
-import { type Status } from '@/types/Events'
+import { type Status, EVENT_STATUS } from '@/types/Events'
 import styles from './EventStatus.module.scss'
 
-type EventStagePropsType = {
+type EventStatusPropsType = {
   status: Status
   startTime: number
   categoryFootball: boolean
@@ -19,10 +19,12 @@ type EventStagePropsType = {
 const CurrentEventTime = ({
   currentPeriodStartTime,
   status,
-}: Pick<EventStagePropsType, 'currentPeriodStartTime' | 'status'>) =>  {
+}: Pick<EventStatusPropsType, 'currentPeriodStartTime' | 'status'>) => {
+  const currentTime = useGetEventTime(currentPeriodStartTime, status.description)
+
   return (
     <div className={styles.time}>
-      {useGetEventTime(currentPeriodStartTime, status.description)}
+      {currentTime}
       <span className={styles.liveBlink}>&apos;</span>
     </div>
   )
@@ -33,21 +35,27 @@ function EventStatus({
   startTime,
   categoryFootball,
   currentPeriodStartTime,
-  className
-}: EventStagePropsType) {
-  const inprogress = status.type === 'inprogress'
-  const playing = status.code === 7 || status.code === 6
+  className,
+}: EventStatusPropsType) {
+  const inprogress = status.type === EVENT_STATUS.INPROGRESS
   const SM = useGetWindowSize('SM')
+  const eventStartTime = getStartTime(startTime)
+  const statusDescription = getStageType(status.description, SM)
+  const footballHalfs = [
+    EVENT_STATUS.FIRST_HALF,
+    EVENT_STATUS.SECOND_HALF,
+    EVENT_STATUS.FIRST_EXTRA,
+    EVENT_STATUS.SECOND_EXTRA,
+  ].includes(status.description as EVENT_STATUS)
 
   return (
     <div className={clsx(styles.stage, !inprogress ? styles.finishOrScheduled : '', className)}>
-      {status.description === 'Not started' ? (
-        getStartTime(startTime)
-      ) : categoryFootball && inprogress && playing ? (
-        <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
-      ) : (
-        <span className={styles.status}>{getStageType(status.description, SM)}</span>
-      )}
+      {status.description === EVENT_STATUS.NOT_STARTED 
+      ? <span className={styles.eventStartTime}>{eventStartTime}</span>
+      : categoryFootball && inprogress && footballHalfs 
+        ? <CurrentEventTime status={status} currentPeriodStartTime={currentPeriodStartTime} />
+        : <span className={styles.status}>{statusDescription}</span>
+      }
     </div>
   )
 }

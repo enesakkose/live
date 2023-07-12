@@ -130,8 +130,8 @@ export interface RoundInfo {
 
 export interface Status {
   code:        number;
-  description: string;
-  type:        string;
+  description: keyof typeof EVENT_STATUS | string;// string type added because api information insufficient 
+  type:        keyof typeof EVENT_STATUS | string;// string type added because api information insufficient 
 }
 
 export interface Time {
@@ -189,3 +189,48 @@ export enum TENNIS_FLAG  {
   'challenger' = 'challenger',
   'challenger-women' = 'wta'
 }
+
+export enum EVENT_STATUS {
+  INPROGRESS = 'inprogress',
+  NOT_STARTED = 'Not started',
+  FIRST_SET = '1st set',
+  FIRST_HALF = '1st half',
+  SECOND_HALF = '2nd half',
+  CANCELED = 'Canceled',
+  WALKOVER = 'Walkover',
+  RETIRED = 'Retired',
+  SECOND_SET = '2nd set',
+  THIRD_SET = '3rd set',
+  FOURTH_SET = '4th set',
+  FIFTH_SET = '5th set',
+  POSTPONED = 'Postponed',
+  DELAYED = 'DELAYED',
+  AWARDED = 'AWARDED',
+  INTERRUPTED = 'Interrupted',
+  FIRST_SET_TIEBREAK = 'FIRST_SET_TIEBREAK',
+  SECOND_SET_TIEBREAK = 'SECOND_SET_TIEBREAK',
+  THIRD_SET_TIEBREAK = 'THIRD_SET_TIEBREAK',
+  FOURTH_SET_TIEBREAK = 'FOURTH_SET_TIEBREAK',
+  FIFTH_SET_TIEBREAK = 'FIFTH_SET_TIEBREAK',
+  AET = 'AET',
+  AP = 'AP',
+  PAUSE = 'Pause',
+  AWAITING_PENALTIES = 'Awaiting penalties',
+  PENALTIES = 'Penalties',
+  LIVE = 'LIVE',
+  PENDING = 'PENDING',
+  SUSPENDED = 'Suspended',
+  ABANDONED = 'Abandoned',
+  FIRST_EXTRA = '1st extra',
+  SECOND_EXTRA = '2nd extra',
+  EXTRA_TIME_HALFTIME = 'Extra time halftime',
+  FINISHED = 'Finished',
+  ENDED = 'Ended',
+  HALFTIME = 'Halftime',
+  FIRST_QUARTER = '1st quarter',
+  SECOND_QUARTER = '2nd quarter',
+  THIRD_QUARTER = '3rd quarter',
+  FOURTH_QUARTER = '4th quarter',
+  OVERTIME = 'Overtime',
+}
+

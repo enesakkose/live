@@ -47,7 +47,12 @@ function TabBar({ eventId }: { eventId: string }) {
   return (
     <nav className={styles.tabBar}>
       {eventTabs.map((tab) => (
-        <NavLink variant='primary' key={tab.tabName} href={tab.href} active={segment === tab.segment}>
+        <NavLink 
+          key={tab.tabName} 
+          variant='primary' 
+          href={tab.href} 
+          active={segment === tab.segment}
+        >
           {tab.tabName.toUpperCase()}
         </NavLink>
       ))}
