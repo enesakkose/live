@@ -25,7 +25,7 @@ type ScoreboardPropsType = {
 function Scoreboard({ eventId }: ScoreboardPropsType) {
   const { data: event, isLoading, isError } = useGetEvent(eventId)
   if (isLoading || isError) return <Loading />
-  const inprogress = event.status.description === EVENT_STATUS.INPROGRESS
+  const inprogress = event.status.type === EVENT_STATUS.INPROGRESS
   const notStarted = event.status.description === EVENT_STATUS.NOT_STARTED
   const categoryTennis = event.tournament.category.sport.id === CATEGORY_BY_ID.TENNIS
   const startTime = getStartTime(event.startTimestamp)
