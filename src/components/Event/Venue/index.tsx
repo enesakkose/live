@@ -10,7 +10,7 @@ type VenuePropsType = { eventId: number }
 function Venue({ eventId }: VenuePropsType) {
   const { data: event, isLoading, isError } = useGetEvent(eventId)
   if (isLoading) return <Loading />
-  if (isError) return null
+  if (isError || !event.venue?.city) return null
   
   return (
     <div className={styles.venue}>
