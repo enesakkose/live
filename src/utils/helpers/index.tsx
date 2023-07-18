@@ -23,6 +23,10 @@ export const convertPercentage = (val1: string, val2: string) => {
   return { homePercentage, awayPercentage }
 }
 
+export const getConvertedPercent = (value: number, total: number) => {
+  return (value * 100) / total
+}
+
 export const valueWithoutPercentage = (val: string) => {
   return val.split('%')[0].trim()
 }

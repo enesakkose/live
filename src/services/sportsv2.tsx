@@ -7,6 +7,7 @@ import { type Incidents } from '@/types/EventIncidents'
 import { type Player } from '@/types/Player'
 import { type BestPlayer } from '@/types/EventBestPlayer'
 import { type Highlights } from '@/types/EventHighlights'
+import { type Votes } from '@/types/EventVotes'
 import { TIMEZONE, type TimezoneStatusType } from '@/context/TimezoneContext'
 
 export const getEventsV2 = async (category: string, date: string) => {
@@ -69,6 +70,12 @@ export const getEventHighlights = async(eventId: number) => {
   return highlights.highlights
 }
 
+export const getEventVotes = async(eventId: number) => {
+  const res = await fetch(`/api/votes?eventId=${eventId}`)
+  const votes: Votes = await res.json()
+  return votes.vote
+}
+
 export const useGetEvents = (
   category: string,
   timezoneStatus: TimezoneStatusType,
@@ -105,4 +112,8 @@ export const useGetBestPlayers = (eventId: number) => {
 
 export const useGetEventHighlights = (eventId: number) => {
   return useQuery(['highlights', eventId], () => getEventHighlights(eventId))
+}
+
+export const useGetEventVotes = (eventId: number) => {
+  return useQuery(['votes', eventId], () => getEventVotes(eventId))
 }
