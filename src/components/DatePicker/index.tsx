@@ -16,9 +16,7 @@ function DatePicker() {
 
   return (
     <Popover>
-      <PopoverTrigger variant='tertiary' icon='calendar4-week' size={16}>
-        {date}
-      </PopoverTrigger>
+      <PopoverTrigger variant='tertiary' icon='calendar4-week' size={16} />
       <PopoverContent className={styles.datePickerContainer}>
         <DayPicker
           showOutsideDays={true}

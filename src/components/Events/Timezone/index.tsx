@@ -1,8 +1,7 @@
 'use client'
-import React, { Suspense } from 'react'
+import React from 'react'
 import Button from '@/components/UI/Button'
 import DatePicker from '@/components/DatePicker'
-import Loading from './loading'
 import { useTimezoneContext, TIMEZONE } from '@/context/TimezoneContext'
 import styles from './Timezone.module.scss'
 
@@ -14,23 +13,21 @@ function Timezone() {
   ]
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div className={styles.timezone}>
-        <div className={styles.filterActionBtns}>
-          {TimezoneStatusTabs.map((tab) => (
-            <Button
-              key={tab.name}
-              active={timezoneStatus === tab.statusType}
-              onClick={() => setTimezoneStatus(tab.statusType)}
-              variant='primary'
-            >
-              {tab.name}
-            </Button>
-          ))}
-        </div>
-        {timezoneStatus === TIMEZONE.ALL && <DatePicker />}
+    <div className={styles.timezone}>
+      <div className={styles.filterActionBtns}>
+        {TimezoneStatusTabs.map((tab) => (
+          <Button
+            key={tab.name}
+            active={timezoneStatus === tab.statusType}
+            onClick={() => setTimezoneStatus(tab.statusType)}
+            variant='primary'
+          >
+            {tab.name}
+          </Button>
+        ))}
       </div>
-    </Suspense>
+      {timezoneStatus === TIMEZONE.ALL && <DatePicker />}
+    </div>
   )
 }
 
