@@ -10,7 +10,6 @@ function CategoriesLayout({ children }: { children: React.ReactNode }) {
     <MainContainer className={styles.container}>
       <Header />
       <main className={styles.sportTimezone}>
-        <Timezone />
         {children}
         <BottomNav />
       </main>

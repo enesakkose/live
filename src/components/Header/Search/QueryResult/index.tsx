@@ -18,7 +18,7 @@ function QueryResult({ searchResults, isLoading }: QueryResultTypeProps) {
       <ScrollContainer>
         <ul className={styles.list}>
           {onlyPlayers.map((result) => (
-            <Row key={useId()} result={result} />
+            <Row key={result.entity.id} result={result} />
           ))}
         </ul>
       </ScrollContainer>
