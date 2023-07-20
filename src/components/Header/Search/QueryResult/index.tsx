@@ -1,23 +1,24 @@
 'use client'
-import React from 'react'
+import React, { useId } from 'react'
 import Row from './Row'
 import MouseFollower from '@/components/MouseFollower'
 import ScrollContainer from '@/containers/ScrollContainer'
 import Loading from '@/components/Loading'
-import { useGetSearchResult } from '@/services/sportsv2'
-import { useDebounceValue } from '@/utils/hooks/useDebounceValue'
+import Error from '@/components/Error'
+import { type Search, Type } from '@/types/SearchQuery'
 import styles from './QueryResult.module.scss'
 
-function QueryResult({ query }: { query: string }) {
-  const debouncedValue = useDebounceValue(query, 600)
-  const { data: searchResults = [], isLoading } = useGetSearchResult(debouncedValue)
-  
+type QueryResultTypeProps = { searchResults: Search[]; isLoading: boolean }
+
+function QueryResult({ searchResults, isLoading }: QueryResultTypeProps) {
+  const onlyPlayers = searchResults.filter((result) => result.type !== Type.Event)
+
   const List = () => {
     return (
       <ScrollContainer>
         <ul className={styles.list}>
-          {searchResults.map((result) => (
-            <Row key={result.entity.slug} result={result} />
+          {onlyPlayers.map((result) => (
+            <Row key={useId()} result={result} />
           ))}
         </ul>
       </ScrollContainer>
@@ -26,7 +27,12 @@ function QueryResult({ query }: { query: string }) {
 
   return (
     <MouseFollower className={styles.queryResult}>
-      {isLoading ? <Loading /> : <List />}
+      {isLoading 
+        ?  <Loading />
+        : onlyPlayers.length === 0 
+          ? <Error error='Your request not found.' />
+          : <List />
+      }
     </MouseFollower>
   )
 }

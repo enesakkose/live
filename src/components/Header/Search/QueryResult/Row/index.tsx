@@ -2,7 +2,7 @@ import React from 'react'
 import { type Search } from '@/types/SearchQuery'
 import styles from './Row.module.scss'
 
-enum QUERYTYPES {
+enum QUERY_TYPES {
   uniqueTournament = 'unique-tournament',
   team = 'team',
   player = 'player',
@@ -39,10 +39,10 @@ function Row({ result }: { result: Search }) {
     },
   ]
   const findedInfo = resultInfoByType.find((info) => info.type === result.type)
-  const imgType = QUERYTYPES[result.type as keyof typeof QUERYTYPES]
+  const imgType = QUERY_TYPES[result.type as keyof typeof QUERY_TYPES]
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = 'https://www.sofascore.com/static/images/placeholders/player.png'
+    e.currentTarget.src = 'https://www.sofascore.com/static/images/placeholders/player.svg'
   }
 
   return (
@@ -72,4 +72,4 @@ function Row({ result }: { result: Search }) {
   )
 }
 
-export default Row
+export default React.memo(Row)

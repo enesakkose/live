@@ -3,13 +3,15 @@ import React, { useState } from 'react'
 import Icon from '@/components/UI/Icon'
 import QueryResult from './QueryResult'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/UI/Popover'
+import { useGetSearchResult } from '@/services/sportsv2'
+import { useDebounceValue } from '@/utils/hooks/useDebounceValue'
 import styles from './Search.module.scss'
 
 function Search() {
   const [query, setQuery] = useState('')
-  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value)
-  }
+  const debouncedValue = useDebounceValue(query, 600)
+  const { data: searchResults = [], isLoading } = useGetSearchResult(debouncedValue)
+  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => { setQuery(e.target.value) }
 
   return (
     <Popover className={styles.searchPopover}>
@@ -20,7 +22,7 @@ function Search() {
         </div>
       </PopoverTrigger>
       <PopoverContent className={styles.content}>
-        <QueryResult query={query} />
+        <QueryResult searchResults={searchResults} isLoading={isLoading} />
       </PopoverContent>
     </Popover>
   )
