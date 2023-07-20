@@ -16,7 +16,7 @@ export interface Incident {
   description?: string
   id: number
   isHome?: boolean
-  incidentClass?: string
+  incidentClass: string
   playerName: string
   rescinded?: boolean
   reversedPeriodTime?: number

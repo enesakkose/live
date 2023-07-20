@@ -123,14 +123,19 @@ function FavEventBtn() {
   return <Button onClick={favEvent} variant='icon' icon={'bell'} size={20} />
 }
 
-function Row({ event }: { event: Event }) {
+function Row({ event, className }: { event: Event, className?: string }) {
   const HOME_PART_SCORES = getFilterEventScores(event.homeScore)
   const AWAY_PART_SCORES = getFilterEventScores(event.awayScore)
+
 
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Link href={`/event/${event.id}/summary/event-summary`} prefetch={false} className={styles.eventRow}>
+        <Link 
+          href={`/event/${event.id}/summary/event-summary`} 
+          prefetch={false} 
+          className={clsx(styles.eventRow, className)}
+        >
           <div className={styles.teams}>
             <TeamRow
               score={event.homeScore.current}

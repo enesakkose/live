@@ -12,39 +12,47 @@ type RowPropsType = { incident: Incident }
 type SignPropsType = {
   children?: React.ReactNode
   icon?: string
+  className?: string
+}
+
+enum BASKETBALL_GOAL_TYPE {
+  twoPoints = '+2',
+  threePoints = '+3',
+  onePoint = '+1',
 }
 
 function Row({ incident }: RowPropsType) {
-
+  
   const Content = () => {
-
     const IncidentTime = () => {
-      return(
+      return (
         <span className={styles.incidentTime}>
           {`${incident.time} ${incident.addedTime ? `+${incident.addedTime}` : ''}`}&apos;
         </span>
       )
     }
-    
+
     const IncidentGoalType = () => {
-      return(
+      const goalType = ['twoPoints', 'threePoints', 'onePoint'].includes(incident?.incidentClass)
+        ? BASKETBALL_GOAL_TYPE[incident?.incidentClass as keyof typeof BASKETBALL_GOAL_TYPE]
+        : incident?.incidentClass
+      return (
         <>
-          {incident.incidentClass !== IncidentClass.REGULAR &&
-            <span className={styles.incidentClass}>
-              ({incident.incidentClass})
-            </span>
-          }
+          {incident.incidentClass !== IncidentClass.REGULAR && (
+            <span className={styles.incidentClass}>({goalType})</span>
+          )}
         </>
       )
     }
-    
-    const Sign = ({ children, icon }: SignPropsType) => {
+
+    const Sign = ({ children, icon, className }: SignPropsType) => {
       return (
         <div
           className={clsx(
             styles.rowBase,
             styles.sign,
-            incident.isHome ? '' : styles.incidentAwayRow
+            incident.isHome ? '' : styles.incidentAwayRow,
+            className
           )}
         >
           {icon && <Icon icon={icon} size={16} />}
@@ -57,19 +65,24 @@ function Row({ incident }: RowPropsType) {
       return (
         <div className={clsx(styles.goal, incident.isHome ? '' : styles.incidentAwayRow)}>
           {incident.time && <IncidentTime />}
-          <Sign icon='football'>{incident.homeScore} - {incident.awayScore}</Sign>
-          {incident.player && incident.player.id && 
-            <PlayerTooltip 
-              playerId={incident.player.id} 
-              playerName={incident.player.shortName}
-            />
-          }
-          {incident.assist1 && incident.assist1.id &&
-            <PlayerTooltip 
-              playerId={incident.assist1.id} 
+          <Sign icon='football' className={styles.goalSign}>
+            <span className={clsx(styles.score, incident.isHome ? styles.activeScore : '')}>
+              {incident.homeScore}
+            </span>
+            -
+            <span className={clsx(styles.score, incident.isHome ? '' : styles.activeScore)}>
+              {incident.awayScore}
+            </span>
+          </Sign>
+          {incident.player && incident.player.id && (
+            <PlayerTooltip playerId={incident.player.id} playerName={incident.player.shortName} />
+          )}
+          {incident.assist1 && incident.assist1.id && (
+            <PlayerTooltip
+              playerId={incident.assist1.id}
               playerName={`(${incident.assist1?.shortName})`}
             />
-          }
+          )}
           <IncidentGoalType />
         </div>
       )
@@ -80,12 +93,12 @@ function Row({ incident }: RowPropsType) {
         <div className={clsx(styles.card, incident.isHome ? '' : styles.incidentAwayRow)}>
           <IncidentTime />
           <Sign icon={incident.incidentClass} />
-          {incident.player || incident.manager ?
-            <PlayerTooltip 
-              playerId={incident.player ? incident.player.id :  incident.manager.id} 
+          {incident.player || incident.manager ? (
+            <PlayerTooltip
+              playerId={incident.player ? incident.player.id : incident.manager.id}
               playerName={incident?.playerName}
             />
-          : null}
+          ) : null}
           {incident.reason && <span className={styles.reason}>({incident.reason})</span>}
         </div>
       )
@@ -100,29 +113,39 @@ function Row({ incident }: RowPropsType) {
         <div className={clsx(styles.substitution, incident.isHome ? '' : styles.incidentAwayRow)}>
           <IncidentTime />
           <div className={styles.subIn}>
-            <Sign><span className={styles.in}>IN</span></Sign>
-            {incident.playerIn.id && <PlayerTooltip 
-              playerId={incident.playerIn.id} 
-              playerName={incident.playerIn?.shortName}
-            />}
+            <Sign>
+              <span className={styles.in}>IN</span>
+            </Sign>
+            {incident.playerIn.id && (
+              <PlayerTooltip
+                playerId={incident.playerIn.id}
+                playerName={incident.playerIn?.shortName}
+              />
+            )}
           </div>
           <div className={styles.subOut}>
-            <Sign><span className={styles.out}>OUT</span></Sign>
-            {incident.playerOut.id && <PlayerTooltip 
-              playerId={incident.playerOut.id} 
-              playerName={incident.playerOut?.shortName}
-            />}
+            <Sign>
+              <span className={styles.out}>OUT</span>
+            </Sign>
+            {incident.playerOut.id && (
+              <PlayerTooltip
+                playerId={incident.playerOut.id}
+                playerName={incident.playerOut?.shortName}
+              />
+            )}
           </div>
         </div>
       )
     }
 
     const MissedPenalty = () => {
-      return(
+      return (
         <div className={clsx(styles.missedPenalty, incident.isHome ? '' : styles.incidentAwayRow)}>
           <Sign icon='redball' />
-          {incident.player.id && <PlayerTooltip playerId={incident.player.id} playerName={incident.player?.shortName}/>}
-          <IncidentGoalType/>
+          {incident.player.id && (
+            <PlayerTooltip playerId={incident.player.id} playerName={incident.player?.shortName} />
+          )}
+          <IncidentGoalType />
         </div>
       )
     }
@@ -145,7 +168,11 @@ function Row({ incident }: RowPropsType) {
       case IncidentType.PENALTY_SHOOTOUT:
         return <Penalty />
       case IncidentType.PERIOD:
-        return <Section title={incident.text}>{incident.homeScore} - {incident.awayScore}</Section>
+        return (
+          <Section title={incident.text}>
+            {incident.homeScore} - {incident.awayScore}
+          </Section>
+        )
       case IncidentType.INJURY_TIME:
         return <InjuryTime />
       /*case 'OWN_GOAL':

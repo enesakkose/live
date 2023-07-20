@@ -35,6 +35,13 @@
     .goal{
         @include flexContainer;
         font-weight: 600;
+
+        .goalSign{
+
+            .activeScore{
+                color: $GREEN-400
+            }
+        }
     }
 
     .incidentClass{
